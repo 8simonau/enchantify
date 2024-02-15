@@ -10,9 +10,48 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_02_15_181906) do
+ActiveRecord::Schema[7.1].define(version: 2024_02_15_185912) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "children", force: :cascade do |t|
+    t.string "first_name"
+    t.date "birth_date"
+    t.integer "story_duration"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_children_on_user_id"
+  end
+
+  create_table "options", force: :cascade do |t|
+    t.string "type"
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stories", force: :cascade do |t|
+    t.boolean "is_favorite"
+    t.integer "playcount"
+    t.string "title"
+    t.text "text"
+    t.bigint "child_id", null: false
+    t.bigint "voice_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["child_id"], name: "index_stories_on_child_id"
+    t.index ["voice_id"], name: "index_stories_on_voice_id"
+  end
+
+  create_table "story_options", force: :cascade do |t|
+    t.bigint "option_id", null: false
+    t.bigint "story_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["option_id"], name: "index_story_options_on_option_id"
+    t.index ["story_id"], name: "index_story_options_on_story_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -22,8 +61,25 @@ ActiveRecord::Schema[7.1].define(version: 2024_02_15_181906) do
     t.datetime "remember_created_at"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "first_name"
+    t.string "last_name"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "voices", force: :cascade do |t|
+    t.string "name"
+    t.string "token"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_voices_on_user_id"
+  end
+
+  add_foreign_key "children", "users"
+  add_foreign_key "stories", "children"
+  add_foreign_key "stories", "voices"
+  add_foreign_key "story_options", "options"
+  add_foreign_key "story_options", "stories"
+  add_foreign_key "voices", "users"
 end
