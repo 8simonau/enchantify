@@ -7,6 +7,6 @@ class User < ApplicationRecord
   has_many :children
   has_many :voices
 
-  validates :first_name, present: true
-  validates :last_name, present: true
+  validates :first_name, presence: true
+  validates :last_name, presence: true
 end
