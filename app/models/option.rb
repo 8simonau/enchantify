@@ -4,6 +4,6 @@ class Option < ApplicationRecord
 
   has_one_attached :picture
 
-  validates :type, presence: :true
-  validates :name, presence: :true
+  validates :category, presence: true
+  validates :name, presence: true
 end
