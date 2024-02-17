@@ -6,20 +6,22 @@
   <div class="create-child d-none" data-create-child-target="form"></div>
   <div class= "children-grid">
     <% @children.each do |c| %>
-      <div class="child-card">
-        <div class="child-image-border">
-          <div class="child-image">
-            <%= cl_image_tag(c.avatar.key,
-                            width: 130,
-                            height: 130,
-                            crop: :fill,
-                            gravity: :faces) %>
+      <%= link_to children_set_child_path, data: { params: "child_id=#{c.id}"} do %>
+        <div class="child-card">
+          <div class="child-image-border">
+            <div class="child-image">
+              <%= cl_image_tag(c.avatar.key,
+                              width: 130,
+                              height: 130,
+                              crop: :fill,
+                              gravity: :faces) %>
+            </div>
+          </div>
+          <div class="child-name">
+            <p><%= c.first_name %></p>
           </div>
         </div>
-        <div class="child-name">
-          <p><%= c.first_name %></p>
-        </div>
-      </div>
+      <% end %>
     <% end %>
   </div>
   <div class="buttons">
