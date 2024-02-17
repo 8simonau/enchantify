@@ -6,7 +6,26 @@ emma = Child.new(first_name: "Emma", birth_date: "01/05/2018", story_duration: 1
 emma.avatar.attach(io: file, filename: "emma.jpg", content_type: "image/jpg")
 emma.user = john
 emma.save!
-
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178307/etbpakkldejndkclevc6.jpg")
+matheo = Child.new(first_name: "Matheo", birth_date: "01/05/2015", story_duration: 90)
+matheo.avatar.attach(io: file, filename: "emma.jpg", content_type: "image/jpg")
+matheo.user = john
+matheo.save!
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178320/haxzqww2e42mnhc9wvpc.jpg")
+mike = Child.new(first_name: "Mike", birth_date: "03/03/2020", story_duration: 60)
+mike.avatar.attach(io: file, filename: "emma.jpg", content_type: "image/jpg")
+mike.user = john
+mike.save!
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178346/bay4as0qwf6hrwbigqpf.jpg")
+joelle = Child.new(first_name: "Joelle", birth_date: "01/01/2017", story_duration: 100)
+joelle.avatar.attach(io: file, filename: "emma.jpg", content_type: "image/jpg")
+joelle.user = john
+joelle.save!
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178334/rqar9rgs4ssuwgp65xry.jpg")
+yann = Child.new(first_name: "Yann", birth_date: "01/10/2020", story_duration: 50)
+yann.avatar.attach(io: file, filename: "emma.jpg", content_type: "image/jpg")
+yann.user = john
+yann.save!
 puts "generate 5 characters"
 
 option = Option.new(category: "Character", name: "Masky")
