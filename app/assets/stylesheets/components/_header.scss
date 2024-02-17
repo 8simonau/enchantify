@@ -2,8 +2,20 @@
   height: 45px;
   text-align: center;
   background-color: $pink;
+  position: relative;
   h1 {
     font-weight: bold;
     line-height: 45px;
   }
+}
+
+.quit {
+  height: 30px;
+  width: 30px;
+  position: absolute;
+  left: 90%;
+  content: "\d7";
+  font-size: 32px;
+  line-height: 100px;
+  text-align: center;
 }
