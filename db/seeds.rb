@@ -48,11 +48,6 @@ option.save!
 
 puts "generate items"
 
-option = Option.new(category: "Item", name: "Forest")
-file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167809/zuyhhsmerzfcmw7lce4a.png")
-option.picture.attach(io: file, filename: "forest.png ", content_type: "image/png")
-option.save!
-
 option = Option.new(category: "Item", name: "Sword")
 file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167771/thkod1ov9zpdclm8axbp.png")
 option.picture.attach(io: file, filename: "sword.png ", content_type: "image/png")

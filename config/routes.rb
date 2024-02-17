@@ -1,4 +1,9 @@
 Rails.application.routes.draw do
+
+  get 'children/index'
+  get 'children/create'
+  get 'children/set_child'
+
   devise_for :users
   root to: "pages#home"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
