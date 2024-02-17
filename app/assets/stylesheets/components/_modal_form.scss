@@ -1,0 +1,13 @@
+.create-child {
+  position: absolute;
+  top:0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: $pink;
+  color: $purple;
+  height: 500px;
+  width: 300px;
+  border-radius: 12px;
+  transition: ease-in;
+}
