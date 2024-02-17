@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   get 'children/index'
-  get 'children/create'
+  post 'children/create'
   get 'children/set_child'
 
   devise_for :users

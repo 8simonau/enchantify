@@ -8,11 +8,13 @@
   font-size: 24px;
   font-weight: bold;
   box-shadow: 2px 2px 1px lightgray;
+  text-align: center;
+  align-items: center;
 }
 
 .buttons {
   position: fixed;
-  bottom: 45px;
+  bottom: 30px;
   left: 50%;
   transform: translateX(-50%);
   display: flex;
