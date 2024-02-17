@@ -3,10 +3,29 @@ puts "generate one user and one child"
 file = URI.open("https://as1.ftcdn.net/v2/jpg/02/84/51/00/1000_F_284510053_9EA7vNLlgeZajPOMzaToA8gAOqgDWDtW.jpg")
 john = User.create(first_name: "John", last_name: "Father", email: "john@mail.com", password: "123456")
 emma = Child.new(first_name: "Emma", birth_date: "01/05/2018", story_duration: 120)
-emma.avatar.attach(io: file, filename: "emma.jpg", content_type: "image/jpg")
+emma.avatar.attach(io: file, filename: "emma.png", content_type: "image/png")
 emma.user = john
 emma.save!
-
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178307/etbpakkldejndkclevc6.jpg")
+matheo = Child.new(first_name: "Matheo", birth_date: "01/05/2015", story_duration: 90)
+matheo.avatar.attach(io: file, filename: "matheo.png", content_type: "image/png")
+matheo.user = john
+matheo.save!
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178320/haxzqww2e42mnhc9wvpc.jpg")
+mike = Child.new(first_name: "Mike", birth_date: "03/03/2020", story_duration: 60)
+mike.avatar.attach(io: file, filename: "mike.png", content_type: "image/png")
+mike.user = john
+mike.save!
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178346/bay4as0qwf6hrwbigqpf.jpg")
+joelle = Child.new(first_name: "Joelle", birth_date: "01/01/2017", story_duration: 100)
+joelle.avatar.attach(io: file, filename: "joelle.png", content_type: "image/png")
+joelle.user = john
+joelle.save!
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708178334/rqar9rgs4ssuwgp65xry.jpg")
+yann = Child.new(first_name: "Yann", birth_date: "01/10/2020", story_duration: 50)
+yann.avatar.attach(io: file, filename: "yann.png", content_type: "image/png")
+yann.user = john
+yann.save!
 puts "generate 5 characters"
 
 option = Option.new(category: "Character", name: "Masky")
