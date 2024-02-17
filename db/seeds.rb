@@ -46,16 +46,41 @@ file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167790/u
 option.picture.attach(io: file, filename: "castle.png ", content_type: "image/png")
 option.save!
 
-puts "generate items"
-
-option = Option.new(category: "Item", name: "Forest")
-file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167809/zuyhhsmerzfcmw7lce4a.png")
-option.picture.attach(io: file, filename: "forest.png ", content_type: "image/png")
+option = Option.new(category: "Place", name: "Boat")
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708171377/gimmhnjepc2hxxa33ojl.png")
+option.picture.attach(io: file, filename: "Boat.png ", content_type: "image/png")
 option.save!
 
+option = Option.new(category: "Place", name: "Underwatercity")
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708171508/u3zum8at4biaysfkv4zm.png")
+option.picture.attach(io: file, filename: "Underwatercity.png ", content_type: "image/png")
+option.save!
+
+option = Option.new(category: "Place", name: "Space")
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708171508/u3zum8at4biaysfkv4zm.png")
+option.picture.attach(io: file, filename: "Space.png ", content_type: "image/png")
+option.save!
+
+puts "generate items"
+
 option = Option.new(category: "Item", name: "Sword")
-file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167771/thkod1ov9zpdclm8axbp.png")
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708171486/c8jqi8kfyrsgchsaryfw.png")
 option.picture.attach(io: file, filename: "sword.png ", content_type: "image/png")
+option.save!
+
+option = Option.new(category: "Item", name: "Bubblegun")
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708171423/u6bimv63urtk6vvlhp9s.png")
+option.picture.attach(io: file, filename: "Bubblegun.png ", content_type: "image/png")
+option.save!
+
+option = Option.new(category: "Item", name: "Dress")
+file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708171457/rukpqmlttgvr54vkkgmd.png")
+option.picture.attach(io: file, filename: "Dress.png ", content_type: "image/png")
+option.save!
+
+option = Option.new(category: "Item", name: "Hat")
+file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167771/thkod1ov9zpdclm8axbp.png")
+option.picture.attach(io: file, filename: "HAT.png ", content_type: "image/png")
 option.save!
 
 puts "generate 1 voice"
@@ -73,6 +98,7 @@ story = Story.new(title: "Blanche-Neige",
                   is_favorite: false)
 story.voice = voice
 story.child = emma
+
 file = URI.open("https://res.cloudinary.com/dgwpmqnpb/video/upload/v1708030579/zg3tda0dtlijjf6czscy.mp3")
 story.audio.attach(io: file, filename: "blancheneige.mp3", content_type: "audio")
 story.save!
