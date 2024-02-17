@@ -1,0 +1,13 @@
+.children-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 12px;
+  margin-top: 12px;
+}
+
+.child-card {
+  background-color: $pink;
+  height: 150px;
+  width: 150px;
+  border-radius: 75px;
+}

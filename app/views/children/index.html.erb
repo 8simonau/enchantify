@@ -1,0 +1,18 @@
+<div class="header">
+  <h1>Ma famille</h1>
+</div>
+<div class="container">
+  <div class= "children-grid">
+    <% @children.each do |c| %>
+      <div class="child-card">
+        <%= cl_image_tag(c.avatar.key,
+                        background: "#fec7fb",
+                        width: 80,
+                        height: 80,
+                        radius: 40,
+                        crop: :fill) %>
+        <p><%= c.first_name %></p>
+        <% end %>
+      </div>
+  </div>
+</div>
