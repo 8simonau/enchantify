@@ -6,7 +6,7 @@ class GenerateTextJob < ApplicationJob
     url = "https://api.openai.com/v1/chat/completions"
     body = {
       "model": "gpt-3.5-turbo-0125",
-      "max_tokens": 1000,
+      "max_tokens": 200,
       "messages": [
         {
           "role": "system",
@@ -20,7 +20,12 @@ class GenerateTextJob < ApplicationJob
     }
 
     response = Faraday.post(url) do |req|
-      req.headers =
+      req.headers['Authorization'] = 'Bearer ' + ENV.fetch("OPENAI_KEY")
+      req.headers['Content-Type'] = 'application/json'
+      req.body = body.to_json
     end
+
+    story.text = response.body
+    story.save!
   end
 end
