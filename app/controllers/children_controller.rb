@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
   def index
     @children = current_user.children.all
+    @new_child = Child.new
   end
 
   def create
@@ -24,6 +25,6 @@ class ChildrenController < ApplicationController
   private
 
   def child_params
-    params.require(:child).permit(:first_name, :birth_date, :story_duration)
+    params.require(:child).permit(:first_name, :birth_date, :story_duration, :avatar)
   end
 end
