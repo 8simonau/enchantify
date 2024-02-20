@@ -2,5 +2,7 @@
   <h1>ENCHANTIFY</h1>
   <div class="quit"></div>
 </div>
-<p>Active child: <%= session[:active_child]["first_name"] %></p>
+<% unless session[:active_child] == nil %>
+  <p>Active child: <%= session[:active_child]["first_name"] %></p>
+<% end %>
 <p><%= link_to "Admin", children_index_path %></p>
