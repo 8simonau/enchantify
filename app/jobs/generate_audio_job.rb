@@ -3,7 +3,7 @@ class GenerateAudioJob < ApplicationJob
 
   def perform(story)
     # Do something later
-    url = "https://api.elevenlabs.io/v1/text-to-speech/#{story.voice_id}"
+    url = "https://api.elevenlabs.io/v1/text-to-speech/#{story.voice.token}"
     body = {
       text: story.text
     }
