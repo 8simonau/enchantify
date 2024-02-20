@@ -1,0 +1,9 @@
+  <div class="create-child d-none" data-create-child-target="form">
+    <%= simple_form_for @child do |f| %>
+      <%= f.input :first_name %>
+      <%= f.input :birth_date %>
+      <%= f.input :story_duration %>
+      <%= f.input :avatar, as: :file %>
+      <%= f.button :submit, "Create profile", class: "btn btn-standard" %>
+    <% end %>
+  </div>

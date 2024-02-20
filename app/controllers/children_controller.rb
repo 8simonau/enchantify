@@ -16,9 +16,8 @@ class ChildrenController < ApplicationController
   end
 
   def set_child
-    @child = Child.find(params[:child_id])
-    current_user[:active_child] = @child
-    raise
+    @child = Child.find(params[:id])
+    session[:active_child] = @child
     redirect_to root_path
   end
 

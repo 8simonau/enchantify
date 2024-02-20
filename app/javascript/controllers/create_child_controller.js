@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   revealForm() {
-    console.log(this.formTarget);
     this.formTarget.classList.remove("d-none")
   }
 }
