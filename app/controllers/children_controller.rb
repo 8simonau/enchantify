@@ -1,6 +1,7 @@
 class ChildrenController < ApplicationController
   def index
     @children = current_user.children.all
+    @new_child = Child.new
   end
 
   def create
@@ -16,13 +17,14 @@ class ChildrenController < ApplicationController
   end
 
   def set_child
-    @child = Child.find(params[:child_id])
-    current_user[:active_child] = @child
+    @child = Child.find(params[:id])
+    session[:active_child] = @child
+    redirect_to root_path
   end
 
   private
 
   def child_params
-    params.require(:child).permit(:first_name, :birth_date, :story_duration)
+    params.require(:child).permit(:first_name, :birth_date, :story_duration, :avatar)
   end
 end
