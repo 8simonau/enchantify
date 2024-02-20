@@ -28,6 +28,9 @@ gem "jbuilder"
 
 gem "cloudinary"
 
+# Faraday to make API post requests to eleven labs for example
+gem "faraday"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

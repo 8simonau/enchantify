@@ -112,7 +112,7 @@ option.save!
 puts "generate 1 voice"
 
 voice = Voice.new(name: "default",
-                  token: "21m00Tcm4TlvDq8ikWAM")
+                  token: "UiLScjlH4SIyLmjJ5RMw")
 voice.user = john
 voice.save!
 

@@ -1,0 +1,5 @@
+<% @stories.each do |story| %>
+  <h2><%= story.title %></h2>
+  <p><%= story.text %></p>
+  <%= audio_tag(url_for(story.audio), controls: true) %>
+<% end %>
