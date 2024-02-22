@@ -11,6 +11,7 @@
 }
 
 .options-card {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -18,4 +19,15 @@
   padding: 16px;
   border: 1px solid $light-gray;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+}
+
+.option-tickmark {
+  position: absolute;
+  bottom: 0px;
+  right: 12px;
+  font-size: 40px;
+}
+
+.hidden-tickmark {
+  display: none;
 }

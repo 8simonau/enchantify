@@ -1,5 +1,12 @@
-<%= link_to story_create_option_path(option: option), data: { turbo_method: "post" } do %>
+<%= link_to story_create_option_path(option: option),
+  data: { turbo_method: "post",
+    controller: "option-selection",
+    action:"click->option-selection#toggle"
+  } do %>
   <div class="options-card">
+    <div class="option-tickmark hidden-tickmark" data-option-selection-target="tickmarks">
+      <i class="fa-solid fa-circle-check"></i>
+    </div>
     <h2><%= option.name %></h2>
     <%= cl_image_tag(option.picture.key, width: 80) %>
   </div>
