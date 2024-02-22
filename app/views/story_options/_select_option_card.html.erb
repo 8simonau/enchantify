@@ -1,0 +1,6 @@
+<%= link_to story_create_option_path(option: option), data: { turbo_method: "post" } do %>
+  <div class="options-card">
+    <h2><%= option.name %></h2>
+    <%= cl_image_tag(option.picture.key, width: 80) %>
+  </div>
+<% end %>

@@ -1,5 +1,24 @@
-<% @stories.each do |story| %>
-  <h2><%= story.title %></h2>
-  <p><%= story.text %></p>
-  <%= audio_tag(url_for(story.audio), controls: true) %>
-<% end %>
+<div class="stories-wrapper">
+  <% @stories.each do |story| %>
+  <div class="story-card">
+    <h2><%= story.title %></h2>
+    <p>Created on: <%= story.created_at.strftime("%A %-d %B %Y") %></p>
+    <p>Listened <%= story.playcount %> times</p>
+    <div class="story-card-bottom">
+      <div class="option-pictures-row">
+        <% story.options.each do |option| %>
+          <%= cl_image_tag(option.picture.key, width: 60, height: 60, class: "option-picture") %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to story_path(story) do %>
+        <div class="play-button-small">
+          <i class="fa-solid fa-circle-play"></i>
+        </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <% end %>
+</div>
+<%= link_to "Create a story", new_story_path %>

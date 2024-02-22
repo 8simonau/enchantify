@@ -1,0 +1,34 @@
+<div class="mb-3">
+  <h1>Select options</h1>
+</div>
+
+<h2>Choose your character</h2>
+<div class="mb-3 options-wrapper">
+  <% @options.each do |option| %>
+    <% if option.category == "Character" %>
+      <%= render partial: "select_option_card", locals: { option: option } %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2>Choose your place</h2>
+<div class="mb-3 options-wrapper">
+  <% @options.each do |option| %>
+    <% if option.category == "Place" %>
+      <%= render partial: "select_option_card", locals: { option: option } %>
+    <% end %>
+  <% end %>
+</div>
+
+<h2>Choose your item</h2>
+<div class="mb-3 options-wrapper">
+  <% @options.each do |option| %>
+    <% if option.category == "Item" %>
+      <%= render partial: "select_option_card", locals: { option: option } %>
+    <% end %>
+  <% end %>
+</div>
+
+<div class="text-center fs-1 mt-3 mb-3">
+  <%= link_to "Generate story", story_path(@story) %>
+</div>
