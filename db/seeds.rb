@@ -111,8 +111,9 @@ option.save!
 
 puts "generate 1 voice"
 
+# rachel voice id of Eleven Labs
 voice = Voice.new(name: "default",
-                  token: "UiLScjlH4SIyLmjJ5RMw")
+                  token: "21m00Tcm4TlvDq8ikWAM")
 voice.user = john
 voice.save!
 
