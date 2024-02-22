@@ -4,10 +4,10 @@ class ImagesJob < ApplicationJob
   def perform(story)
     # Do something later
 
-    curl_command = %Q(curl -X POST "https://api.openai.com/v1/images/generations" \
+    curl_command = %(curl -X POST "https://api.openai.com/v1/images/generations" \
                     -H "Content-Type: application/json" \
                     -H "Authorization: Bearer #{ENV.fetch 'OPENAI_API_KEY'}" \
-                    -d '{"model": "dall-e-3", "prompt": "#{Story.text}", "n": 1, "size": "1024x1024"}')
+                    -d '{"model": "dall-e-3", "prompt": "#{Story.text}", "n": 10, "size": "1024x1024"}')
 
     response = `#{curl_command}`
     puts response
