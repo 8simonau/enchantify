@@ -112,14 +112,15 @@ option.save!
 puts "generate 1 voice"
 
 voice = Voice.new(name: "default",
-                  token: "UiLScjlH4SIyLmjJ5RMw")
+                  token: "21m00Tcm4TlvDq8ikWAM")
 voice.user = john
 voice.save!
 
 puts "generate 1 story"
 
 story = Story.new(title: "Blanche-Neige",
-                  text: "Un jour de plein hiver, une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
+                  text: "Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
+                  options: [Option.last, Option.first, Option.find_by_name("Space")],
                   playcount: 0,
                   is_favorite: false)
 story.voice = voice

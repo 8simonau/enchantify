@@ -12,4 +12,10 @@ class Story < ApplicationRecord
   # validates :is_favorite, presence: true
   # validates :title, presence: true
   # validates :text, presence: true
+
+  # helper to get options
+  def options_hash
+    return Hash[options.collect { |o| [o.category, o.name] }]
+    # Hash[self.options.collect { |o| [o.category, o.name] }]
+  end
 end
