@@ -1,0 +1,10 @@
+.option-pictures-row {
+  display: flex;
+  flex-direction: row;
+  column-gap: 20px;
+  align-items: center;
+}
+
+.option-picture {
+  border-radius: 12px;
+}

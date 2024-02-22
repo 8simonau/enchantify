@@ -15,8 +15,10 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  get "stories/:id", to: "stories#show"
-  get "stories", to: "stories#index"
-  get "stories/new", to: "stories#new"
-  post "stories/new/:id", to: "stories#create"
+  resources :stories, only: [:index, :new, :show] do
+    get "select_options", to: "story_options#select_options"
+    post "create_option", to: "story_options#create"
+  end
+
+
 end
