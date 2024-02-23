@@ -1,0 +1,19 @@
+<div class="form-group audio-field" data-controller='voice'>
+  <div class='row'>
+    <div class='col-md-12'>
+      <div class="form-group" >
+        <button data-action="voice#startRecording" data-target="voice.startRecording">Start</button>
+        <button disabled data-action="voice#stopRecording" data-target="voice.stopRecording">Stop</button>
+        <button disabled data-action="voice#pauseRecording" data-target="voice.pauseRecording">Pause</button>
+        <button disabled data-action="voice#resumeRecording" data-target="voice.resumeRecording">Resume</button>
+        <audio data-target="voice.recordedAudio"></audio>
+        <input type="hidden" data-target='voice.audioBlob' value=""
+                name="target_field"
+                id="target_field">
+        <p data-target='voice.timeElapsed'> Time Elapsed: 0 second </p>
+      </div>
+    </div>
+
+
+  </div>
+</div>
