@@ -1,0 +1,11 @@
+<h1>All voices</h1>
+
+<% @voices.each do |voice| %>
+  <div>
+    <h2><%= voice.name %></h2>
+    <% if voice.audio.valid? %>
+      <%= audio_tag(url_for(voice.audio), controls: true) %>
+    <% end %>
+    <p>ElevanLabs token: <%= voice.token %></p>
+  </div>
+<% end %>

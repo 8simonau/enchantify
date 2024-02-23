@@ -21,7 +21,7 @@ class StoriesController < ApplicationController
     # to be modified with active_child
     @story.child = Child.first
     # to be modified with selected voice
-    @story.voice = current_user.voices.first
+    @story.voice = Voice.last
     @story.title = "This story is being created..."
     @story.text = "A magic adventure will appear here soon."
     @story.save!

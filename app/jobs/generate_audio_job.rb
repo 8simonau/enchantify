@@ -5,7 +5,8 @@ class GenerateAudioJob < ApplicationJob
     # Do something later
     url = "https://api.elevenlabs.io/v1/text-to-speech/#{story.voice.token}"
     body = {
-      text: story.text
+      text: story.text,
+      model_id: "eleven_multilingual_v2"
     }
 
     response = Faraday.post(url) do |req|

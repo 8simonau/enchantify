@@ -5,7 +5,6 @@ export default class extends Controller {
   static targets = ["startRecording", "stopRecording", 'resumeRecording', 'pauseRecording', "recordedAudio", "audioBlob", 'timeElapsed'];
 
   connect() {
-    console.log("hello")
     this.timerInterval = null;
     this.secondsElapsed = 0;
   }
@@ -64,18 +63,26 @@ export default class extends Controller {
     this.startTimer();
   }
 
-
   stopRecording(event) {
     event.preventDefault()
     this.recorder.stopRecording(blob => {
       console.log(blob)
-      // this.recordedAudioTarget.controls = true;
+      // LA LIGNE CI DESSOUS FONCTIONNE
+      // invokeSaveAsDialog(this.recorder.getBlob());
+      console.log(this.audioBlobTarget)
+      const file = new File([this.recorder.getBlob()], "audio.webm", { lastModified: new Date().getTime(), type: blob.type })
+      const container = new DataTransfer();
+      container.items.add(file);
+      this.audioBlobTarget.files = container.files;
+
     });
     this.startRecordingTarget.disabled = false
     this.stopRecordingTarget.disabled = true
     this.pauseRecordingTarget.disabled = true;
     this.resumeRecordingTarget.disabled = true;
-    triggerChange(this.element);
+    // triggerChange(this.element);
+
+
     this.stopTimer();
     this.secondsElapsed = 0;
   }

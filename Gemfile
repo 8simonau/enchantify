@@ -31,6 +31,9 @@ gem "cloudinary"
 # Faraday to make API post requests to eleven labs for example
 gem "faraday"
 
+# Open URI to read file from cloudinary url
+gem "open-uri"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

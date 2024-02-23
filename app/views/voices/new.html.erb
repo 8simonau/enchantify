@@ -2,17 +2,23 @@
   <div class='row'>
     <div class='col-md-12'>
       <div class="form-group" >
-        <button data-action="voice#startRecording" data-target="voice.startRecording">Start</button>
-        <button disabled data-action="voice#stopRecording" data-target="voice.stopRecording">Stop</button>
-        <button disabled data-action="voice#pauseRecording" data-target="voice.pauseRecording">Pause</button>
-        <button disabled data-action="voice#resumeRecording" data-target="voice.resumeRecording">Resume</button>
-        <audio data-target="voice.recordedAudio"></audio>
-        <input type="hidden" data-target='voice.audioBlob' value=""
+        <button data-action="click->voice#startRecording" data-voice-target="startRecording">Start</button>
+        <button disabled data-action="click->voice#stopRecording" data-voice-target="stopRecording">Stop</button>
+        <button disabled data-action="click->voice#pauseRecording" data-voice-target="pauseRecording">Pause</button>
+        <button disabled data-action="click->voice#resumeRecording" data-voice-target="resumeRecording">Resume</button>
+        <audio data-voice-target="recordedAudio"></audio>
+        <%# <input type="" data-voice-target="audioBlob" value=""
                 name="target_field"
-                id="target_field">
-        <p data-target='voice.timeElapsed'> Time Elapsed: 0 second </p>
+                id="target_field"> %>
+        <p data-voice-target="timeElapsed"> Time Elapsed: 0 second </p>
       </div>
     </div>
+
+    <%= simple_form_for @voice do |v| %>
+      <%= v.input :name %>
+      <%= v.input :audio, as: :file, input_html: {data: { voice_target: "audioBlob" }} %>
+      <%= v.button :submit %>
+    <% end %>
 
 
   </div>
