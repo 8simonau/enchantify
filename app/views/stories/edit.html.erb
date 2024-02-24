@@ -1,0 +1,5 @@
+<h1>Choose the voice</h1>
+<%= simple_form_for @story do |s| %>
+  <%= s.association :voice, as: :radio_buttons %>
+  <%= s.button :submit, "Generate story", class: "btn btn-standard" %>
+<% end %>

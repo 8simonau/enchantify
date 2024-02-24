@@ -35,5 +35,4 @@ class VoicesController < ApplicationController
   def voice_params
     params.require(:voice).permit(:name, :audio)
   end
-
 end
