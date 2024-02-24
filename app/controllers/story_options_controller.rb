@@ -3,11 +3,11 @@ class StoryOptionsController < ApplicationController
     @story = Story.find(params[:story_id])
     @story_option = StoryOption.new
     if @story.options.empty?
-      @options = Option.where(category: "Character")
+      @options = Option.where(category: "Personnage")
     elsif @story.options.size == 1
-      @options = Option.where(category: "Place")
+      @options = Option.where(category: "Lieu")
     elsif @story.options.size == 2
-      @options = Option.where(category: "Item")
+      @options = Option.where(category: "Objet")
     end
   end
 
