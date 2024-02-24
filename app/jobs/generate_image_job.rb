@@ -1,4 +1,4 @@
-class GenerateImagesJob < ApplicationJob
+class GenerateImageJob < ApplicationJob
   queue_as :default
 
   def perform(story, prompt)
@@ -19,6 +19,7 @@ class GenerateImagesJob < ApplicationJob
     response = Faraday.post(url) do |req|
       req.headers['Content-Type'] = 'application/json'
       req.headers['Authorization'] = 'Bearer ' + ENV.fetch("OPENAI_KEY")
+      req.options.timeout = 300
       req.body = body.to_json
     end
 
@@ -31,10 +32,10 @@ class GenerateImagesJob < ApplicationJob
     puts ""
     puts "*******************************"
     puts ""
-    return response
 
-    url = URI.open()
-    story.pictures.attach(io: StringIO.new(response.body), filename: "#{prompt}.jpg", content_type: "image/jpeg")
+    file = URI.open(JSON.parse(response.body)["data"][0]["url"])
+    story.pictures.attach(io: file, filename: "#{prompt}.png", content_type: "image/png")
     story.save!
+    puts "attached picture based on #{prompt}"
   end
 end

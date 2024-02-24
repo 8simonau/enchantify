@@ -8,14 +8,16 @@ class GenerateAudioJob < ApplicationJob
       text: story.text,
       model_id: "eleven_multilingual_v2"
     }
-
+    puts 'sending text to TTS'
     response = Faraday.post(url) do |req|
       req.headers['accept'] = 'audio/mpeg'
       req.headers['Content-Type'] = 'application/json'
       req.headers['xi-api-key'] = ENV.fetch("ELEVENLABS_KEY")
+      req.options.timeout = 300
       req.body = body.to_json
     end
 
+    puts "attaching response"
     story.audio.attach(io: StringIO.new(response.body), filename: "audio.mp3", content_type: "audio")
     story.save!
   end
