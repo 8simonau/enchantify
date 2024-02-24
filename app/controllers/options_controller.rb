@@ -6,7 +6,7 @@ class OptionsController < ApplicationController
   def create
     # TODO
     @option = Option.new
-    @option.category = "Character"
+    @option.category = "Personnage"
     @option.name = params[:name]
   end
 end
