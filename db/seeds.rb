@@ -30,66 +30,74 @@ yann.save!
 
 puts "generate 5 characters"
 
-option = Option.new(category: "Character", name: "Princesse")
-file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708028830/odr4dmydpyeyvoyewkqi.png")
-option.picture.attach(io: file, filename: "princesse.png", content_type: "image/png")
-option.save!
+princesse = Option.new(category: "Character", name: "Princesse")
+princesse.picture.attach(io: File.open("app/assets/images/princesse_picture.webp"), filename: "princesse.png", content_type: "image/png")
+princesse.description = "Peinture numérique d une élégante, gracieuse et très jeune princesse aux cheveux longs. Elle porte une robe rose et une couronne avec des proportions stylisées, des textures lisses, et un contraste élevé avec une seul fois le meme personnage dans l image."
+princesse.save!
 
-option = Option.new(category: "Character", name: "Patate")
-file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708028880/jfzpi18qlautov7qcymd.png")
-option.picture.attach(io: file, filename: "patate.png", content_type: "image/png")
-option.save!
+patate = Option.new(category: "Character", name: "Patate")
+patate.picture.attach(io: File.open("app/assets/images/patate_picture.png"), filename: "patate.png", content_type: "image/png")
+patate.description = "Dessin d une pomme de terre amusante, pas très propre et un peu disgracieuse. Style bande dessinée, textures grossières, images pastel, faible contraste. Un seul personnage dans l image et en un seul exemplaire."
+patate.save!
 
-option = Option.new(category: "Character", name: "Renard")
-file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708028928/lyicsxdc5mqjo57fvjjx.png")
-option.picture.attach(io: file, filename: "renard.png", content_type: "image/png")
-option.save!
+renard = Option.new(category: "Character", name: "Renard")
+renard.picture.attach(io: File.open("app/assets/images/renard_picture.png"), filename: "renard.png", content_type: "image/png")
+renard.description = "Dessin style manga de grande qualité et complètement colorié d un renard roux, mince, élégant et mystérieux, avec de grands yeux expressifs. On voit son corps entier de profil, en mouvement, légèrement flou. Couleurs et traits légers, un seul personnage sur l image en un seul exemplaire."
+renard.save!
 
-option = Option.new(category: "Character", name: "Lutin")
-file = URI.open("https://res.cloudinary.com/dgwpmqnpb/image/upload/v1708167735/g6ipyvatthludfpntvbr.png")
-option.picture.attach(io: file, filename: "lutin.png", content_type: "image/png")
-option.save!
+lutin = Option.new(category: "Character", name: "Lutin")
+lutin.picture.attach(io: File.open("app/assets/images/lutin_picture.webp"), filename: "lutin.png", content_type: "image/png")
+lutin.description = "Peinture numérique d un lutin coquin et malin. il porte une tenue verte et un panier remplie de gourmandises avec des proportions stylisées, des textures lisses, et un contraste élevé avec un seul personnage dans l image."
+lutin.save!
 
-option = Option.new(category: "Character", name: "Paysanne")
-file = URI.open("http://res.cloudinary.com/dgwpmqnpb/image/upload/v1708029006/wfqkbuscvadkgckxmg8l.png")
-option.picture.attach(io: file, filename: "paysanne.png ", content_type: "image/png")
-option.save!
+ninja = Option.new(category: "Character", name: "Ninja")
+ninja.picture.attach(io: File.open("app/assets/images/ninja_picture.webp"), filename: "ninja.png ", content_type: "image/png")
+ninja.description = "Peinture numérique d un ninja souriant et discret. il porte une tenue noire avec une cagoule noire et un nunchaku en bois, accomplissant une acrobatie avec des proportions stylisées, des textures lisses, et un contraste élevé avec un seul personnage dans l image."
+ninja.save!
 
 puts "generate 4 places"
 
-option = Option.new(category: "Place", name: "Forest")
-option.picture.attach(io: File.open("app/assets/images/forest_picture.png"), filename: "forest.png ", content_type: "image/png")
-option.save!
+forest = Option.new(category: "Place", name: "Forest")
+forest.picture.attach(io: File.open("app/assets/images/forest_picture.png"), filename: "forest.png ", content_type: "image/png")
+forest.description = "placeholder"
+forest.save!
 
-option = Option.new(category: "Place", name: "Castle")
-option.picture.attach(io: File.open("app/assets/images/castle_picture.png"), filename: "castle.png ", content_type: "image/png")
-option.save!
+castle = Option.new(category: "Place", name: "Castle")
+castle.picture.attach(io: File.open("app/assets/images/castle_picture.png"), filename: "castle.png ", content_type: "image/png")
+castle.description = "placeholder"
+castle.save!
 
-option = Option.new(category: "Place", name: "Boat")
-option.picture.attach(io: File.open("app/assets/images/boat_picture.png"), filename: "Boat.png ", content_type: "image/png")
-option.save!
+boat = Option.new(category: "Place", name: "Boat")
+boat.picture.attach(io: File.open("app/assets/images/boat_picture.png"), filename: "Boat.png ", content_type: "image/png")
+boat.description = "placeholder"
+boat.save!
 
-option = Option.new(category: "Place", name: "Underwater City")
-option.picture.attach(io: File.open("app/assets/images/underwatercity_picture.png"), filename: "UnderwaterCity.png ", content_type: "image/png")
-option.save!
+underwater_city = Option.new(category: "Place", name: "Underwater City")
+underwater_city.picture.attach(io: File.open("app/assets/images/underwatercity_picture.png"), filename: "UnderwaterCity.png ", content_type: "image/png")
+underwater_city.description = "placeholder"
+underwater_city.save!
 
 puts "generate 4 items"
 
-option = Option.new(category: "Item", name: "Hat")
-option.picture.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
-option.save!
+hat = Option.new(category: "Item", name: "Hat")
+hat.picture.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
+hat.description = "placeholder"
+hat.save!
 
-option = Option.new(category: "Item", name: "Bubble Gun")
-option.picture.attach(io: File.open("app/assets/images/bubblegun_picture.png"), filename: "BubbleGun.png", content_type: "image/png")
-option.save!
+bubble_gun = Option.new(category: "Item", name: "Bubble Gun")
+bubble_gun.picture.attach(io: File.open("app/assets/images/bubblegun_picture.png"), filename: "BubbleGun.png", content_type: "image/png")
+bubble_gun.description = "placeholder"
+bubble_gun.save!
 
-option = Option.new(category: "Item", name: "Dress")
-option.picture.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "Dress.png", content_type: "image/png")
-option.save!
+dress = Option.new(category: "Item", name: "Dress")
+dress.picture.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "Dress.png", content_type: "image/png")
+dress.description = "placeholder"
+dress.save!
 
-option = Option.new(category: "Item", name: "Sword")
-option.picture.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
-option.save!
+sword = Option.new(category: "Item", name: "Sword")
+sword.picture.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
+sword.description = "placeholder"
+sword.save!
 
 puts "generate 1 voice"
 

@@ -93,8 +93,8 @@ class GenerateTextJob < ApplicationJob
 
       # parse, add addl text and save
       content = JSON.parse(response.body)["choices"][0]["message"]["content"]
-      unless content[-1] == "\"}"
-        content += "\"}"
+      unless content[-1] == "}"
+        content += "}"
       end
       end_text = JSON.parse(content)["text"]
       text += end_text

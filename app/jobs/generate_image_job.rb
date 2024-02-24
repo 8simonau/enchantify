@@ -3,7 +3,15 @@ class GenerateImageJob < ApplicationJob
 
   def perform(story, prompt)
     # Do something later
-    preprompt = "Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au pinceau des illustrations. Celles-ci doivent être colorées et belles, et stimuler l'imagination des enfants. Chaque illustration est créée à l'aide d'un personnage principal (un enfant), un lieu et un objet magique. Une phrase décrit l'action précise. Voici les paramètres: "
+    preprompt = <<-STRING.squish
+    Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
+    pinceau des illustrations. Celles-ci doivent être colorées et belles, et
+    stimuler l'imagination des enfants. Chaque illustration est créée à l'aide
+    d'un personnage principal (un enfant), un lieu et un objet magique. Vos
+    images ne contiennent jamais de texte.
+    Voici les paramètres:
+    STRING
+
     story.options_hash.each do |k, v|
       preprompt << "#{k} : #{v}. "
     end
