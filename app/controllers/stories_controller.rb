@@ -9,7 +9,6 @@ class StoriesController < ApplicationController
     # if no text, call ChatGPT
     # if no audio, then we call ElevenLabs
     unless @story.audio.valid?
-      # test text waiting for implementation of ChatGPT job
       GenerateTextJob.perform_now(@story)
       GenerateAudioJob.perform_now(@story)
     end
@@ -18,9 +17,7 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @story.playcount = 0
-    # to be modified with active_child
     @story.child = Child.first
-    # to be modified with selected voice
     @story.voice = Voice.last
     @story.title = "This story is being created..."
     @story.text = "A magic adventure will appear here soon."
