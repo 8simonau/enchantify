@@ -24,6 +24,7 @@ class GenerateTextJob < ApplicationJob
     options = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
     additional_parameter = ADDITIONAL_PARAMETERS.sample
+    puts additional_parameter
 
     preprompt = <<-STRING.squish
     Vous êtes un narrateur francophone expérimenté qui invente des histoires
