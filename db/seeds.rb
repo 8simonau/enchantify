@@ -30,27 +30,27 @@ yann.save!
 
 puts "generate 5 characters"
 
-princesse = Option.new(category: "Personnage", name: "Princesse")
+princesse = Option.new(category: "Personnage", name: "La Princesse")
 princesse.picture.attach(io: File.open("app/assets/images/princesse_picture.webp"), filename: "princesse.png", content_type: "image/png")
 princesse.description = "Peinture numérique d une élégante, gracieuse et très jeune princesse aux cheveux longs. Elle porte une robe rose et une couronne avec des proportions stylisées, des textures lisses, et un contraste élevé avec une seul fois le meme personnage dans l image."
 princesse.save!
 
-patate = Option.new(category: "Personnage", name: "Patate")
+patate = Option.new(category: "Personnage", name: "La Patate")
 patate.picture.attach(io: File.open("app/assets/images/patate_picture.png"), filename: "patate.png", content_type: "image/png")
 patate.description = "Dessin d une pomme de terre amusante, pas très propre et un peu disgracieuse. Style bande dessinée, textures grossières, images pastel, faible contraste. Un seul personnage dans l image et en un seul exemplaire."
 patate.save!
 
-renard = Option.new(category: "Personnage", name: "Renard")
+renard = Option.new(category: "Personnage", name: "Le Renard")
 renard.picture.attach(io: File.open("app/assets/images/renard_picture.png"), filename: "renard.png", content_type: "image/png")
 renard.description = "Dessin style manga de grande qualité et complètement colorié d un renard roux, mince, élégant et mystérieux, avec de grands yeux expressifs. On voit son corps entier de profil, en mouvement, légèrement flou. Couleurs et traits légers, un seul personnage sur l image en un seul exemplaire."
 renard.save!
 
-lutin = Option.new(category: "Personnage", name: "Lutin")
+lutin = Option.new(category: "Personnage", name: "Le Lutin")
 lutin.picture.attach(io: File.open("app/assets/images/lutin_picture.webp"), filename: "lutin.png", content_type: "image/png")
 lutin.description = "Peinture numérique d un lutin coquin et malin. il porte une tenue verte et un panier remplie de gourmandises avec des proportions stylisées, des textures lisses, et un contraste élevé avec un seul personnage dans l image."
 lutin.save!
 
-ninja = Option.new(category: "Personnage", name: "Ninja")
+ninja = Option.new(category: "Personnage", name: "Le Ninja")
 ninja.picture.attach(io: File.open("app/assets/images/ninja_picture.webp"), filename: "ninja.png ", content_type: "image/png")
 ninja.description = "Peinture numérique d un ninja souriant et discret. il porte une tenue noire avec une cagoule noire et un nunchaku en bois, accomplissant une acrobatie avec des proportions stylisées, des textures lisses, et un contraste élevé avec un seul personnage dans l image."
 ninja.save!
