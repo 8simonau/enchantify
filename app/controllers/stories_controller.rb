@@ -21,15 +21,27 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @story.playcount = 0
-    @story.child = Child.first
+    @story.child = Child.find(session[:active_child]["id"])
     @story.voice = Voice.last
     @story.title = "This story is being created..."
     @story.text = "A magic adventure will appear here soon."
     @story.save!
-    redirect_to story_select_options_path(@story)
+    redirect_to new_story_story_option_path(@story)
   end
 
   def create
   end
 
+  def edit
+    @story = Story.find(params[:id])
+  end
+
+  def update
+    @story = Story.find(params[:id])
+    if @story.update(voice_id: params[:story][:voice_id])
+      redirect_to story_path(@story)
+    else
+      render :new, status: :unprocessable_entity
+    end
+  end
 end

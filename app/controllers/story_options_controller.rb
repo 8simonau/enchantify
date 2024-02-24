@@ -1,18 +1,27 @@
 class StoryOptionsController < ApplicationController
-  def select_options
-    @options = Option.all
+  def new
     @story = Story.find(params[:story_id])
+    @story_option = StoryOption.new
+    if @story.options.empty?
+      @options = Option.where(category: "Character")
+    elsif @story.options.size == 1
+      @options = Option.where(category: "Place")
+    elsif @story.options.size == 2
+      @options = Option.where(category: "Item")
+    end
   end
 
   def create
     @story = Story.find(params[:story_id])
-    @option = Option.find(params[:option])
-    # if StoryOption already exits, then destroys
-    if @story.options.include?(@option)
-      StoryOption.find_by(story_id: params[:story_id], option: params[:option]).destroy
+    @story_option = StoryOption.new(option_id: params[:story_option][:option], story_id: params[:story_id])
+    if @story_option.save!
+      if @story.options.size == 3
+        redirect_to edit_story_path(@story)
+      else
+        redirect_to new_story_story_option_path(@story)
+      end
     else
-      @story_option = StoryOption.new(option_id: params[:option], story_id: params[:story_id])
-      @story_option.save!
+      render :new, status: :unprocessable_entity
     end
   end
 end
