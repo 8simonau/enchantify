@@ -47,12 +47,12 @@ class GenerateTextJob < ApplicationJob
     puts "content ok"
     title = content_hash["title"]
     text = content_hash["text"]
-    prompts = content_hash["prompts"]
+    prompts = (content_hash["prompts"]).to_s
     puts "fields ok"
 
     # save title and prompts
     story.title = title
-    # story.prompts = prompts
+    story.prompts = prompts
 
     # if story is finished, save
     if choice["finish_reason"] != "length"
