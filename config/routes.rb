@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'children/index'
   get 'children/:id/set_child', to: 'children#set_child', as: 'set_child'
@@ -15,10 +16,13 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   # root "posts#index"
 
-  resources :stories, only: [:index, :new, :show] do
-    get "select_options", to: "story_options#select_options"
-    post "create_option", to: "story_options#create"
+  resources :stories, only: [:index, :new, :show, :edit, :update] do
+    resources :story_options, only: [:new, :create]
+    # get "select_options", to: "story_options#select_options"
+    # post "create_option", to: "story_options#create"
   end
+
+  resources :voices, only: [:index, :new, :create, :destroy]
 
 
 end

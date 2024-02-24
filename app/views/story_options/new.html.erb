@@ -1,0 +1,15 @@
+<div class="mb-3">
+  <h1>Choose your character</h1>
+</div>
+
+<%= simple_form_for [@story, @story_option] do |f| %>
+  <%= f.input :option,
+    as: :radio_buttons,
+    collection_wrapper_tag: 'div',
+    collection_wrapper_class: 'options-wrapper',
+    item_wrapper_class: 'options-card',
+    input_html: {class: 'options-selector'},
+    :label_method => lambda { |option| cl_image_tag(option.picture.key, width: 80) },
+    collection: @options %>
+  <%= f.button :submit, "Next", class: "btn btn-standard btn-large" %>
+<% end %>

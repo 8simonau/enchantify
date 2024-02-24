@@ -31,6 +31,9 @@ gem "cloudinary"
 # Faraday to make API post requests to eleven labs for example
 gem "faraday"
 
+# Open URI to read file from cloudinary url
+gem "open-uri"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
@@ -55,6 +58,7 @@ gem "autoprefixer-rails"
 gem "font-awesome-sass", "~> 6.1"
 gem "simple_form", github: "heartcombo/simple_form"
 gem "sassc-rails"
+gem "rails_admin", "3.0"
 
 group :development, :test do
   gem "dotenv-rails"

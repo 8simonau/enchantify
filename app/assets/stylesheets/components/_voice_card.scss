@@ -1,0 +1,13 @@
+.voices-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.voice-card {
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 16px;
+  border: 1px solid $light-gray;
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+}
