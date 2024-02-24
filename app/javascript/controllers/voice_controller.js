@@ -2,7 +2,8 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="voice"
 export default class extends Controller {
-  static targets = ["startRecording", "stopRecording", 'resumeRecording', 'pauseRecording', "recordedAudio", "audioBlob", 'timeElapsed'];
+  static targets = ["startRecording", "stopRecording", "recordedAudio", "audioBlob", 'timeElapsed'];
+  // static targets = ["startRecording", "stopRecording", 'resumeRecording', 'pauseRecording', "recordedAudio", "audioBlob", 'timeElapsed'];
 
   connect() {
     this.timerInterval = null;
@@ -32,25 +33,25 @@ export default class extends Controller {
     }
   }
 
-  pauseRecording (event) {
-    event.preventDefault();
-    this.recorder.pauseRecording()
-    this.startRecordingTarget.disabled = true
-    this.pauseRecordingTarget.disabled = true;
-    this.stopRecordingTarget.disabled = false
-    this.resumeRecordingTarget.disabled = false;
-    this.stopTimer();
-  }
+  // pauseRecording (event) {
+  //   event.preventDefault();
+  //   this.recorder.pauseRecording()
+  //   this.startRecordingTarget.disabled = true
+  //   this.stopRecordingTarget.disabled = false
+  //   // this.pauseRecordingTarget.disabled = true;
+  //   // this.resumeRecordingTarget.disabled = false;
+  //   this.stopTimer();
+  // }
 
-  resumeRecording (event) {
-    event.preventDefault();
-    this.recorder.resumeRecording()
-    this.startRecordingTarget.disabled = true
-    this.stopRecordingTarget.disabled = false
-    this.pauseRecordingTarget.disabled = false;
-    this.resumeRecordingTarget.disabled = true;
-    this.startTimer();
-  }
+  // resumeRecording (event) {
+  //   event.preventDefault();
+  //   this.recorder.resumeRecording()
+  //   this.startRecordingTarget.disabled = true
+  //   this.stopRecordingTarget.disabled = false
+  //   this.pauseRecordingTarget.disabled = false;
+  //   this.resumeRecordingTarget.disabled = true;
+  //   this.startTimer();
+  // }
 
   startRecorder (event) {
     var vm = this;
@@ -58,50 +59,43 @@ export default class extends Controller {
     this.recorder.startRecording();
     this.startRecordingTarget.disabled = true
     this.stopRecordingTarget.disabled = false
-    this.pauseRecordingTarget.disabled = false;
-
+    // this.pauseRecordingTarget.disabled = false;
     this.startTimer();
   }
 
   stopRecording(event) {
     event.preventDefault()
     this.recorder.stopRecording(blob => {
-      console.log(blob)
-      // LA LIGNE CI DESSOUS FONCTIONNE
-      // invokeSaveAsDialog(this.recorder.getBlob());
+
       console.log(this.audioBlobTarget)
       const file = new File([this.recorder.getBlob()], "audio.webm", { lastModified: new Date().getTime(), type: blob.type })
       const container = new DataTransfer();
       container.items.add(file);
       this.audioBlobTarget.files = container.files;
-
     });
     this.startRecordingTarget.disabled = false
     this.stopRecordingTarget.disabled = true
-    this.pauseRecordingTarget.disabled = true;
-    this.resumeRecordingTarget.disabled = true;
-    // triggerChange(this.element);
-
-
+    // this.pauseRecordingTarget.disabled = true;
+    // this.resumeRecordingTarget.disabled = true;
     this.stopTimer();
     this.secondsElapsed = 0;
   }
 
 
-  blobToFile(theBlob, fileName){
-      return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
-  }
+  // blobToFile(theBlob, fileName){
+  //     return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
+  // }
 
-  appendFormData (formData) {
-    if (!this.recorder) return formData;
-    var fieldName = this.audioBlobTarget.name;
-    console.log('fieldName:', fieldName);
+  // appendFormData (formData) {
+  //   if (!this.recorder) return formData;
+  //   var fieldName = this.audioBlobTarget.name;
+  //   console.log('fieldName:', fieldName);
 
-    if (this.recorder.getBlob())
-      formData.append(fieldName, this.recorder.getBlob(), (new Date()).getTime() + ".webm");
+  //   if (this.recorder.getBlob())
+  //     formData.append(fieldName, this.recorder.getBlob(), (new Date()).getTime() + ".webm");
 
-    return formData;
-  }
+  //   return formData;
+  // }
 
   openRecorder () {
     return (this.stopRecordingTarget.disabled == false);
@@ -121,7 +115,7 @@ export default class extends Controller {
   }
 
   setTime () {
-    this.timeElapsedTarget.innerHTML = `Time Elapsed: ${this.getTimeString(this.secondsElapsed)} seconds  `;
+    this.timeElapsedTarget.innerHTML = `Duration: ${this.getTimeString(this.secondsElapsed)} seconds`;
   }
 
   getTimeString(seconds) {
@@ -134,6 +128,7 @@ export default class extends Controller {
     minutes = minutes < 10 ? "0" + minutes : minutes;
     remainingSeconds = remainingSeconds < 10 ? "0" + remainingSeconds : remainingSeconds;
 
-    return `${hours}:${minutes}:${remainingSeconds}`;
+    return `${remainingSeconds}`;
+    // return `${hours}:${minutes}:${remainingSeconds}`;
   }
 }

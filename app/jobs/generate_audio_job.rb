@@ -16,18 +16,7 @@ class GenerateAudioJob < ApplicationJob
       req.body = body.to_json
     end
 
-    puts ""
-    puts "*******************************"
-    puts ""
-    puts "ELEVEN LABS RESPONSE:"
-    puts ""
-    puts response.body
-    puts ""
-    puts "*******************************"
-    puts ""
-
     story.audio.attach(io: StringIO.new(response.body), filename: "audio.mp3", content_type: "audio")
     story.save!
-
   end
 end

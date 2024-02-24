@@ -7,5 +7,9 @@
       <%= audio_tag(url_for(voice.audio), controls: true) %>
     <% end %>
     <p>ElevanLabs token: <%= voice.token %></p>
+    <%= link_to "Delete",
+      voice_path(voice),
+      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+    %>
   </div>
 <% end %>

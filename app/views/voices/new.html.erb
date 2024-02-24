@@ -1,23 +1,29 @@
 <div class="form-group audio-field" data-controller='voice'>
   <div class='row'>
     <div class='col-md-12'>
+      <h1>Create a voice</h1>
+      <p>Instructions:</p>
+      <p>Just record your voice by reading the following text, with the most beautiful tone of your voice!</p>
+      <div>
+        <p class="card">Un jour de plein hiver, une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.</p>
+      </div>
+      <p>Ready? Click on Start, read the entire text. Don't forget to click on stop when finished!</p>
       <div class="form-group" >
-        <button data-action="click->voice#startRecording" data-voice-target="startRecording">Start</button>
-        <button disabled data-action="click->voice#stopRecording" data-voice-target="stopRecording">Stop</button>
-        <button disabled data-action="click->voice#pauseRecording" data-voice-target="pauseRecording">Pause</button>
-        <button disabled data-action="click->voice#resumeRecording" data-voice-target="resumeRecording">Resume</button>
+        <button class="btn btn-standard" data-action="click->voice#startRecording" data-voice-target="startRecording">Start</button>
+        <button class="btn btn-standard" disabled data-action="click->voice#stopRecording" data-voice-target="stopRecording">Stop</button>
+        <%# <button disabled data-action="click->voice#pauseRecording" data-voice-target="pauseRecording">Pause</button>
+        <button disabled data-action="click->voice#resumeRecording" data-voice-target="resumeRecording">Resume</button> %>
         <audio data-voice-target="recordedAudio"></audio>
         <%# <input type="" data-voice-target="audioBlob" value=""
                 name="target_field"
                 id="target_field"> %>
-        <p data-voice-target="timeElapsed"> Time Elapsed: 0 second </p>
+        <p data-voice-target="timeElapsed">Duration: 00 second </p>
       </div>
     </div>
-
     <%= simple_form_for @voice do |v| %>
-      <%= v.input :name %>
-      <%= v.input :audio, as: :file, input_html: {data: { voice_target: "audioBlob" }} %>
-      <%= v.button :submit %>
+      <%= v.input :name, label: "Give a name to this voice" %>
+      <%= v.input :audio, as: :file, label: false, input_html: { hidden: true, data: { voice_target: "audioBlob" }} %>
+      <%= v.button :submit, "Save voice", class: "btn btn-standard" %>
     <% end %>
 
 
