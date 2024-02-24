@@ -20,7 +20,7 @@ Rails.application.routes.draw do
     post "create_option", to: "story_options#create"
   end
 
-  resources :voices, only: [:index, :new, :create]
+  resources :voices, only: [:index, :new, :create, :destroy]
 
 
 end

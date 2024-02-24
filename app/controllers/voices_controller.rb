@@ -10,13 +10,24 @@ class VoicesController < ApplicationController
   def create
     @voice = Voice.new(voice_params)
     @voice.user = current_user
-    if @voice.save!
+    if @voice.save
       AddVoiceToElevenlabsJob.perform_now(@voice)
       redirect_to voices_path, status: :see_other
     else
-      puts @voice.errors.messages
       render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @voice = Voice.find(params[:id])
+    if Story.where(voice: @voice).empty?
+      @voice.destroy
+      DeleteVoiceInElevenlabsJob.perform_now(@voice)
+      flash[:notice] = "Successfully deleted"
+    else
+      flash[:alert] = "Impossible, used in stories"
+    end
+    redirect_to voices_path, status: :see_other
   end
 
   private
