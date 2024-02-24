@@ -5,5 +5,4 @@ class Voice < ApplicationRecord
 
   validates :name, presence: true
   validates :audio, presence: { message: "sample must be recorded" }
-  # validates :token, presence: true
 end

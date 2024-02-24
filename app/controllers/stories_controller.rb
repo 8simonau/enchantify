@@ -11,6 +11,10 @@ class StoriesController < ApplicationController
     unless @story.audio.valid?
       GenerateTextJob.perform_now(@story)
       GenerateAudioJob.perform_now(@story)
+      prompt_array = JSON.parse(@story.prompts)
+      prompt_array.each do |p|
+        GenerateImageJob.perform_now(@story, p)
+      end
     end
   end
 
