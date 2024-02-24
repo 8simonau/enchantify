@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
   get 'children/index'
   get 'children/:id/set_child', to: 'children#set_child', as: 'set_child'

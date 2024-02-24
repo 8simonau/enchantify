@@ -1,7 +1,7 @@
 puts "generate one user and 5 children"
 
 
-john = User.create(first_name: "John", last_name: "Father", email: "john@mail.com", password: "123456")
+john = User.create(first_name: "John", last_name: "Father", email: "john@mail.com", password: "123456", admin: true)
 
 file = URI.open("https://as1.ftcdn.net/v2/jpg/02/84/51/00/1000_F_284510053_9EA7vNLlgeZajPOMzaToA8gAOqgDWDtW.jpg")
 emma = Child.new(first_name: "Emma", birth_date: "01/05/2018", story_duration: 120)
