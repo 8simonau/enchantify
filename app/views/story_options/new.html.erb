@@ -11,5 +11,5 @@
     input_html: {class: 'options-selector'},
     :label_method => lambda { |option| cl_image_tag(option.picture.key, width: 80) },
     collection: @options %>
-  <%= f.button :submit, "Next", class: "btn btn-standard" %>
+  <%= f.button :submit, "Next", class: "btn btn-standard btn-large" %>
 <% end %>

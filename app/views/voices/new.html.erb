@@ -23,7 +23,7 @@
     <%= simple_form_for @voice do |v| %>
       <%= v.input :name, label: "Give a name to this voice" %>
       <%= v.input :audio, as: :file, label: false, input_html: { hidden: true, data: { voice_target: "audioBlob" }} %>
-      <%= v.button :submit, "Save voice", class: "btn btn-standard" %>
+      <%= v.button :submit, "Save voice", class: "btn btn-standard btn-large" %>
     <% end %>
 
 

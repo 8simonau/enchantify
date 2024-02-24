@@ -1,7 +1,10 @@
-<h1>All voices</h1>
+<%= link_to "Add a voice", new_voice_path, class: "btn btn-standard mb-3" %>
+<%= link_to "Home", root_path, class: "btn btn-standard mb-3" %>
 
+<h1>All voices</h1>
+<div class="voices-wrapper">
 <% @voices.each do |voice| %>
-  <div>
+  <div class="voice-card">
     <h2><%= voice.name %></h2>
     <% if voice.audio.valid? %>
       <%= audio_tag(url_for(voice.audio), controls: true) %>
@@ -13,3 +16,4 @@
     %>
   </div>
 <% end %>
+</div>
