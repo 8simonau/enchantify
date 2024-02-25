@@ -1,15 +1,22 @@
 <div class="mb-3">
-  <h1>Choisis ton personnage</h1>
+  <h1>Choisis ton <%= @options.first.category.downcase %></h1>
 </div>
 
 <%= simple_form_for [@story, @story_option] do |f| %>
-  <%= f.input :option,
-    as: :radio_buttons,
-    collection_wrapper_tag: 'div',
-    collection_wrapper_class: 'options-wrapper',
-    item_wrapper_class: 'options-card',
-    input_html: {class: 'options-selector'},
-    :label_method => lambda { |option| cl_image_tag(option.picture.key, width: 80) },
-    collection: @options %>
+  <%= f.collection_radio_buttons(:option, @options,
+    :id,
+    :name,
+    collection_wrapper_tag: "div",
+    collection_wrapper_class: "options-wrapper",
+    item_wrapper_tag: "div",
+    item_wrapper_class: "options-card",
+    ) do |b| %>
+      <%= b.label(data: {controller: "option-selection", action:"input->option-selection#toggle"}) {
+        b.radio_button + cl_image_tag(b.object.picture.key, width: 100, height: 100) + b.text
+        # + '<div class="option-tickmark hidden-tickmark" data-option-selection-target="tickmarks">
+        #   <i class="fa-solid fa-circle-check"></i>
+        # </div>'.html_safe
+        } %>
+    <% end %>
   <%= f.button :submit, "Next", class: "btn btn-standard btn-large" %>
 <% end %>
