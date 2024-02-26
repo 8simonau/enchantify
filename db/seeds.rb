@@ -8,6 +8,8 @@ emma.avatar.attach(io: File.open("app/assets/images/emma_picture.jpg"), filename
 emma.user = john
 emma.save!
 
+john.update(active_child: emma)
+
 matheo = Child.new(first_name: "Matheo", birth_date: "01/05/2018", story_duration: 90)
 matheo.avatar.attach(io: File.open("app/assets/images/matheo_picture.jpg"), filename: "matheo.png", content_type: "image/png")
 matheo.user = john
