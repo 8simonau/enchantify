@@ -14,4 +14,9 @@ class Story < ApplicationRecord
   def options_hash
     return Hash[options.collect { |o| [o.category, o.name] }]
   end
+
+  # helper to retrieve or get the audio file's duration
+  def character_description
+    options.find_by_category("Personnage")["description"]
+  end
 end

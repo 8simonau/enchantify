@@ -34,6 +34,9 @@ gem "faraday"
 # Open URI to read file from cloudinary url
 gem "open-uri"
 
+#V ffmpeg to get duration of audio files
+gem "streamio-ffmpeg"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 
