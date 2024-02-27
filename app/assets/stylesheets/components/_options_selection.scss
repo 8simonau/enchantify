@@ -5,89 +5,69 @@
 }
 
 .options-wrapper {
-  a {
-    text-decoration: none;
-  }
+  margin-bottom: 32px;
 }
 
-.options-card {
+.options-card label {
   position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border-radius: 10px;
-  padding: 16px;
+  border-radius: 16px;
+  padding: 28px 12px 12px 12px;
   border: 1px solid $light-gray;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+
+  img {
+    border-radius: 16px;
+    margin-bottom: 8px;
+  }
+
+  input[type="radio"] {
+    appearance: none;
+    font-size: inherit;
+    margin: 0;
+    position: absolute;
+    right: 8px;
+    top: 8px;
+    background: $pink;
+    border: 2px solid $light-gray;
+    border-radius: 50%;
+    cursor: pointer;
+    height: 24px;
+    width: 24px;
+    outline: none;
+
+    &::after {
+      border: 3px solid white;
+      border-top: 0;
+      border-left: 0;
+      content: '';
+      display: block;
+      height: 0.75rem;
+      left: 25%;
+      position: absolute;
+      top: 50%;
+      transform:
+        rotate(45deg)
+        translate(-50%, -50%);
+      width: 0.375rem;
+    }
+
+    &:checked {
+      background: $purple;
+      border-color: $purple;
+    }
+  }
 }
 
-.option-tickmark {
-  position: absolute;
-  bottom: 0px;
-  right: 12px;
-  font-size: 40px;
-}
+// .option-tickmark {
+//   position: absolute;
+//   bottom: 0px;
+//   right: 12px;
+//   font-size: 40px;
+// }
 
-.hidden-tickmark {
-  display: none;
-}
-
-.category-wrapper {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-}
-
-.category-item {
-  flex: 0 0 30%;
-}
-
-.category-selector {
-  position: absolute;
-  transform: scale(0);
-}
-
-.category-selector + label {
-  display: block;
-  cursor: pointer;
-  box-sizing: border-box;
-  width: 100%;
-  font-size: 12px;
-  text-align: left;
-  padding: 10px 10px 30px 10px;
-  border: 1px solid #EAEAEA;
-  border-radius: 4px;
-  background-color: white;
-}
-
-.category-selector:checked + label {
-  color: white !important;
-}
-
-
-#snippet_category_ruby + label {
-  color: #FD1015;
-}
-
-#snippet_category_ruby:checked + label {
-  background-color: #FD1015;
-  border-color: #FD1015;
-}
-
-#snippet_category_javascript + label {
-  color: #FFC65A;
-}
-
-#snippet_category_javascript:checked + label {
-  background-color: #FFC65A;
-  border-color: #FFC65A;
-}
-
-#snippet_category_css + label {
-  color: #62DDF5;
-}
-
-#snippet_category_css:checked + label {
-  background-color: #62DDF5;
-  border-color: #62DDF5;
-}
+// .hidden-tickmark {
+//   display: none;
+// }

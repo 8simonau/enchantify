@@ -6,14 +6,11 @@ class GenerateImageJob < ApplicationJob
     preprompt = <<-STRING.squish
     Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
     pinceau des illustrations. Celles-ci doivent être colorées et belles, et
-    stimuler l'imagination des enfants. Chaque illustration est créée à l'aide
-    d'un personnage principal (un enfant), un lieu et un objet magique. Vos
-    images ne contiennent jamais de texte.
-    Voici les paramètres:
+    stimuler l'imagination des enfants. 
     STRING
 
     story.options_hash.each do |k, v|
-      preprompt << "#{k} : #{v}. "
+      preprompt << "L'illustration contient un #{k} : #{v}. "
     end
     full_prompt = preprompt + " Voici l'action à décrire : " + prompt
 

@@ -18,7 +18,8 @@ class ChildrenController < ApplicationController
 
   def set_child
     @child = Child.find(params[:id])
-    session[:active_child] = @child
+    current_user.active_child = @child
+    current_user.save
     redirect_to root_path
   end
 

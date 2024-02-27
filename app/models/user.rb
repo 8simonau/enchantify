@@ -6,6 +6,7 @@ class User < ApplicationRecord
 
   has_many :children
   has_many :voices
+  belongs_to :active_child, class_name: "Child", optional: true
 
   validates :first_name, presence: true
   validates :last_name, presence: true

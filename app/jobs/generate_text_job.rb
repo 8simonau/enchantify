@@ -1,12 +1,30 @@
 class GenerateTextJob < ApplicationJob
   queue_as :default
 
-  def perform(story, length = 2048)
+  ADDITIONAL_PARAMETERS = [
+    "C'est une histoire joyeuse",
+    "C'est une histoire qui fait un peu peur",
+    "C'est une histoire qui parle du pouvoir de l'amitié",
+    "C'est une histoire qui parle des relations parents-enfants",
+    "C'est une histoire qui parle d'apprentisage",
+    "C'est une histoire qui parle de grandir",
+    "C'est une histoire d'aventure",
+    "C'est une histoire qui fait découvrir des pays lointains",
+    "C'est une histoire qui fait rire",
+    "C'est une histoire un peu triste",
+    "C'est une histoire avec un personnage secondaire : un livre qui parle",
+    "C'est une histoire avec un personnage secondaire : un chat volant",
+    "C'est une histoire avec un personnage secondaire : un grand cheval",
+    "C'est une histoire avec un personnage secondaire : deux assiettes qui roulent"
+  ]
+
+  def perform(story, token_count = 2048, prompt_count = 3)
     # variables
     puts "get story options"
     options = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
-    prompt_count = 1
+    additional_parameter = ADDITIONAL_PARAMETERS.sample
+    puts additional_parameter
 
     preprompt = <<-STRING.squish
     Vous êtes un narrateur francophone expérimenté qui invente des histoires
@@ -16,26 +34,26 @@ class GenerateTextJob < ApplicationJob
     principal, un environnement et un objet qui vous seront donnés en paramètres.
     Les histoires doivent commencer par une brève description du personnage
     principal. Le personnage est confronté à un défi et le surmonte grâce à son
-    courage et à son objet unique. La conclusion doit être courte. Votre réponse
-    est un objet .json fonctionnel avec 3 clés : un titre (\"title\"), un array
-    de #{prompt_count} chaînes de caractères (\"prompts\") qui décrivent en 5
-    mots les principales séquences de l'histoire (ces chaînes seront utilisées
-    pour prompter DALLE 3 et illustrer l'histoire) et le texte (\"text\") qui
-    doit contenir au moins 5 paragraphes et 1000 mots.
+    courage et à son objet unique. #{additional_parameter}. La conclusion doit
+    être courte. Votre réponse est un objet .json fonctionnel avec 3 clés : un
+    titre (\"title\"), une liste de #{prompt_count} prompts (\"prompts\") qui
+    décrivent en 5 mots chacun les principales séquences de l'histoire (ces
+    chaînes seront utilisées pour prompter DALLE 3 et illustrer l'histoire) et
+    le texte (\"text\") qui doit contenir au moins 5 paragraphes.
     STRING
 
     parameters = <<-STRING.squish
     Ecris une histoire :
-    - le personnage principal est un jeune enfant : #{options["Character"]}.
-    - l'aventure prend place ici : #{options["Place"]}.
-    - #{options["Character"]} a un objet : #{options["Item"]} qui l'aide à
+    - le personnage principal est un jeune enfant : #{options["Personnage"]}.
+    - l'aventure prend place ici : #{options["Lieu"]}.
+    - #{options["Objet"]} a un objet : #{options["Item"]} qui l'aide à
     accomplir ses objectifs.
     STRING
 
     # build request body
     body = {
       "model": "gpt-3.5-turbo-0125",
-      "max_tokens": length,
+      "max_tokens": token_count,
       "response_format": { "type": "json_object" },
       "messages": [
         {
