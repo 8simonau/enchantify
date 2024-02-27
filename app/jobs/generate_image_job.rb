@@ -6,14 +6,19 @@ class GenerateImageJob < ApplicationJob
     preprompt = <<-STRING.squish
     Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
     pinceau des illustrations. Celles-ci doivent être colorées et belles, et
-    stimuler l'imagination des enfants. 
+    stimuler l'imagination des enfants.
     STRING
 
     story.options_hash.each do |k, v|
-      preprompt << "L'illustration contient un #{k} : #{v}. "
+      preprompt << " L'illustration contient un #{k} : #{v}."
     end
-    full_prompt = preprompt + " Voici l'action à décrire : " + prompt
 
+    character_description = " Voici à quoi ressemble le personnage principal : " + story.character_description
+
+    full_prompt = preprompt + character_description + " Voici l'action à illustrer : " + prompt
+
+    puts full_prompt
+    
     url = "https://api.openai.com/v1/images/generations"
     body = {
       "model": "dall-e-3",
