@@ -1,5 +1,9 @@
 <h1>Choose the voice</h1>
 <%= simple_form_for @story do |s| %>
-  <%= s.association :voice, as: :radio_buttons %>
+  <%= s.association :voice, as: :radio_buttons,
+            collection_wrapper_tag: 'div',
+            collection_wrapper_class: 'voices-selection-wrapper',
+            item_wrapper_class: 'voice-selection-card',
+            collection: @voices %>
   <%= s.button :submit, "Generate story", class: "btn btn-standard" %>
 <% end %>

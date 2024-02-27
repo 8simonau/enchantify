@@ -11,3 +11,16 @@
   border: 1px solid $light-gray;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
 }
+.voices-selection-wrapper {
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+.voice-selection-card {
+  display: flex;
+  border-radius: 10px;
+  column-gap: 12px;
+  padding: 16px;
+  border: 1px solid $light-gray;
+  box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+}
