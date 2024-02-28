@@ -34,6 +34,7 @@ class StoriesController < ApplicationController
 
   def edit
     @story = Story.find(params[:id])
+    @voices = Voice.all
   end
 
   def update
