@@ -11,9 +11,9 @@
       <%= b.label {
         b.radio_button +
         "<h2>#{b.object.name}</h2>".html_safe +
-        "<span>Created on #{b.object.created_at.strftime("%A %-d %B %Y")}</span>".html_safe +
-        "<span>Used in #{b.object.stories.count} stories</span>".html_safe
+        "<span>Créée le #{b.object.created_at.strftime("%A %-d %B %Y")}</span>".html_safe +
+        "<span>Utilisée par #{b.object.stories.count} histoires</span>".html_safe
       } %>
     <% end %>
-  <%= s.button :submit, "Generate story", class: "btn btn-standard" %>
+  <%= s.button :submit, "Inventer une histoire", class: "btn btn-standard" %>
 <% end %>

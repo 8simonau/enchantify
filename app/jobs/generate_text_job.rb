@@ -6,7 +6,7 @@ class GenerateTextJob < ApplicationJob
     "C'est une histoire qui fait un peu peur",
     "C'est une histoire qui parle du pouvoir de l'amitié",
     "C'est une histoire qui parle des relations parents-enfants",
-    "C'est une histoire qui parle d'apprentisage",
+    "C'est une histoire qui parle d'apprentissage",
     "C'est une histoire qui parle de grandir",
     "C'est une histoire d'aventure",
     "C'est une histoire qui fait découvrir des pays lointains",
