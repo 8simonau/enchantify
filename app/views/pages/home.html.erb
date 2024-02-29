@@ -1,7 +1,7 @@
 <div class="d-flex align-items-center flex-column">
   <% if current_user %>
     <% unless current_user.active_child == nil %>
-      <h1>Welcome <%= current_user.active_child.first_name %></h1>
+      <h1>Bonjour <%= current_user.active_child.first_name %></h1>
       <div class="child-card">
         <div class="child-image-border">
           <div class="child-image">
@@ -16,8 +16,8 @@
     <% end %>
   <% end %>
 </div>
-<%= link_to "My stories", stories_path, class: "btn btn-standard btn-large mb-5" %>
+<%= link_to "Mes histoires", stories_path, class: "btn btn-standard btn-large mb-5" %>
 <div class="d-flex flex-column mt-4">
-  <%= link_to "All children", children_index_path, class: "btn btn-standard btn-large mb-3" %>
-  <%= link_to "All voices", voices_path, class: "btn btn-standard btn-large" %>
+  <%= link_to "Enfants", children_index_path, class: "btn btn-standard btn-large mb-3" %>
+  <%= link_to "Voix", voices_path, class: "btn btn-standard btn-large" %>
 </div>

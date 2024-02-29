@@ -1,7 +1,7 @@
-<%= link_to "Add a voice", new_voice_path, class: "btn btn-standard mb-3" %>
-<%= link_to "Home", root_path, class: "btn btn-standard mb-3" %>
+<%= link_to "Ajouter une voix", new_voice_path, class: "btn btn-standard mb-3" %>
+<%= link_to "Retour", root_path, class: "btn btn-standard mb-3" %>
 
-<h1>All voices</h1>
+<h1>Toutes les voix</h1>
 <div class="voices-wrapper">
 <% @voices.each do |voice| %>
   <div class="voice-card">
@@ -12,10 +12,10 @@
 <button onclick="document.getElementById('myAudio').play()">Play</button>
 <button onclick="document.getElementById('myAudio').pause()">Pause</button>
     <% end %>
-    <p>ElevenLabs token: <%= voice.token %></p>
-    <%= link_to "Delete",
+    <p>Token : <%= voice.token %></p>
+    <%= link_to "Supprimer",
       voice_path(voice),
-      data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
+      data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}
     %>
   </div>
 <% end %>

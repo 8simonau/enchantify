@@ -11,7 +11,7 @@
     item_wrapper_tag: "div",
     item_wrapper_class: "options-card",
     ) do |b| %>
-      <%= b.label(data: {controller: "option-selection", action:"input->option-selection#toggle"}) {
+      <%= b.label {
         b.radio_button + cl_image_tag(b.object.picture.key, width: 100, height: 100) + b.text
         # + '<div class="option-tickmark hidden-tickmark" data-option-selection-target="tickmarks">
         #   <i class="fa-solid fa-circle-check"></i>

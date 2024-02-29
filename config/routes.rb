@@ -1,9 +1,16 @@
 Rails.application.routes.draw do
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
 
+  # Sidekiq Web UI, only for admins.
+  require "sidekiq/web"
+  authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  end
+
   get 'children/index'
   get 'children/:id/set_child', to: 'children#set_child', as: 'set_child'
   post 'children/create'
+  get 'children/new', to: 'children#new', as: 'new_child'
 
   devise_for :users
   root to: "pages#home"
@@ -23,6 +30,8 @@ Rails.application.routes.draw do
   end
 
   resources :voices, only: [:index, :new, :create, :destroy]
+
+  get "/stories/:id/audio", to: "stories#render_audio"
 
 
 end
