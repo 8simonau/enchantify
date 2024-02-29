@@ -4,9 +4,15 @@ class ChildrenController < ApplicationController
     @new_child = Child.new
   end
 
+  def new
+    @child = Child.new
+  end
+
   def create
     @child = Child.new(child_params)
     @child.user = current_user
+    unless @child.avatar.attached?
+    end
     if @child.save
       flash[:success] = "Child profile created"
       redirect_to children_index_path
