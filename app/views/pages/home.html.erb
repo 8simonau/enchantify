@@ -1,17 +1,19 @@
 <div class="d-flex align-items-center flex-column">
-  <% unless current_user.active_child == nil %>
-    <h1>Welcome <%= current_user.active_child.first_name %></h1>
-    <div class="child-card">
-      <div class="child-image-border">
-        <div class="child-image">
-          <%= cl_image_tag(current_user.active_child.avatar.key,
-                          width: 130,
-                          height: 130,
-                          crop: :fill,
-                          gravity: :faces) %>
+  <% if current_user %>
+    <% unless current_user.active_child == nil %>
+      <h1>Welcome <%= current_user.active_child.first_name %></h1>
+      <div class="child-card">
+        <div class="child-image-border">
+          <div class="child-image">
+            <%= cl_image_tag(current_user.active_child.avatar.key,
+                            width: 130,
+                            height: 130,
+                            crop: :fill,
+                            gravity: :faces) %>
+          </div>
         </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 </div>
 <%= link_to "My stories", stories_path, class: "btn btn-standard btn-large mb-5" %>
