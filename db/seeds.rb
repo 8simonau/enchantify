@@ -85,17 +85,17 @@ hat = Option.new(category: "Objet", name: "Chapeau")
 hat.picture.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
 hat.description = "placeholder"
 hat.save!
-
+puts "item 1"
 bubble_gun = Option.new(category: "Objet", name: "Pistomousse")
 bubble_gun.picture.attach(io: File.open("app/assets/images/bubblegun_picture.png"), filename: "BubbleGun.png", content_type: "image/png")
 bubble_gun.description = "placeholder"
 bubble_gun.save!
-
+puts "item 2"
 dress = Option.new(category: "Objet", name: "Robe")
 dress.picture.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "Dress.png", content_type: "image/png")
 dress.description = "placeholder"
 dress.save!
-
+puts "item 3"
 sword = Option.new(category: "Objet", name: "Epée de feu")
 sword.picture.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
 sword.description = "placeholder"

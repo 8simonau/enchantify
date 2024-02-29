@@ -7,7 +7,10 @@
   <div class="voice-card">
     <h2><%= voice.name %></h2>
     <% if voice.audio.valid? %>
-      <%= audio_tag(url_for(voice.audio), controls: true) %>
+      <%= audio_tag(url_for(voice.audio), controls: false, id: 'myAudio') %>
+
+<button onclick="document.getElementById('myAudio').play()">Play</button>
+<button onclick="document.getElementById('myAudio').pause()">Pause</button>
     <% end %>
     <p>ElevanLabs token: <%= voice.token %></p>
     <%= link_to "Delete",
