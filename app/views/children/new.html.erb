@@ -1,8 +1,8 @@
-  <div class="create-child">
-    <%= simple_form_for @child, url: children_create_path do |f| %>
-      <%= f.input :first_name %>
-      <%= f.input :birth_date %>
-      <%= f.input :avatar, as: :file %>
-      <%= f.button :submit, "Create profile", class: "btn btn-standard btn-create" %>
-    <% end %>
-  </div>
+<div class="create-child">
+  <%= simple_form_for @child, url: children_create_path do |f| %>
+    <%= f.input :first_name, label: "Prénom" %>
+    <%= f.input :birth_date, label: "Date de naissance" %>
+    <%= f.input :avatar, as: :file, label: "Photo" %>
+    <%= f.button :submit, "Créer", class: "btn btn-standard btn-large" %>
+  <% end %>
+</div>
