@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   get 'children/index'
   get 'children/:id/set_child', to: 'children#set_child', as: 'set_child'
   post 'children/create'
+  get 'children/new', to: 'children#new', as: 'new_child'
 
   devise_for :users
   root to: "pages#home"

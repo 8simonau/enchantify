@@ -1,7 +1,6 @@
 <%= link_to "Home", root_path, class: "btn btn-standard mb-3" %>
 
-<div class="page" data-controller="create-child">
-  <%= render "create_child_form" %>
+<div class="page">
   <div class="container">
     <div class= "children-grid">
       <% @children.each do |c| %>
@@ -24,8 +23,7 @@
       <% end %>
     </div>
     <div class="buttons">
-      <div class="btn-standard btn-pink" data-action="click->create-child#revealForm">Add child</div>
-      <%#= button_to "Add voice" voice_create_path, { class: "btn-standard"} %>
+      <%= link_to "Add a child", new_child_path, class: "btn btn-standard mb-3" %>
     </div>
   </div>
 </div>
