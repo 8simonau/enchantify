@@ -18,7 +18,7 @@ class GenerateImageJob < ApplicationJob
     full_prompt = preprompt + character_description + " Voici l'action à illustrer : " + prompt
 
     puts full_prompt
-    
+
     url = "https://api.openai.com/v1/images/generations"
     body = {
       "model": "dall-e-3",
@@ -44,7 +44,7 @@ class GenerateImageJob < ApplicationJob
     puts ""
 
     file = URI.open(JSON.parse(response.body)["data"][0]["url"])
-    story.pictures.attach(io: file, filename: "#{prompt}.png", content_type: "image/png")
+    x = story.pictures.attach(io: file, filename: "#{prompt}.png", content_type: "image/png")
     story.save!
     puts "attached picture based on #{prompt}"
   end
