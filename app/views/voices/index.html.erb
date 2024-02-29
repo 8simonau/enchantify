@@ -12,7 +12,7 @@
 <button onclick="document.getElementById('myAudio').play()">Play</button>
 <button onclick="document.getElementById('myAudio').pause()">Pause</button>
     <% end %>
-    <p>ElevanLabs token: <%= voice.token %></p>
+    <p>ElevenLabs token: <%= voice.token %></p>
     <%= link_to "Delete",
       voice_path(voice),
       data: {turbo_method: :delete, turbo_confirm: "Are you sure?"}
