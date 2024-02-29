@@ -17,6 +17,8 @@ class StoryOptionsController < ApplicationController
     if @story_option.save!
       if @story.options.size == 3
         redirect_to edit_story_path(@story)
+        GenerateTextJob.perform_later(@story)
+        # note that GenerateImageJob is performed at the end of the GenerateTextJob
       else
         redirect_to new_story_story_option_path(@story)
       end

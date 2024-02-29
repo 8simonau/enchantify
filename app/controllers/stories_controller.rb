@@ -6,16 +6,11 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @story.update(playcount: @story.playcount + 1)
-    # if no text, call ChatGPT
-    # if no audio, then we call ElevenLabs
-    unless @story.audio.valid?
-      GenerateTextJob.perform_now(@story)
-      GenerateAudioJob.perform_now(@story)
-      prompt_array = JSON.parse(@story.prompts)
-      prompt_array.each do |p|
-        GenerateImageJob.perform_now(@story, p)
-      end
-    end
+
+    # respond_to do |format|
+    #   format.html
+    #   format.json { render json: @story.to_json }
+    # end
   end
 
   def new
@@ -41,8 +36,21 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     if @story.update(voice_id: params[:story][:voice_id])
       redirect_to story_path(@story)
+      # if no audio, then we call ElevenLabs
+      unless @story.audio.valid?
+        GenerateAudioJob.perform_now(@story)
+      end
     else
       render :new, status: :unprocessable_entity
+    end
+  end
+
+  def render_audio
+    @story = Story.find(params[:id])
+    if @story.audio.attached?
+      render partial: "audio"
+    else
+      head :no_content
     end
   end
 end

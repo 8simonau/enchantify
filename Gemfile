@@ -34,6 +34,10 @@ gem "faraday"
 # Open URI to read file from cloudinary url
 gem "open-uri"
 
+# Use Sidekiq to deal with background job
+gem "sidekiq", "< 7"
+gem "sidekiq-failures", "~> 1.0"
+
 # Use Redis adapter to run Action Cable in production
 # gem "redis", ">= 4.0.1"
 

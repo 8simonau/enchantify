@@ -1,0 +1,7 @@
+<h1><%= @story.title %></h1>
+<%= audio_tag(url_for(@story.audio), controls: true) %>
+<div class="option-pictures-row">
+  <% @story.options.each do |option| %>
+    <%= cl_image_tag(option.picture.key, width: 80, height: 80, class: "option-picture") %>
+  <% end %>
+</div>
