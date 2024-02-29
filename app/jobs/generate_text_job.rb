@@ -119,5 +119,10 @@ class GenerateTextJob < ApplicationJob
       story.text = text
       story.save!
     end
+
+    # prompt_array = JSON.parse(story.prompts)
+    # prompt_array.each do |p|
+    #   GenerateImageJob.perform_later(story, p)
+    # end
   end
 end
