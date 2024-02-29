@@ -38,7 +38,7 @@ class StoriesController < ApplicationController
       redirect_to story_path(@story)
       # if no audio, then we call ElevenLabs
       unless @story.audio.valid?
-        GenerateAudioJob.perform_now(@story)
+        GenerateAudioJob.perform_later(@story)
       end
     else
       render :new, status: :unprocessable_entity
