@@ -2,9 +2,10 @@ body  {
   // background-image: image_url('background.JPG');
   // background-size: cover;
   width: 100vw;
+  max-width: 450px;
+  margin: auto;
  }
 
 .main-container {
-  max-width: 450px;
-  margin: auto;
+  padding: 30px 20px;
 }
