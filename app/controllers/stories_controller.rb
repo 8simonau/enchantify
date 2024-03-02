@@ -38,6 +38,7 @@ class StoriesController < ApplicationController
       redirect_to story_path(@story)
       # if no audio, then we call ElevenLabs
       unless @story.audio.valid?
+        sleep 1 while @story.text == "A magic adventure will appear here soon."
         GenerateAudioJob.perform_later(@story)
       end
     else
