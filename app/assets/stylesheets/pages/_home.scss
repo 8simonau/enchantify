@@ -1,7 +1,7 @@
 // Specific CSS for your home-page
 .intro-screen-top {
   height: 13vh;
-  background-color: $light-pink;
+  background-color: $blue;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,13 +13,15 @@
 .intro-screen-middle {
   height: 74vh;
   background-image: url(asset-path('intro_screen_castle'));
+  background-size: cover;
+  background-position: center;
+  padding-top: 60px;
   .welcome-child {
     display: flex;
     align-items: center;
     justify-content: space-between;
     padding: 12px 24px;
     column-gap: 20px;
-    margin-top: 40px;
     background-color: white;
     border-radius: 20px;
     width: 250px;
