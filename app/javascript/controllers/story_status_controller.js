@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["preparation", "available"];
+  static targets = ["preparation", "available", "picture"];
   static values = {
     storyid: String
   }
@@ -27,6 +27,7 @@ export default class extends Controller {
           const fragment = document.createRange().createContextualFragment(html);
           this.availableTarget.appendChild(fragment);
           this.availableTarget.hidden = false;
+          this.pictureTarget.hidden = false;
           this.preparationTarget.hidden = true
         })
         .catch(error => {

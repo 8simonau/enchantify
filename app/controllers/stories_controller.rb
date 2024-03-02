@@ -45,10 +45,10 @@ class StoriesController < ApplicationController
     end
   end
 
-  def render_audio
+  def render_story
     @story = Story.find(params[:id])
     if @story.audio.attached?
-      render partial: "audio"
+      render partial: "story_display"
     else
       head :no_content
     end

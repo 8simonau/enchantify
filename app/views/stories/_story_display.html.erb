@@ -1,4 +1,9 @@
 <h1><%= @story.title %></h1>
+<div data-story-status-target="picture" hidden>
+  <% @story.pictures.each do |p| %>
+    <%= cl_image_tag(p.key, width: "100%", height: "auto", class: "story-picture") %>
+  <% end %>
+</div>
 <%= audio_tag(url_for(@story.audio), controls: true) %>
 <div class="option-pictures-row">
   <% @story.options.each do |option| %>
