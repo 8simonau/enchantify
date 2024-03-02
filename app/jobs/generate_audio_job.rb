@@ -17,7 +17,7 @@ class GenerateAudioJob < ApplicationJob
       req.body = body.to_json
     end
 
-    p response
+    p response.body
 
     puts "attaching response"
     story.audio.attach(io: StringIO.new(response.body), filename: "audio.mp3", content_type: "audio")
