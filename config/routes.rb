@@ -32,7 +32,7 @@ Rails.application.routes.draw do
 
   resources :voices, only: [:index, :new, :create, :destroy]
 
-  get "/stories/:id/audio", to: "stories#render_audio"
+  get "/stories/:id/audio", to: "stories#render_story"
 
 
 end

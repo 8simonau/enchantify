@@ -7,11 +7,10 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.storyidValue)
-    setInterval(() => this.updateAudio(), 2000);
+    setInterval(() => this.createAudio(), 2000);
   }
 
-  updateAudio() {
+  createAudio() {
     const audio = document.querySelector("audio")
     if (audio == undefined) {
       // Get and render the audio partial

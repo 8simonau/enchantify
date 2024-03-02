@@ -1,14 +1,10 @@
 <%= link_to "Retour aux histoires", stories_path %>
-<div data-controller="story-status" data-story-status-storyid-value="<%= @story.id %>">
+<div class="story-status" data-controller="story-status" data-story-status-storyid-value="<%= @story.id %>">
   <div class="story-preparation" data-story-status-target="preparation">
       <i class="fas fa-spinner fa-spin"></i>
       <h1>Invention en cours...</h1>
   </div>
-  <div class="story-show" data-story-status-target="available" hidden>
+  <div data-story-status-target="available" hidden>
     <%# here stimulus inserts the _audio partial when it is available %>
-  </div>
-</div>
-<div data-controller="story-display">
-  <div data-story-display-target="image">
   </div>
 </div>
