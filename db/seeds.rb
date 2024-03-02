@@ -122,5 +122,7 @@ story.voice = voice
 story.child = emma
 
 story.pictures.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "dress.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
 story.audio.attach(io: File.open("app/assets/audio/story_sample.mp3"), filename: "blancheneige.mp3", content_type: "audio")
 story.save!

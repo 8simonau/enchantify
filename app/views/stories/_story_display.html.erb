@@ -1,12 +1,19 @@
-<h1><%= @story.title %></h1>
-<div data-story-status-target="picture" hidden>
-  <% @story.pictures.each do |p| %>
-    <%= cl_image_tag(p.key, width: "100%", height: "auto", class: "story-picture") %>
-  <% end %>
-</div>
-<%= audio_tag(url_for(@story.audio), controls: true) %>
-<div class="option-pictures-row">
-  <% @story.options.each do |option| %>
-    <%= cl_image_tag(option.picture.key, width: 80, height: 80, class: "option-picture") %>
-  <% end %>
+<div class="story-show" data-controller="picture-display" data-picture-display-playing-value="false">
+  <h1><%= @story.title %></h1>
+  <div data-picture-display-target="pictureContainer" class="story-picture-container">
+    <% @story.pictures.each do |p| %>
+      <%= cl_image_tag(p.key, secure: true, width: 290, height: 290, class: "story-picture story-picture-hidden", id: "audio-player", data: { picture_display_target: "picture"}) %>
+    <% end %>
+  </div>
+  <%# <%= audio_tag(url_for(@story.audio), secure: true, controls: true) %>
+  <div>
+    <audio controls data-action="play->picture-display#play pause->picture-display#pause">
+      <source src="<%= url_for(@story.audio) %>">
+    </audio>
+  </div>
+  <div class="option-pictures-row">
+    <% @story.options.each do |option| %>
+      <%= cl_image_tag(option.picture.key, secure: true, width: 80, height: 80, class: "option-picture") %>
+    <% end %>
+  </div>
 </div>
