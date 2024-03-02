@@ -1,23 +1,44 @@
-<div class="d-flex align-items-center flex-column">
-  <% if current_user %>
-    <% unless current_user.active_child == nil %>
-      <h1>Bonjour <%= current_user.active_child.first_name %></h1>
-      <div class="child-card">
-        <div class="child-image-border">
-          <div class="child-image">
-            <%= cl_image_tag(current_user.active_child.avatar.key,
-                            width: 130,
-                            height: 130,
-                            crop: :fill,
-                            gravity: :faces) %>
+<div class="intro-screen-top">
+  <h1>Enchantify</h1>
+</div>
+
+<div class="intro-screen-middle">
+  <div class="d-flex align-items-center flex-column">
+    <% if current_user %>
+      <% unless current_user.active_child == nil %>
+        <div class="welcome-child">
+          <div class="d-flex">
+            <h3>Bonjour<br>
+            <strong><%= current_user.active_child.first_name %>!</strong></h3>
+          </div>
+          <div class="child-card">
+            <div class="child-image-border">
+              <div class="child-image">
+                <%= cl_image_tag(current_user.active_child.avatar.key,
+                                width: 80,
+                                height: 80,
+                                crop: :fill,
+                                gravity: :faces) %>
+              </div>
+            </div>
           </div>
         </div>
-      </div>
+      <% end %>
+      <%= link_to new_story_path, class: "home-play-button" do %>
+        <i class="fa-solid fa-play"></i>
+      <% end %>
     <% end %>
-  <% end %>
+  </div>
 </div>
-<%= link_to "Mes histoires", stories_path, class: "btn btn-standard btn-large mb-5" %>
-<div class="d-flex flex-column mt-4">
-  <%= link_to "Enfants", children_index_path, class: "btn btn-standard btn-large mb-3" %>
-  <%= link_to "Voix", voices_path, class: "btn btn-standard btn-large" %>
+
+<div class="intro-screen-bottom">
+  <%= link_to stories_path, class: "icon-link" do %>
+    <i class="fa-solid fa-book"></i>
+  <% end %>
+  <%= link_to children_path, class: "icon-link" do %>
+    <i class="fa-solid fa-people-roof"></i>
+  <% end %>
+  <%= link_to voices_path, class: "icon-link" do %>
+    <i class="fa-solid fa-microphone"></i>
+  <% end %>
 </div>

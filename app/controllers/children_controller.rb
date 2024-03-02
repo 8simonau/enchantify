@@ -16,7 +16,7 @@ class ChildrenController < ApplicationController
     end
     if @child.save
       flash[:success] = "Child profile created"
-      redirect_to children_index_path
+      redirect_to children_path
     else
       flash[:error] = "Something went wrong"
       render "children/index", status: :unprocessable_entity

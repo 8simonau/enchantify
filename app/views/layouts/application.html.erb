@@ -11,10 +11,12 @@
     <script src="https://www.WebRTC-Experiment.com/RecordRTC.js"></script>
   </head>
   <body>
-    <div class="header">
-      <h1>ENCHANTIFY</h1>
-      <div class="quit"></div>
-    </div>
+    <% unless controller_name == "pages" %>
+      <div class="header">
+        <h1>ENCHANTIFY</h1>
+        <div class="quit"></div>
+      </div>
+    <% end %>
     <div class="main-container">
       <%= render "shared/flashes" %>
       <%= yield %>
