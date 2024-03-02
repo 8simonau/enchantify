@@ -28,6 +28,17 @@
     h3 {
       margin: 0px;
     }
+    .child-card {
+      width: 90px;
+    }
+    .child-image-border {
+      width: 90px;
+      height: 90px;
+    }
+    .child-image {
+      width: 80px;
+      height: 80px;
+    }
   }
   .home-play-button {
     margin-top: 100px;
@@ -45,6 +56,8 @@
 
 .intro-screen-bottom {
   height: 13vh;
+  position: sticky;
+  bottom: 0px;
   background-color: $light-pink;
   display: flex;
   align-items: center;

@@ -115,7 +115,7 @@ export default class extends Controller {
   }
 
   setTime () {
-    this.timeElapsedTarget.innerHTML = `Duration: ${this.getTimeString(this.secondsElapsed)} seconds`;
+    this.timeElapsedTarget.innerHTML = `Durée: ${this.getTimeString(this.secondsElapsed)} sec.`;
   }
 
   getTimeString(seconds) {

@@ -8,4 +8,19 @@ body  {
 
 .main-container {
   padding: 30px 20px;
+
+
+  .bottom-buttons-wrapper {
+    height: 10vh;
+    position: fixed;
+    bottom: 0px;
+    display: flex;
+    width: 100vw;
+    align-items: center;
+    justify-content: space-between;
+    background-color: rgba(255, 255, 255, 0.9);
+    margin-left: -20px;
+    margin-right: -20px;
+    padding: 20px;
+  }
 }
