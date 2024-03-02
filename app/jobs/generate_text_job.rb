@@ -6,7 +6,7 @@ class GenerateTextJob < ApplicationJob
     "C'est une histoire qui fait un peu peur",
     "C'est une histoire qui parle du pouvoir de l'amitié",
     "C'est une histoire qui parle des relations parents-enfants",
-    "C'est une histoire qui parle d'apprentisage",
+    "C'est une histoire qui parle d'apprentissage",
     "C'est une histoire qui parle de grandir",
     "C'est une histoire d'aventure",
     "C'est une histoire qui fait découvrir des pays lointains",
@@ -15,10 +15,11 @@ class GenerateTextJob < ApplicationJob
     "C'est une histoire avec un personnage secondaire : un livre qui parle",
     "C'est une histoire avec un personnage secondaire : un chat volant",
     "C'est une histoire avec un personnage secondaire : un grand cheval",
-    "C'est une histoire avec un personnage secondaire : deux assiettes qui roulent"
+    "C'est une histoire avec un personnage secondaire : deux assiettes qui roulent",
+    "C'est une histoire avec des personnages secondaires : des jumeaux espiègles"
   ]
 
-  def perform(story, token_count = 2048, prompt_count = 3)
+  def perform(story, token_count = 1500, prompt_count = 3)
     # variables
     puts "get story options"
     options = story.options_hash
@@ -44,7 +45,7 @@ class GenerateTextJob < ApplicationJob
 
     parameters = <<-STRING.squish
     Ecris une histoire :
-    - le personnage principal est un jeune enfant : #{options["Personnage"]}.
+    - le personnage principal est un jeune : #{options["Personnage"]}.
     - l'aventure prend place ici : #{options["Lieu"]}.
     - #{options["Objet"]} a un objet : #{options["Item"]} qui l'aide à
     accomplir ses objectifs.
@@ -120,9 +121,9 @@ class GenerateTextJob < ApplicationJob
       story.save!
     end
 
-    # prompt_array = JSON.parse(story.prompts)
-    # prompt_array.each do |p|
-    #   GenerateImageJob.perform_later(story, p)
-    # end
+    prompt_array = JSON.parse(story.prompts)
+    prompt_array.each do |p|
+      GenerateImageJob.perform_later(story, p)
+    end
   end
 end

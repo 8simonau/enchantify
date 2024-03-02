@@ -8,7 +8,7 @@ export default class extends Controller {
 
   connect() {
     console.log(this.storyidValue)
-    setInterval(() => this.updateAudio(), 500);
+    setInterval(() => this.updateAudio(), 2000);
   }
 
   updateAudio() {

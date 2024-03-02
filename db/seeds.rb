@@ -105,7 +105,7 @@ puts "generate 1 voice"
 
 # Emily's voice from Eleven Labs
 voice = Voice.new(name: "Emily",
-                  token: "x0420l7aKcZo6KFeBpln")
+                  token: "LcfcDJNUP1GQjkzn1xUU")
 voice.user = john
 voice.audio.attach(io: File.open("app/assets/audio/emily_sample.mp3"), filename: "emily_sample.mp3", content_type: "audio")
 voice.save!
