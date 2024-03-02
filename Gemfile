@@ -35,7 +35,7 @@ gem "faraday"
 gem "open-uri"
 
 # Use Sidekiq to deal with background job
-gem "sidekiq", "< 7"
+gem 'sidekiq', '~> 6.5.5'
 gem "sidekiq-failures", "~> 1.0"
 
 # Use Redis adapter to run Action Cable in production
