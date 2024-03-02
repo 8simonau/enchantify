@@ -15,5 +15,7 @@
         "<span>Utilisée par #{b.object.stories.count} histoires</span>".html_safe
       } %>
     <% end %>
-  <%= s.button :submit, "Inventer une histoire", class: "btn btn-standard" %>
+    <div class="bottom-buttons-wrapper">
+      <%= s.button :submit, "Inventer une histoire", class: "btn btn-standard btn-large" %>
+    </div>
 <% end %>
