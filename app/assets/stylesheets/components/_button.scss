@@ -1,6 +1,7 @@
 .btn-standard {
+  background-color: $blue;
   height: 45px;
-  color: $purple;
+  color: $white;
   border: none;
   border-radius: 12px;
   font-size: 24px;
@@ -8,18 +9,27 @@
   box-shadow: 2px 2px 1px lightgray;
   text-align: center;
   align-items: center;
-  background-color: $pink;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+  &:hover {
+      opacity: 1;
+  }
 }
+
 
 .btn-large {
   width: 100%;
 }
-
 .btn-pink {
-  width: 300px;
   background-color: $pink;
+  color: $blue;
 }
-
+.btn-blue {
+  background-color: $blue;
+}
+.btn-brick {
+  background-color: $brick;
+}
 .buttons {
   position: fixed;
   bottom: 30px;
