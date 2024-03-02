@@ -1,4 +1,3 @@
-<%= link_to "Créer une histoire", new_story_path, class: "btn btn-standard mb-3" %>
 <div class="stories-wrapper">
   <% @stories.each do |story| %>
   <div class="story-card">
@@ -21,4 +20,8 @@
     </div>
   </div>
   <% end %>
+</div>
+
+<div class="bottom-buttons-wrapper">
+  <%= link_to "Créer une histoire", new_story_path, class: "btn btn-standard btn-large" %>
 </div>
