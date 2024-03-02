@@ -1,5 +1,4 @@
 <%= link_to "Ajouter une voix", new_voice_path, class: "btn btn-standard mb-3" %>
-<%= link_to "Retour", root_path, class: "btn btn-standard mb-3" %>
 
 <h1>Toutes les voix</h1>
 <div class="voices-wrapper">
@@ -9,7 +8,6 @@
     <% if voice.audio.valid? %>
       <%= audio_tag(url_for(voice.audio), controls: true) %>
     <% end %>
-    <p>Token : <%= voice.token %></p>
     <%= link_to "Supprimer",
       voice_path(voice),
       data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}

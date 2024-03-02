@@ -1,5 +1,5 @@
 <div class="create-child">
-  <%= simple_form_for @child, url: children_create_path do |f| %>
+  <%= simple_form_for @child do |f| %>
     <%= f.input :first_name, label: "Prénom" %>
     <%= f.input :birth_date, label: "Date de naissance" %>
     <%= f.input :avatar, as: :file, label: "Photo" %>
