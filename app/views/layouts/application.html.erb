@@ -15,10 +15,10 @@
       <%= yield %>
     <% else %>
       <%= render "shared/navbar" %>
-      <div class="main-container">
+      <div class="main-container" id=<%= "#{@background}-background" %>>
         <%= render "shared/flashes" %>
         <%= yield %>
-    </div>
+      </div>
     <% end %>
   </body>
 </html>

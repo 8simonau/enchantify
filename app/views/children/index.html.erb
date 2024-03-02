@@ -1,16 +1,14 @@
-<div class= "children-grid">
+<div class= "children-wrapper">
   <% @children.each do |c| %>
     <%= link_to set_child_path(c) do %>
       <div class="child-card">
-        <div class="child-image-border">
-          <div class="child-image">
+          <div class="label">
             <%= cl_image_tag(c.avatar.key,
                             width: 130,
                             height: 130,
                             crop: :fill,
                             gravity: :faces) %>
           </div>
-        </div>
         <div class="child-name">
           <p><%= c.first_name %></p>
         </div>

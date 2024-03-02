@@ -4,7 +4,12 @@
       <i class="fas fa-spinner fa-spin"></i>
       <h1>Invention en cours...</h1>
   </div>
+  <div class="option-pictures-row" data-story-status-target="options">
+    <% @story.options.each do |option| %>
+      <%= cl_image_tag(option.picture.key, secure: true, width: 80, height: 80, class: "option-picture") %>
+    <% end %>
+  </div>
   <div data-story-status-target="available" hidden>
-    <%# here stimulus inserts the _audio partial when it is available %>
+    <%# here stimulus inserts the _display_story partial when it is available %>
   </div>
 </div>
