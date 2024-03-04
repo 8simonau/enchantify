@@ -1,13 +1,14 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["preparation", "available"];
+  static targets = ["preparation", "available", "ended"];
   static values = {
     storyid: String
   }
 
   connect() {
-    setInterval(() => this.createAudio(), 2000);
+    this.createAudio();
+    setInterval(() => this.createAudio(), 1000);
   }
 
   createAudio() {
@@ -32,5 +33,10 @@ export default class extends Controller {
           console.error("Error fetching audio:", error);
         });
     }
+  }
+
+  displayEndScreen() {
+    this.availableTarget.hidden = true;
+    this.endedTarget.hidden = false
   }
 }

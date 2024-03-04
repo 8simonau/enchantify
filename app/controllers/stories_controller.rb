@@ -54,4 +54,14 @@ class StoriesController < ApplicationController
       head :no_content
     end
   end
+
+  def mark_favorite
+    @story = Story.find(params[:id])
+    @story.update(is_favorite: true)
+  end
+
+  def toggle_favorite
+    @story = Story.find(params[:id])
+    @story.update(is_favorite: !@story.is_favorite)
+  end
 end

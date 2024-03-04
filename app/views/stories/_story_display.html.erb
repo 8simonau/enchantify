@@ -2,17 +2,82 @@
   <h1><%= @story.title %></h1>
   <div data-picture-display-target="pictureContainer" class="story-picture-container">
     <% @story.pictures.each do |p| %>
-      <%= cl_image_tag(p.key, secure: true, width: 290, height: 290, class: "story-picture story-picture-hidden", id: "audio-player", data: { picture_display_target: "picture"}) %>
+      <%= cl_image_tag(p.key,
+        secure: true,
+        # width: 290,
+        height: 450,
+        # gravity: "face",
+        # crop: "fill",
+        class: "story-picture story-picture-hidden",
+        id: "audio-player",
+        data: { picture_display_target: "picture"}) %>
     <% end %>
   </div>
    <%#= audio_tag(url_for(@story.audio), secure: true, controls: true) %>
-  <div>
-    <audio secure="true" controls="controls" data-action="play->picture-display#play pause->picture-display#pause" src=<%= url_for(@story.audio) %>>
-    </audio>
-  </div>
-  <div class="option-pictures-row">
-    <% @story.options.each do |option| %>
-      <%= cl_image_tag(option.picture.key, secure: true, width: 80, height: 80, class: "option-picture") %>
-    <% end %>
+  <div class="audio-player" data-controller="audio-player">
+    <div class="media-controls">
+
+      <div class="media-progress">
+        <div class="progress-bar-wrapper progress" data-audio-player-target="progressBar">
+          <div class="progress-bar" data-audio-player-target="progress">
+          </div>
+        </div>
+        <div class="progress-time-current milli" data-audio-player-target="currentTime">
+          00:00
+        </div>
+        <div class="progress-time-total milli" data-audio-player-target="totalTime">
+          00:00
+        </div>
+      </div>
+
+      <div class="media-buttons">
+
+        <%= button_to stories_path, method: "get", class: "media-button" do %>
+          <i class="fa-solid fa-book"></i>
+        <% end %>
+
+        <button
+          class="play-button media-button"
+          data-action="click->audio-player#play"
+          data-audio-player-target="playButton">
+          <i class="fa-solid fa-play"></i>
+        </button>
+
+        <button
+          class="pause-button media-button"
+          hidden
+          data-action="click->audio-player#pause"
+          data-audio-player-target="pauseButton">
+          <i class="fas fa-pause"></i>
+        </button>
+
+        <%= button_to toggle_favorite_path(@story),
+          method: :put,
+          data: { action: "click->audio-player#toggleFavorite"},
+          class: "media-button" do %>
+          <% if @story.is_favorite %>
+            <i class="fa-solid fa-heart text-danger" data-audio-player-target="favorite"></i>
+            <i class="fa-regular fa-heart" hidden data-audio-player-target="unfavorite"></i>
+          <% else %>
+            <i class="fa-solid fa-heart text-danger" hidden data-audio-player-target="favorite"></i>
+            <i class="fa-regular fa-heart" data-audio-player-target="unfavorite"></i>
+          <% end %>
+        <% end %>
+
+      </div>
+
+    </div>
+  <audio
+    hidden
+    secure="true"
+    controls="controls"
+    data-action="
+      play->picture-display#play pause->picture-display#pause
+      loadedmetadata->audio-player#getDuration
+      timeupdate->audio-player#timeUpdate
+      ended->story-status#displayEndScreen"
+    data-audio-player-target="audio"
+    src=<%= url_for(@story.audio) %>>
+  </audio>
   </div>
 </div>
