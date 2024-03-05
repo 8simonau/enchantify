@@ -1,7 +1,7 @@
 import { Controller } from "@hotwired/stimulus";
 
 export default class extends Controller {
-  static targets = ["preparation", "available", "ended"];
+  static targets = ["preparation", "available", "ended", "playButton", "pauseButton"];
   static values = {
     storyid: String
   }
@@ -38,5 +38,12 @@ export default class extends Controller {
   displayEndScreen() {
     this.availableTarget.hidden = true;
     this.endedTarget.hidden = false
+  }
+
+  displayAvailableScreen() {
+    this.playButtonTarget.hidden = false;
+    this.pauseButtonTarget.hidden = true;
+    this.availableTarget.hidden = false;
+    this.endedTarget.hidden = true;
   }
 }
