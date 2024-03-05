@@ -50,3 +50,21 @@
   text-decoration: none;
   text-align: center;
 }
+.media-button {
+  background-color: $light-pink;
+  border: none;
+  color: $blue;
+  padding: 12px 16px;
+  font-size: 14px;
+  border-radius: 100%;
+  width: 45px;
+  height: 45px;
+}
+.play-button, .pause-button {
+    background: $blue;
+    color: white;
+    font-size: 20px;
+    width: 55px;
+    height: 55px;
+
+}

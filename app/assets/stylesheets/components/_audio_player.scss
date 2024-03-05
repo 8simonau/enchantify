@@ -1,0 +1,42 @@
+.media-controls {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 100%;
+  position: relative;
+}
+
+.media-buttons {
+  display: flex;
+  flex-wrap: nowrap;
+  column-gap: 30px;
+  align-items: end;
+}
+
+.media-progress {
+  align-self: stretch;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.progress-bar-wrapper {
+  background-color: $light-pink;
+  border-radius: 4px;
+  box-shadow: inset -1px 1px 1px $light-gray;
+  height: 8px;
+  margin-bottom: 4px;
+  margin-top: 12px;
+  position: relative;
+  width: 100%;
+}
+
+.progress-bar {
+  background: $pink;
+  border-radius: 4px;
+  box-shadow: none;
+  height: 8px;
+  width: 1px;
+}

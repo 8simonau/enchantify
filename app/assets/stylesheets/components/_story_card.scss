@@ -25,15 +25,15 @@
 }
 
 .story-show {
-  padding: 40px 30px;
-  height: calc(100vh - 100px);
+  padding: 0px 10px 30px 10px;
+  height: calc(100vh - 106px);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
 }
-.story-preparation {
-  padding: 40px 30px;
-  height: calc(100vh - 100px);
+.story-preparation, .story-end {
+  padding: 0px 10px 30px 10px;
+  height: calc(100vh - 106px);
   display: flex;
   align-items: center;
   flex-direction: column;

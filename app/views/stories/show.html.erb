@@ -1,4 +1,3 @@
-<%= link_to "Retour aux histoires", stories_path %>
 <div class="story-status" data-controller="story-status" data-story-status-storyid-value="<%= @story.id %>">
   <div class="story-preparation" data-story-status-target="preparation">
       <i class="fas fa-spinner fa-spin"></i>
@@ -11,5 +10,8 @@
   </div>
   <div data-story-status-target="available" hidden>
     <%# here stimulus inserts the _display_story partial when it is available %>
+  </div>
+  <div class="story-end" data-story-status-target="ended" hidden>
+    <h1>The end</h1>
   </div>
 </div>

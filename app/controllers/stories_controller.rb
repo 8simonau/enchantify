@@ -40,7 +40,7 @@ class StoriesController < ApplicationController
       redirect_to story_path(@story)
       # if no audio, then we call ElevenLabs
       unless @story.audio.valid?
-        sleep 1 while @story.text == "Une aventure magique va bientôt apparaître."
+        sleep 1 while @story.reload.text == "Une aventure magique va bientôt apparaître."
         GenerateAudioJob.perform_later(@story)
       end
     else
@@ -55,5 +55,15 @@ class StoriesController < ApplicationController
     else
       head :no_content
     end
+  end
+
+  def mark_favorite
+    @story = Story.find(params[:id])
+    @story.update(is_favorite: true)
+  end
+
+  def toggle_favorite
+    @story = Story.find(params[:id])
+    @story.update(is_favorite: !@story.is_favorite)
   end
 end
