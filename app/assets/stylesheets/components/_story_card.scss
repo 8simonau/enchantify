@@ -23,24 +23,3 @@
   justify-content: space-between;
   height: 75px;
 }
-
-.story-show {
-  padding: 0px 10px 30px 10px;
-  height: calc(100vh - 106px);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-}
-.story-preparation, .story-end {
-  padding: 0px 10px 30px 10px;
-  height: calc(100vh - 106px);
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  justify-content: center;
-
-  i {
-    font-size: 72px;
-    margin-bottom: 30px;
-  }
-}
