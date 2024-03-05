@@ -11,6 +11,11 @@
         <p class="child-name"><%= c.first_name %></p>
         <p><%= c.stories.count %> histoires</p>
       </div>
+      <% if current_user.active_child == c %>
+        <div id="active-child">
+          <i class="fa-solid fa-check"></i>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>
