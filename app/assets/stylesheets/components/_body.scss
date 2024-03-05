@@ -28,10 +28,12 @@ body  {
 
 #planet-background {
   background-image: url(asset-path('planet_picture'));
+  background-attachment: fixed;
 }
 
 #castle-background {
   background-image: url(asset-path('mountain_picture'));
+  background-attachment: fixed;
 }
 
 #grotto-background {
@@ -43,4 +45,5 @@ body  {
 
 #builders-background {
   background-image: url(asset-path('builders_picture'));
+  background-attachment: fixed;
 }

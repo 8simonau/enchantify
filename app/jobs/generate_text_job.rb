@@ -34,20 +34,21 @@ class GenerateTextJob < ApplicationJob
     bien comprise par les enfants. Vos histoires mettent en scène un personnage
     principal, un environnement et un objet qui vous seront donnés en paramètres.
     Les histoires doivent commencer par une brève description du personnage
-    principal. Le personnage est confronté à un défi et le surmonte grâce à son
-    courage et à son objet unique. #{additional_parameter}. La conclusion doit
+    principal. Le personnage est confronté à un défi et le surmonte grâce à ses
+    qualités et à son objet unique. #{additional_parameter}. La conclusion doit
     être courte. Votre réponse est un objet .json fonctionnel avec 3 clés : un
     titre (\"title\"), une liste de #{prompt_count} prompts (\"prompts\") qui
     décrivent en 5 mots chacun les principales séquences de l'histoire (ces
     chaînes seront utilisées pour prompter DALLE 3 et illustrer l'histoire) et
-    le texte (\"text\") qui doit contenir au moins 5 paragraphes.
+    le texte (\"text\") qui doit contenir au moins 3 paragraphes.
     STRING
 
     parameters = <<-STRING.squish
     Ecris une histoire :
-    - le personnage principal est un jeune : #{options["Personnage"]}.
+    - le personnage principal est : #{options["Personnage"]}. Il ou elle est
+    jeune et un enfant peut s'y identifier.
     - l'aventure prend place ici : #{options["Lieu"]}.
-    - #{options["Objet"]} a un objet : #{options["Item"]} qui l'aide à
+    - #{options["Personnage"]} a un objet : #{options["Objet"]} qui l'aide à
     accomplir ses objectifs.
     STRING
 
