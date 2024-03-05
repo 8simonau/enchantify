@@ -4,7 +4,7 @@ export default class extends Controller {
   static targets = ["preparation", "available", "ended", "playButton", "pauseButton"];
   static values = {
     storyid: String
-  }
+    }
 
   connect() {
     this.createAudio();

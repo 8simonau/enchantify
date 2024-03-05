@@ -1,5 +1,6 @@
 class StoryOptionsController < ApplicationController
   def new
+    @background = "builders"
     @story = Story.find(params[:story_id])
     @story_option = StoryOption.new
     if @story.options.empty?

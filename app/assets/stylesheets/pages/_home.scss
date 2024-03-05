@@ -16,30 +16,6 @@
   background-size: cover;
   background-position: center;
   padding-top: 60px;
-  .welcome-child {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 12px 24px;
-    column-gap: 20px;
-    background-color: white;
-    border-radius: 20px;
-    width: 250px;
-    h3 {
-      margin: 0px;
-    }
-    .child-card {
-      width: 90px;
-    }
-    .child-image-border {
-      width: 90px;
-      height: 90px;
-    }
-    .child-image {
-      width: 80px;
-      height: 80px;
-    }
-  }
   .home-play-button {
     margin-top: 100px;
     font-size: 70px;

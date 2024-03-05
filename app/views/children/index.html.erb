@@ -1,20 +1,21 @@
-<div class= "children-grid">
+<div class= "children-wrapper">
   <% @children.each do |c| %>
-    <%= link_to set_child_path(c) do %>
-      <div class="child-card">
-        <div class="child-image-border">
-          <div class="child-image">
-            <%= cl_image_tag(c.avatar.key,
-                            width: 130,
-                            height: 130,
-                            crop: :fill,
-                            gravity: :faces) %>
-          </div>
-        </div>
-        <div class="child-name">
-          <p><%= c.first_name %></p>
-        </div>
+    <%= link_to set_child_path(c), class: "child-card" do %>
+      <%= cl_image_tag(c.avatar.key,
+                      width: 100,
+                      height: 100,
+                      crop: :fill,
+                      gravity: :faces,
+                      class: "child-picture") %>
+      <div class="child-info">
+        <p class="child-name"><%= c.first_name %></p>
+        <p><%= c.stories.count %> histoires</p>
       </div>
+      <% if current_user.active_child == c %>
+        <div id="active-child">
+          <i class="fa-solid fa-check"></i>
+        </div>
+      <% end %>
     <% end %>
   <% end %>
 </div>

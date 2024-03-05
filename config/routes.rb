@@ -3,18 +3,24 @@ Rails.application.routes.draw do
 
   # Sidekiq Web UI, only for admins.
   require "sidekiq/web"
+
+  devise_for :users
   authenticate :user, ->(user) { user.admin? } do
     mount Sidekiq::Web => '/sidekiq'
   end
 
-  get 'children/:id/set_child', to: 'children#set_child', as: 'set_child'
-  resources :children, only: [:index, :new, :create]
-  # get 'children/index'
-  # post 'children/create'
-  # get 'children/new', to: 'children#new', as: 'new_child'
-
-  devise_for :users
   root to: "pages#home"
+
+  resources :children, only: [:index, :new, :create]
+  get 'children/:id/set_child', to: 'children#set_child', as: 'set_child'
+
+  resources :stories, only: [:index, :new, :show, :edit, :update] do
+    resources :story_options, only: [:new, :create]
+  end
+  get "/stories/:id/audio", to: "stories#render_story"
+
+  resources :voices, only: [:index, :new, :create, :destroy]
+
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Reveal health status on /up that returns 200 if the app boots with no exceptions, otherwise 500.

@@ -1,6 +1,8 @@
 class StoriesController < ApplicationController
   def index
     @stories = Story.all
+    @title = "Mes histoires"
+    @background = "planet"
   end
 
   def show
@@ -18,7 +20,7 @@ class StoriesController < ApplicationController
     @story.playcount = 0
     @story.child = current_user.active_child
     @story.voice = Voice.last
-    @story.title = "Histoire en cours d'invention..."
+    @story.title = "En cours d'invention..."
     @story.text = "Une aventure magique va bientôt apparaître."
     @story.save!
     redirect_to new_story_story_option_path(@story)
