@@ -15,14 +15,14 @@
     background-color: rgba(255, 255, 255, 0.92);
     font-size: 18px;
     text-decoration: none;
-    height: 140px;
+    height: 120px;
 }
 
 .child-picture {
-  height: 100px;
-  width: 100px;
+  height: 90px;
+  width: 90px;
   border-radius: 12px;
-  margin: 8px 12px 8px 8px;
+  margin: 3px 12px 3px 3px;
   opacity: 1;
 }
 
@@ -51,7 +51,7 @@
   border: 2px solid $blue;
   height: 30px;
   width: 30px;
-  margin: 43px 24px 43px auto;
+  margin: 33px 24px 33px auto;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -59,9 +59,13 @@
 
 #welcome-card {
   width: 250px;
-  justify-content: space-evenly;
+  justify-content: space-around;
 
   .child-info {
-    margin-left: 12px;
+    margin-left: 3px;
+  }
+
+  .child-picture {
+    margin-right: 3px;
   }
 }

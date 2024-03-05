@@ -36,6 +36,8 @@ body  {
 
 #grotto-background {
   background-image: url(asset-path('grotto_picture'));
+  max-width: 150%;
+  background-attachment: fixed;
 }
 
 #builders-background {
