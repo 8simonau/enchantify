@@ -1,17 +1,15 @@
 <div class= "children-wrapper">
   <% @children.each do |c| %>
-    <%= link_to set_child_path(c) do %>
-      <div class="child-card">
-          <div class="label">
-            <%= cl_image_tag(c.avatar.key,
-                            width: 130,
-                            height: 130,
-                            crop: :fill,
-                            gravity: :faces) %>
-          </div>
-        <div class="child-name">
-          <p><%= c.first_name %></p>
-        </div>
+    <%= link_to set_child_path(c), class: "child-card" do %>
+      <%= cl_image_tag(c.avatar.key,
+                      width: 130,
+                      height: 130,
+                      crop: :fill,
+                      gravity: :faces,
+                      class: "child-picture") %>
+      <div class="child-info">
+        <p class="child-name"><%= c.first_name %></p>
+        <p><%= c.stories.count %> histoires</p>
       </div>
     <% end %>
   <% end %>
@@ -20,4 +18,3 @@
 <div class="bottom-buttons-wrapper">
   <%= link_to "Ajouter un enfant", new_child_path, class: "btn btn-standard btn-large" %>
 </div>
-  
