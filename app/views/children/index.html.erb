@@ -2,8 +2,8 @@
   <% @children.each do |c| %>
     <%= link_to set_child_path(c), class: "child-card" do %>
       <%= cl_image_tag(c.avatar.key,
-                      width: 130,
-                      height: 130,
+                      width: 100,
+                      height: 100,
                       crop: :fill,
                       gravity: :faces,
                       class: "child-picture") %>

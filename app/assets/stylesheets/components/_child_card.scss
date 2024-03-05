@@ -8,7 +8,6 @@
 .child-card {
     position: relative;
     display: flex;
-    align-items: left;
     border-radius: 16px;
     padding: 12px 12px 12px 12px;
     border: 1px solid $light-gray;
@@ -34,7 +33,7 @@
   justify-content: center; /* Center items vertically */
   height: 100%; /* Ensure there's a height to center within */
 
-  p {
+  p, h3 {
     text-align: left; /* Align text to the left */
     margin-top: 2px; /* Reduce top margin */
     margin-bottom: 2px; /* Reduce bottom margin */
@@ -56,4 +55,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
+}
+
+#welcome-card {
+  width: 250px;
+  justify-content: space-evenly;
+
+  .child-info {
+    margin-left: 12px;
+  }
 }
