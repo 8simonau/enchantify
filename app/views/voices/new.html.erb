@@ -1,12 +1,9 @@
 <div class="audio-field" data-controller='voice'>
   <div class='row'>
     <div class='col-md-12'>
-      <h1>Créer une voix</h1>
-      <p>Enregistrez-vous en lisant le text ci-dessous avec votre meilleure voix de conteur/conteuse !</p>
-      <div>
-        <p class="card">Un jour de plein hiver, une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.</p>
-      </div>
-      <p>Cliquez sur Démarrer pour commencer l'enregistrement, n'oubliez pas de l'arrêter !</p>
+      <p class="fs-4">Lisez le text ci-dessous avec votre meilleure voix de conteur/conteuse !</p>
+
+      <%# <p>Cliquez sur Démarrer pour commencer l'enregistrement, n'oubliez pas de l'arrêter !</p> %>
       <div class="recording-controls-wrapper" >
         <button class="btn btn-standard btn-olive" data-action="click->voice#startRecording" data-voice-target="startRecording">Démarrer</button>
         <button class="btn btn-standard btn-brick" disabled data-action="click->voice#stopRecording" data-voice-target="stopRecording">Stop</button>
@@ -18,14 +15,21 @@
                 id="target_field"> %>
         <p data-voice-target="timeElapsed">Durée: 00 sec. </p>
       </div>
+
+      <div class="card p-2 mt-4 mb-4">
+        <p>Un jour de plein hiver, une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.</p>
+      </div>
+
     </div>
     <%= simple_form_for @voice do |v| %>
       <%= v.input :name, label: "Nommer cette voix" %>
       <%= v.input :audio, as: :file, label: false, input_html: { hidden: true, data: { voice_target: "audioBlob" }} %>
+      <%= link_to "Annuler", voices_path %>
       <div class="bottom-buttons-wrapper">
         <%= v.button :submit, "Enregistrer la voix", class: "btn btn-standard btn-large" %>
       </div>
     <% end %>
+
 
 
   </div>
