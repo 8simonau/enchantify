@@ -2,7 +2,7 @@ class ChildrenController < ApplicationController
   def index
     @children = current_user.children.all
     @new_child = Child.new
-    @background = "grotto"
+    @background = "forest_children"
     @title = "Mes enfants"
   end
 
