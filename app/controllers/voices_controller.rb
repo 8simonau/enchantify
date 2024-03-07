@@ -2,6 +2,7 @@ class VoicesController < ApplicationController
   def index
     @voices = Voice.all
     @title = "Voix"
+    @background = "children-running"
   end
 
   def new
