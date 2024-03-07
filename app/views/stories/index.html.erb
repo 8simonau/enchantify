@@ -1,29 +1,27 @@
-<div class="story-index-screen-middle">
-  <div class="stories-wrapper">
-    <% @stories.each do |story| %>
-    <div class="story-card">
-      <h2><%= story.title %></h2>
-      <p>Créée le : <%= story.created_at.strftime("%A %-d %B %Y") %></p>
-      <p>Ecoutée <%= story.playcount %> fois</p>
-      <div class="story-card-bottom">
-        <div class="option-pictures-row">
-          <% story.options.each do |option| %>
-            <%= cl_image_tag(option.picture.key, width: 60, height: 60, class: "option-picture") %>
-          <% end %>
+<div class="stories-wrapper">
+  <% @stories.each do |story| %>
+  <div class="story-card">
+    <h2><%= story.title %></h2>
+    <p>Créée le : <%= story.created_at.strftime("%A %-d %B %Y") %></p>
+    <p>Ecoutée <%= story.playcount %> fois</p>
+    <div class="story-card-bottom">
+      <div class="option-pictures-row">
+        <% story.options.each do |option| %>
+          <%= cl_image_tag(option.picture.key, width: 60, height: 60, class: "option-picture") %>
+        <% end %>
+      </div>
+      <div>
+        <%= link_to story_path(story) do %>
+        <div class="play-button-small">
+          <i class="fa-solid fa-circle-play"></i>
         </div>
-        <div>
-          <%= link_to story_path(story) do %>
-          <div class="play-button-small">
-            <i class="fa-solid fa-circle-play"></i>
-          </div>
-          <% end %>
-        </div>
+        <% end %>
       </div>
     </div>
-    <% end %>
   </div>
+  <% end %>
+</div>
 
-  <div class="bottom-buttons-wrapper">
-    <%= link_to "Créer une histoire", new_story_path, class: "btn btn-standard btn-large" %>
-  </div>
+<div class="bottom-buttons-wrapper">
+  <%= link_to "Créer une histoire", new_story_path, class: "btn btn-standard btn-large" %>
 </div>
