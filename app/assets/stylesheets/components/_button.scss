@@ -67,3 +67,13 @@
     width: 55px;
     height: 55px;
 }
+
+.light-play-button, .light-pause-button {
+  background: white;
+  color: $blue;
+  border: 1px solid rgba(0,0,0,0.1);
+  font-size: 12px;
+  width: 30px;
+  height: 30px;
+  padding: 4px;
+}
