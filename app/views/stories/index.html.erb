@@ -3,7 +3,7 @@
     <% @stories.each do |story| %>
     <div class="story-card">
       <h2><%= story.title %></h2>
-      <p>Créée le : <%= story.created_at.strftime("%A %-d %B %Y") %></p>
+      <p>Créée le : <%= story.created_at.strftime("%d/%m/%y") %></p>
       <p>Ecoutée <%= story.playcount %> fois</p>
       <div class="story-card-bottom">
         <div class="option-pictures-row">

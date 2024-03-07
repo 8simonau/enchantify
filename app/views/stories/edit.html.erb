@@ -11,7 +11,7 @@
       <%= b.label {
         b.radio_button +
         "<h2>#{b.object.name}</h2>".html_safe +
-        "<span>Créée le #{b.object.created_at.strftime("%A %-d %B %Y")}</span>".html_safe +
+        "<span>Créée le #{b.object.created_at.strftime("%d/%m/%y")}</span>".html_safe +
         "<span>Utilisée par #{b.object.stories.count} histoires</span>".html_safe
       } %>
     <% end %>
