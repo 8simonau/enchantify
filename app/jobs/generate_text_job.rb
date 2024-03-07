@@ -2,24 +2,24 @@ class GenerateTextJob < ApplicationJob
   queue_as :default
 
   ADDITIONAL_PARAMETERS = [
-    "C'est une histoire joyeuse",
-    "C'est une histoire qui fait un peu peur",
-    "C'est une histoire qui parle du pouvoir de l'amitié",
-    "C'est une histoire qui parle des relations parents-enfants",
-    "C'est une histoire qui parle d'apprentissage",
-    "C'est une histoire qui parle de grandir",
-    "C'est une histoire d'aventure",
-    "C'est une histoire qui fait découvrir des pays lointains",
-    "C'est une histoire qui fait rire",
-    "C'est une histoire un peu triste",
-    "C'est une histoire avec un personnage secondaire : un livre qui parle",
-    "C'est une histoire avec un personnage secondaire : un chat volant",
-    "C'est une histoire avec un personnage secondaire : un grand cheval",
-    "C'est une histoire avec un personnage secondaire : deux assiettes qui roulent",
-    "C'est une histoire avec des personnages secondaires : des jumeaux espiègles"
+    "joyeuse",
+    "qui fait un peu peur",
+    "qui parle du pouvoir de l'amitié",
+    "qui parle des relations parents-enfants",
+    "qui parle d'apprentissage",
+    "qui parle de grandir",
+    "d'aventure",
+    "qui fait découvrir des pays lointains",
+    "qui fait rire",
+    "un peu triste",
+    "avec un personnage secondaire : un livre qui parle",
+    "avec un personnage secondaire : un chat volant",
+    "avec un personnage secondaire : un grand cheval",
+    "avec un personnage secondaire : deux assiettes qui roulent",
+    "avec des personnages secondaires : des jumeaux espiègles"
   ]
 
-  def perform(story, token_count = 1500, prompt_count = 3)
+  def perform(story, token_count = 500, prompt_count = 4)
     # variables
     puts "get story options"
     options = story.options_hash
@@ -35,12 +35,12 @@ class GenerateTextJob < ApplicationJob
     principal, un environnement et un objet qui vous seront donnés en paramètres.
     Les histoires doivent commencer par une brève description du personnage
     principal. Le personnage est confronté à un défi et le surmonte grâce à ses
-    qualités et à son objet unique. #{additional_parameter}. La conclusion doit
-    être courte. Votre réponse est un objet .json fonctionnel avec 3 clés : un
-    titre (\"title\"), une liste de #{prompt_count} prompts (\"prompts\") qui
-    décrivent en 5 mots chacun les principales séquences de l'histoire (ces
-    chaînes seront utilisées pour prompter DALLE 3 et illustrer l'histoire) et
-    le texte (\"text\") qui doit contenir au moins 3 paragraphes.
+    qualités et à son objet unique. C'est une histoire #{additional_parameter}.
+    La conclusion doit être courte. Votre réponse est un objet .json fonctionnel
+    avec 3 clés : un titre (\"title\"), une liste de #{prompt_count} prompts
+    (\"prompts\") qui décrivent en 5 mots chacun les principales séquences de
+    l'histoire (ces chaînes seront utilisées pour prompter DALLE 3 et illustrer
+    l'histoire) et le texte (\"text\").
     STRING
 
     parameters = <<-STRING.squish
@@ -48,7 +48,7 @@ class GenerateTextJob < ApplicationJob
     - le personnage principal est : #{options["Personnage"]}. Il ou elle est
     jeune et un enfant peut s'y identifier.
     - l'aventure prend place ici : #{options["Lieu"]}.
-    - #{options["Personnage"]} a un objet : #{options["Objet"]} qui l'aide à
+    - #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
     accomplir ses objectifs.
     STRING
 
@@ -69,6 +69,9 @@ class GenerateTextJob < ApplicationJob
       ]
     }
 
+    puts preprompt
+    puts parameters
+
     # get OAI response
     puts "send request"
     response = Faraday.post(url) do |req|
@@ -82,9 +85,7 @@ class GenerateTextJob < ApplicationJob
     choice = JSON.parse(response.body)["choices"][0]
     content = choice["message"]["content"]
     content << "}" unless content[-1] == "}"
-    puts content
     content_hash = JSON.parse(content)
-    puts content_hash
     puts "content ok"
     title = content_hash["title"]
     text = content_hash["text"]
@@ -122,6 +123,7 @@ class GenerateTextJob < ApplicationJob
       story.save!
     end
 
+    #generate pictures
     prompt_array = JSON.parse(story.prompts)
     prompt_array.each do |p|
       GenerateImageJob.perform_later(story, p)

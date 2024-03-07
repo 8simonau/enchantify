@@ -5,7 +5,7 @@ class GenerateImageJob < ApplicationJob
     # Do something later
     preprompt = <<-STRING.squish
     Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
-    pinceau des illustrations. Celles-ci doivent être colorées et belles, et
+    crayon des illustrations. Celles-ci doivent être colorées et belles, et
     stimuler l'imagination des enfants.
     STRING
 
@@ -23,7 +23,7 @@ class GenerateImageJob < ApplicationJob
     body = {
       "model": "dall-e-3",
       "prompt": full_prompt,
-      "size": "1024x1024"
+      "size": "1024x1792"
     }
 
     response = Faraday.post(url) do |req|
