@@ -1,10 +1,10 @@
-<div class="navbar navbar-expand-sm navbar-light bg-primary">
+<div class="navbar navbar-expand-sm navbar-dark bg-primary">
   <div class="container-fluid">
     <%= link_to root_path, class: "navbar-brand" do %>
       <%= image_tag "logo_enchantify_square_white.png", width: 40 %>
     <% end %>
 
-    <h2><%= @title %></h2>
+    <span class="text-white fs-1"><%= @title %></span>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
@@ -24,9 +24,9 @@
           <li class="nav-item">
             <%= link_to "Voix", voices_path, class: "nav-link" %>
           </li>
-          <div class="nav-item">
-            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
-          </div>
+          <li class="nav-item">
+            <%= link_to "Log out", destroy_user_session_path, data: {turbo_method: :delete}, class: "nav-link" %>
+          </li>
 
         <% else %>
           <li class="nav-item">
