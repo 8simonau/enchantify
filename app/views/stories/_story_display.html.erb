@@ -1,5 +1,5 @@
 <div class="story-show" data-controller="picture-display" data-picture-display-playing-value="false">
-  <h1><%= @story.title %></h1>
+  <h1 class="mb-3"><%= @story.title %></h1>
   <div data-picture-display-target="pictureContainer" class="story-picture-container">
     <% @story.pictures.each do |p| %>
       <%= cl_image_tag(p.key,
