@@ -12,7 +12,41 @@
         b.radio_button +
         "<h2>#{b.object.name}</h2>".html_safe +
         "<span>Créée le #{b.object.created_at.strftime("%d/%m/%y")}</span>".html_safe +
-        "<span>Utilisée par #{b.object.stories.count} histoires</span>".html_safe
+        "<span>Utilisée par #{b.object.stories.count} histoires</span>".html_safe +
+
+        "<div data-controller='audio-player'>
+          <div class='media-controls'>
+
+            <div class='media-buttons'>
+
+              <button
+                type='button'
+                class='play-button media-button'
+                data-action='click->audio-player#play'
+                data-audio-player-target='playButton'>
+                <i class='fa-solid fa-play'></i>
+              </button>
+
+              <button
+                type='button'
+                class='pause-button media-button'
+                hidden
+                data-action='click->audio-player#pause'
+                data-audio-player-target='pauseButton'>
+                <i class='fas fa-pause'></i>
+              </button>
+
+            </div>
+
+          </div>
+        <audio
+          hidden
+          secure='true'
+          controls='controls'
+          data-audio-player-target='audio'
+          src=#{url_for(b.object.audio)}>
+        </audio>
+        </div>".html_safe
       } %>
     <% end %>
     <div class="bottom-buttons-wrapper">
