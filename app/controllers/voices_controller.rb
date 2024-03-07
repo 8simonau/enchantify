@@ -1,10 +1,12 @@
 class VoicesController < ApplicationController
   def index
     @voices = Voice.all
+    @title = "Voix"
   end
 
   def new
     @voice = Voice.new
+    @title = "Voix"
   end
 
   def create

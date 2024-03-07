@@ -3,6 +3,7 @@ class ChildrenController < ApplicationController
     @children = current_user.children.all
     @new_child = Child.new
     @background = "grotto"
+    @title = "Mes enfants"
   end
 
   def new

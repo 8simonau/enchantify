@@ -9,6 +9,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.update(playcount: @story.playcount + 1)
     @recent_stories = Story.last(2)
+    @title = "Mon histoire"
   end
 
   def new
@@ -28,6 +29,7 @@ class StoriesController < ApplicationController
   def edit
     @story = Story.find(params[:id])
     @voices = Voice.all
+    @title = "Nouvelle histoire"
   end
 
   def update
