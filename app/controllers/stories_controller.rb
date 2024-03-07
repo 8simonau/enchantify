@@ -8,11 +8,7 @@ class StoriesController < ApplicationController
   def show
     @story = Story.find(params[:id])
     @story.update(playcount: @story.playcount + 1)
-
-    # respond_to do |format|
-    #   format.html
-    #   format.json { render json: @story.to_json }
-    # end
+    @recent_stories = Story.last(2)
   end
 
   def new
