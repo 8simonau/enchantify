@@ -13,6 +13,11 @@
   <body>
     <% if controller_name == "pages" %>
       <%= yield %>
+    <% elsif @title == "Mon histoire" %>
+      <%= render "shared/navbar" %>
+      <div class="stories-display-container">
+        <%= yield %>
+      </div>
     <% else %>
       <%= render "shared/navbar" %>
       <div class="main-container" id=<%= "#{@background}-background" %>>

@@ -7,7 +7,7 @@
     <div class="story-card-bottom">
       <div class="option-pictures-row">
         <% story.options.each do |option| %>
-          <%= cl_image_tag(option.picture.key, width: 60, height: 60, class: "option-picture") %>
+          <%= cl_image_tag(option.picture.key, width: 60, height: 60, secure: true, class: "option-picture") %>
         <% end %>
       </div>
       <div>

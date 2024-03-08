@@ -8,7 +8,8 @@ export default class extends Controller {
   }
 
   connect() {
-    this.pictureContainerTarget.firstElementChild.style.display = "block";
+    console.log(this.pictureContainerTarget.firstElementChild.classList);
+    this.pictureContainerTarget.firstElementChild.classList.remove("story-picture-hidden");
   }
 
   initialize() {
@@ -29,8 +30,8 @@ export default class extends Controller {
       if (this.playingValue == false || this.pictureIndex + 1 == this.pictureTargets.length) {
         return
       }
-      this.pictureTargets[this.pictureIndex].style.display = "none";
-      this.pictureTargets[this.pictureIndex + 1].style.display = "block";
+      // this.pictureTargets[this.pictureIndex].classList.add("story-picture-hidden");
+      this.pictureTargets[this.pictureIndex + 1].classList.remove("story-picture-hidden")
       this.pictureIndex += 1
       },
       ((this.audioTarget.duration * 1000) / 4) + 1

@@ -1,5 +1,11 @@
 .audio-player {
-  margin-top: 40px;
+  position: fixed;
+  bottom: 90px;
+  left: 45px;
+  background: rgba(255, 255, 255, 0.95);
+  border-radius: 12px;
+  padding: 12px;
+  width: 300px;
 }
 
 .media-controls {

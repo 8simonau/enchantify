@@ -1,3 +1,13 @@
+// TODO display this container when reading a story
+.stories-display-container {
+  padding-top: 66px;
+  padding-left: 0px;
+  padding-right: 0px;
+  background-size: cover;
+  background-position: center;
+  min-height: 844px;
+}
+
 .stories-wrapper {
   display: flex;
   flex-direction: column;
@@ -42,4 +52,39 @@
 .small-story-card-bottom {
   display: flex;
   justify-content: space-between;
+}
+
+.story-picture-container {
+  width: 100%;
+  padding: 0px;
+  position: fixed;
+}
+
+.story-picture {
+  position: fixed;
+  height: 100%;
+  margin: auto;
+  opacity: 1;
+  transition: opacity 3s;
+}
+
+.story-picture-hidden {
+  opacity: 0;
+  height: 0px;
+  transition: opacity 3s;
+}
+
+.story-picture-final {
+  border-radius: 12px;
+  width: 100%;
+}
+
+.story-title {
+  font-weight: bold;
+  color: $primary;
+  z-index: 1;
+  margin: 20px auto;
+  padding: 12px;
+  background-color: rgba(255, 255, 255, 0.96);
+  border-radius: 12px;
 }

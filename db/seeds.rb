@@ -39,7 +39,7 @@ princesse.save!
 
 patate = Option.new(category: "Personnage", name: "La Patate")
 patate.picture.attach(io: File.open("app/assets/images/patate_picture.png"), filename: "patate.png", content_type: "image/png")
-patate.description = "Dessin d une pomme de terre amusante, pas très propre et un peu disgracieuse. Style bande dessinée, textures grossières, images pastel, faible contraste. Un seul personnage dans l image et en un seul exemplaire."
+patate.description = "Dessin d une pomme de terre amusante, un peu terreuse et ébouriffée. Style bande dessinée, textures grossières, images pastel, faible contraste. Un seul personnage dans l image et en un seul exemplaire."
 patate.save!
 
 renard = Option.new(category: "Personnage", name: "Le Renard")
@@ -81,22 +81,22 @@ underwater_city.save!
 
 puts "generate 4 items"
 
-hat = Option.new(category: "Objet", name: "Chapeau")
+hat = Option.new(category: "Objet", name: "Le Chapeau")
 hat.picture.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
 hat.description = "placeholder"
 hat.save!
 
-bubble_gun = Option.new(category: "Objet", name: "Pistomousse")
+bubble_gun = Option.new(category: "Objet", name: "Le Pistomousse")
 bubble_gun.picture.attach(io: File.open("app/assets/images/bubblegun_picture.png"), filename: "BubbleGun.png", content_type: "image/png")
 bubble_gun.description = "placeholder"
 bubble_gun.save!
 
-dress = Option.new(category: "Objet", name: "Robe")
+dress = Option.new(category: "Objet", name: "La Robe")
 dress.picture.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "Dress.png", content_type: "image/png")
 dress.description = "placeholder"
 dress.save!
 
-sword = Option.new(category: "Objet", name: "Epée de feu")
+sword = Option.new(category: "Objet", name: "L'Epée de feu")
 sword.picture.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
 sword.description = "placeholder"
 sword.save!
