@@ -112,17 +112,18 @@ voice.save!
 
 puts "generate 1 story"
 
-story = Story.new(title: "Blanche-Neige",
-                  text: "Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
+story = Story.new(title: "La Princesse et l'Epée de Feu",
+                  text: "Il était une fois une jeune Princesse courageuse vivant dans une petite cabane en lisière de la Forêt. Armée de son épée de feu magique, elle parcourait les sombres bois à la recherche d'aventures. Un jour, un dragon féroce bloqua son chemin, crachant des flammes menaçantes. La Princesse, sans hésitation, brandit son épée de feu qui brillait d'une lueur étincelante. Le dragon, ébloui par la lumière, s'enfuit à jamais. Reconnaissante, une licorne apparut et offrit son amitié à la Princesse. Ensemble, elles explorèrent la Forêt, découvrant ses secrets anciens et vivant mille et une aventures extraordinaires.",
                   options: [princesse, forest, sword],
-                  prompts: "['beginning', 'danger', 'victory']",
+                  prompts: "[\"Princesse courageuse affronte dragon féroce\", \"Epée de feu brille victorieusement\", \"Forêt mystérieuse cache secrets anciens\", \"Amitié avec licorne protectrice douce\"]",
                   playcount: 0,
                   is_favorite: false)
 story.voice = voice
 story.child = emma
 
-story.pictures.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
-story.pictures.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "dress.png", content_type: "image/png")
-story.pictures.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/princess_dragon.png"), filename: "dragon.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/princess_sword.png"), filename: "sword.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/princess_forest.png"), filename: "forest.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/princess_unicorn.png"), filename: "unicorn.png", content_type: "image/png")
 story.audio.attach(io: File.open("app/assets/audio/story_sample.mp3"), filename: "blancheneige.mp3", content_type: "audio")
 story.save!
