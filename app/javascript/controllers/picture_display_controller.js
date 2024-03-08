@@ -2,22 +2,17 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="story-display"
 export default class extends Controller {
-  static targets = ["pictureContainer", "picture"];
+  static targets = ["pictureContainer", "picture", "audio"];
   static values = {
     playing: Boolean
   }
 
   connect() {
-    this.getAudioDuration()
     this.pictureContainerTarget.firstElementChild.style.display = "block";
   }
 
   initialize() {
     this.pictureIndex = 0
-  }
-
-  getAudioDuration() {
-    const audio = document.getElementById("audio-player")
   }
 
   play(event) {
@@ -26,7 +21,6 @@ export default class extends Controller {
   };
 
   pause() {
-    console.log("paused");
     this.playingValue = false
   }
 
@@ -35,12 +29,11 @@ export default class extends Controller {
       if (this.playingValue == false || this.pictureIndex + 1 == this.pictureTargets.length) {
         return
       }
-      console.log(this.pictureIndex);
       this.pictureTargets[this.pictureIndex].style.display = "none";
       this.pictureTargets[this.pictureIndex + 1].style.display = "block";
       this.pictureIndex += 1
       },
-      10000
+      ((this.audioTarget.duration * 1000) / 4) + 1
     )
   }
 }

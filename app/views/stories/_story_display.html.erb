@@ -6,7 +6,6 @@
         secure: true,
         # width: 290,
         height: 450,
-        # gravity: "face",
         # crop: "fill",
         class: "story-picture story-picture-hidden",
         id: "audio-player",
@@ -79,6 +78,7 @@
       timeupdate->audio-player#timeUpdate
       ended->story-status#displayEndScreen"
     data-audio-player-target="audio"
+    data-picture-display-target="audio"
     src=<%= url_for(@story.audio) %>>
   </audio>
   </div>
