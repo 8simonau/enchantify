@@ -16,11 +16,13 @@ class GenerateTextJob < ApplicationJob
     ],
 
     character: [
-      "avec un personnage secondaire : un livre qui parle",
-      "avec un personnage secondaire : un chat volant",
-      "avec un personnage secondaire : un grand cheval",
-      "avec un personnage secondaire : deux assiettes qui roulent",
-      "avec des personnages secondaires : des jumeaux espiègles"
+      "un livre qui parle",
+      "un chat volant",
+      "un grand cheval",
+      "deux assiettes qui roulent",
+      "des jumeaux espiègles",
+      "un croissant délicieux",
+      "une magicienne puissante"
     ],
 
     quality: [
@@ -32,13 +34,12 @@ class GenerateTextJob < ApplicationJob
     ]
   }
 
-  def perform(story, token_count = 500, prompt_count = 4)
+  def perform(story, token_count = 600, prompt_count = 4)
     # variables
     options = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
     theme = ADDITIONAL_PARAMETERS[:theme].sample
     secondary_character = ADDITIONAL_PARAMETERS[:character].sample
-    theme = ADDITIONAL_PARAMETERS[:theme].sample
     quality = ADDITIONAL_PARAMETERS[:quality].sample
 
     preprompt = <<-STRING.squish
@@ -64,14 +65,13 @@ class GenerateTextJob < ApplicationJob
     Elle montre l'importance de cette qualité : #{quality}.
     Le personnage principal est : #{options["Personnage"]}. Il ou elle est
     jeune et un enfant peut s'y identifier.
-    L'aventure prend place ici : #{options["Lieu"]}.
+    L'aventure prend place ici : #{options["Lieu"]}, mais l'action peut s'en éloigner.
     #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
     accomplir ses objectifs.
     STRING
 
     puts preprompt
     puts parameters
-    return
 
     # build request body
     body = {

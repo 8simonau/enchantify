@@ -5,13 +5,15 @@ class GenerateImageJob < ApplicationJob
     # Do something later
     preprompt = <<-STRING.squish
     Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
-    pastel des illustrations de grande qualité. Celles-ci doivent être colorées et belles, et
-    stimuler l'imagination des enfants. Les images sont en format portrait.
+    pastel dans un style moderne et coloré des illustrations de grande qualité.
+    Celles-ci doivent être colorées et belles, et stimuler l'imagination des
+    enfants. Les images sont toujours au format portrait vertical.
+    Voici l'histoire : #{story.text}
     STRING
 
     picture_description = " Voici à quoi ressemble le personnage principal : " + story.character_description
 
-    story.options_hash.each do |k, v|
+    story.options_hash.reject { |k ,v| k == "Personnage" }.each do |k, v|
       picture_description << " L'illustration contient un #{k} : #{v}."
     end
 
