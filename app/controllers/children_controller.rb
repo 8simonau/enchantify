@@ -14,7 +14,7 @@ class ChildrenController < ApplicationController
     @child = Child.new(child_params)
     @child.user = current_user
     unless @child.avatar.attached?
-      @child.avatar.attach(io: File.open("app/assets/images/avatar.png"), filename: "avatar.png", content_type: "image/png")
+      @child.avatar.attach(io: File.open("app/assets/images/avatar.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
     end
     if @child.save
       flash[:success] = "Child profile created"
