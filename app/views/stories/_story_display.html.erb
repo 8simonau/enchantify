@@ -1,13 +1,11 @@
 <div class="story-show" data-controller="picture-display" data-picture-display-playing-value="false">
-  <h1 class="mb-3"><%= @story.title %></h1>
+  <h1 class="story-title"><%= @story.title %></h1>
   <div data-picture-display-target="pictureContainer" class="story-picture-container">
     <% @story.pictures.each do |p| %>
       <%= cl_image_tag(p.key,
         secure: true,
-        # width: 290,
-        height: 450,
-        # gravity: "face",
-        # crop: "fill",
+        quality: 20,
+        width: "390px",
         class: "story-picture story-picture-hidden",
         id: "audio-player",
         data: { picture_display_target: "picture"}) %>
@@ -79,6 +77,7 @@
       timeupdate->audio-player#timeUpdate
       ended->story-status#displayEndScreen"
     data-audio-player-target="audio"
+    data-picture-display-target="audio"
     src=<%= url_for(@story.audio) %>>
   </audio>
   </div>

@@ -7,6 +7,6 @@
     <div class="option-tickmark hidden-tickmark" data-option-selection-target="tickmarks">
       <i class="fa-solid fa-circle-check"></i>
     </div>
-    <%= cl_image_tag(option.picture.key, width: 80) %>
+    <%= cl_image_tag(option.picture.key, secure: true, width: 80) %>
   </div>
 <% end %>
