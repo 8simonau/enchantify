@@ -6,7 +6,13 @@
     <div class="story-card-bottom">
       <div class="option-pictures-row">
         <% story.options.each do |option| %>
-          <%= cl_image_tag(option.picture.key, width: 60, height: 60, secure: true, class: "option-picture") %>
+          <%= cl_image_tag(option.picture.key,
+            transformation: [
+              {height: "60", width: "60", crop: "fill"},
+              {:quality=>"auto", :fetch_format=>:auto}
+              ],
+            secure: true,
+            class: "option-picture") %>
         <% end %>
       </div>
         <%= link_to story_path(story), class: "play-link" do %>
