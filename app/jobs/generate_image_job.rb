@@ -6,17 +6,16 @@ class GenerateImageJob < ApplicationJob
     preprompt = <<-STRING.squish
     Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
     crayon des illustrations. Celles-ci doivent être colorées et belles, et
-    stimuler l'imagination des enfants. Les images sont des portraits faits pour
-    être affichés sur un écran de smartphone.
+    stimuler l'imagination des enfants. Les images sont en format portrait.
     STRING
 
+    picture_description = " Voici à quoi ressemble le personnage principal : " + story.character_description
+
     story.options_hash.each do |k, v|
-      preprompt << " L'illustration contient un #{k} : #{v}."
+      picture_description << " L'illustration contient un #{k} : #{v}."
     end
 
-    character_description = " Voici à quoi ressemble le personnage principal : " + story.character_description
-
-    full_prompt = preprompt + character_description + " Voici l'action à illustrer : " + prompt
+    full_prompt = preprompt + picture_description + " Voici l'action à illustrer : " + prompt
 
     puts full_prompt
 
