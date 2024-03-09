@@ -48,4 +48,13 @@ export default class extends Controller {
       this.unfavoriteTarget.hidden = false
     }
   }
+
+  setPlayTime(e) {
+  let posX = e.pageX - this.progressBarTarget.getBoundingClientRect().left;
+  const totalWidth = this.progressBarTarget.offsetWidth
+  const playPercent = posX / totalWidth
+  const duration = this.audioTarget.duration
+  this.audioTarget.currentTime = playPercent * duration
+  this.audioTarget.play()
+  }
 }

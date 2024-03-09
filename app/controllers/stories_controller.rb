@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   def index
-    @stories = Story.all
+    @stories = Story.all.order(created_at: :desc)
     @title = "Mes histoires"
     @background = "planet"
   end
@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
     @background = "loading"
     @story = Story.find(params[:id])
     @story.update(playcount: @story.playcount + 1)
-    @recent_stories = Story.last(2)
+    @recent_stories = Story.all.order(created_at: :desc)[1..2]
     @title = "Mon histoire"
   end
 

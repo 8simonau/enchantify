@@ -1,107 +1,117 @@
-puts "generate one user and 5 children"
+puts "generate one user and 2 children"
 
 
 john = User.create(first_name: "John", last_name: "Papa", email: "john@mail.com", password: ENV.fetch("JOHN_MDP"), admin: true)
 
 emma = Child.new(first_name: "Emma", birth_date: "01/05/2018", story_duration: 120)
-emma.avatar.attach(io: File.open("app/assets/images/emma_picture.jpg"), filename: "emma.png", content_type: "image/png")
+emma.avatar.attach(io: File.open("app/assets/images/emma_picture.jpg"), filename: "emma.jpg", content_type: "image/jpg")
 emma.user = john
 emma.save!
 
 john.update(active_child: emma)
 
 matheo = Child.new(first_name: "Matheo", birth_date: "01/05/2018", story_duration: 90)
-matheo.avatar.attach(io: File.open("app/assets/images/matheo_picture.jpg"), filename: "matheo.png", content_type: "image/png")
+matheo.avatar.attach(io: File.open("app/assets/images/matheo_picture.jpg"), filename: "matheo.jpg", content_type: "image/jpg")
 matheo.user = john
 matheo.save!
 
-mike = Child.new(first_name: "Mike", birth_date: "03/03/2020", story_duration: 60)
-mike.avatar.attach(io: File.open("app/assets/images/mike_picture.jpg"), filename: "mike.png", content_type: "image/png")
-mike.user = john
-mike.save!
+puts "generate 6 characters"
 
-joelle = Child.new(first_name: "Joelle", birth_date: "01/01/2017", story_duration: 100)
-joelle.avatar.attach(io: File.open("app/assets/images/joelle_picture.jpg"), filename: "joelle.png", content_type: "image/png")
-joelle.user = john
-joelle.save!
-
-yann = Child.new(first_name: "Yann", birth_date: "01/10/2020", story_duration: 50)
-yann.avatar.attach(io: File.open("app/assets/images/yann_picture.jpg"), filename: "yann.png", content_type: "image/png")
-yann.user = john
-yann.save!
-
-puts "generate 5 characters"
-
-princesse = Option.new(category: "Personnage", name: "La Princesse")
-princesse.picture.attach(io: File.open("app/assets/images/princesse_picture.webp"), filename: "princesse.png", content_type: "image/png")
-princesse.description = "Peinture numérique d une élégante, gracieuse et très jeune princesse aux cheveux longs. Elle porte une robe rose et une couronne avec des proportions stylisées, des textures lisses, et un contraste élevé avec une seul fois le meme personnage dans l image."
+princesse = Option.new(category: "Personnage", name: "Princesse")
+princesse.picture.attach(io: File.open("app/assets/images/princess_picture.jpg"), filename: "princesse.jpg", content_type: "image/jpg")
+princesse.description = "Dessin au pastel d une élégante et jeune princesse aux cheveux mi longs. Elle porte une robe violette et un diadème étincelant."
 princesse.save!
 
-patate = Option.new(category: "Personnage", name: "La Patate")
-patate.picture.attach(io: File.open("app/assets/images/patate_picture.png"), filename: "patate.png", content_type: "image/png")
-patate.description = "Dessin d une pomme de terre amusante, pas très propre et un peu disgracieuse. Style bande dessinée, textures grossières, images pastel, faible contraste. Un seul personnage dans l image et en un seul exemplaire."
+patate = Option.new(category: "Personnage", name: "Patate")
+patate.picture.attach(io: File.open("app/assets/images/potato_picture.jpg"), filename: "patate.jpg", content_type: "image/jpg")
+patate.description = "Dessin au pastel dans un style de conte pour enfant, en couleur d une pomme de terre animée et boute en train, un peu ébouriffée."
 patate.save!
 
-renard = Option.new(category: "Personnage", name: "Le Renard")
-renard.picture.attach(io: File.open("app/assets/images/renard_picture.png"), filename: "renard.png", content_type: "image/png")
-renard.description = "Dessin style manga de grande qualité et complètement colorié d un renard roux, mince, élégant et mystérieux, avec de grands yeux expressifs. On voit son corps entier de profil, en mouvement, légèrement flou. Couleurs et traits légers, un seul personnage sur l image en un seul exemplaire."
+renard = Option.new(category: "Personnage", name: "Renard")
+renard.picture.attach(io: File.open("app/assets/images/fox_picture.jpg"), filename: "renard.jpg", content_type: "image/jpg")
+renard.description = "Dessin au pastel de grande qualité, dans un style de conte pour enfant, d un grand renard roux, élégant et mystérieux, avec de petits yeux expressifs."
 renard.save!
 
-lutin = Option.new(category: "Personnage", name: "Le Lutin")
-lutin.picture.attach(io: File.open("app/assets/images/lutin_picture.webp"), filename: "lutin.png", content_type: "image/png")
-lutin.description = "Peinture numérique d un lutin coquin et malin. il porte une tenue verte et un panier remplie de gourmandises avec des proportions stylisées, des textures lisses, et un contraste élevé avec un seul personnage dans l image."
+lutin = Option.new(category: "Personnage", name: "Lutin")
+lutin.picture.attach(io: File.open("app/assets/images/elf_picture.jpg"), filename: "lutin.jpg", content_type: "image/jpg")
+lutin.description = "Dessin au pastel de grande qualité, dans un style de conte pour enfant, d un lutin malicieux équipé d une belle tenue verte et d un chapeau."
 lutin.save!
 
-ninja = Option.new(category: "Personnage", name: "Le Ninja")
-ninja.picture.attach(io: File.open("app/assets/images/ninja_picture.webp"), filename: "ninja.png ", content_type: "image/png")
-ninja.description = "Peinture numérique d un ninja souriant et discret. il porte une tenue noire avec une cagoule noire et un nunchaku en bois, accomplissant une acrobatie avec des proportions stylisées, des textures lisses, et un contraste élevé avec un seul personnage dans l image."
+ninja = Option.new(category: "Personnage", name: "Ninja")
+ninja.picture.attach(io: File.open("app/assets/images/ninja_picture.jpg"), filename: "ninja.jpg ", content_type: "image/jpg")
+ninja.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d un ninja silencieux équipé d une tenue bleu nuit."
 ninja.save!
 
-puts "generate 4 places"
+ecoliere = Option.new(category: "Personnage", name: "Ecolière")
+ecoliere.picture.attach(io: File.open("app/assets/images/schoolgirl_picture.jpg"), filename: "ecoliere.jpg ", content_type: "image/jpg")
+ecoliere.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d une écolière sérieuse et enthousiaste qui se déplace à vélo. Elle porte un uniforme et un cartable."
+ecoliere.save!
+
+puts "generate 6 places"
 
 forest = Option.new(category: "Lieu", name: "Forêt")
-forest.picture.attach(io: File.open("app/assets/images/forest_picture.png"), filename: "forest.png ", content_type: "image/png")
-forest.description = "placeholder"
+forest.picture.attach(io: File.open("app/assets/images/forest_picture.jpg"), filename: "forest.jpg ", content_type: "image/jpg")
+forest.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d une foret luxuriante et magique, fourmillant de plantes et d animaux dissimulés sous les feuilles et dans les branches."
 forest.save!
 
-castle = Option.new(category: "Lieu", name: "Château")
-castle.picture.attach(io: File.open("app/assets/images/castle_picture.png"), filename: "castle.png ", content_type: "image/png")
-castle.description = "placeholder"
-castle.save!
-
-boat = Option.new(category: "Lieu", name: "Bateau")
-boat.picture.attach(io: File.open("app/assets/images/boat_picture.png"), filename: "Boat.png ", content_type: "image/png")
-boat.description = "placeholder"
-boat.save!
-
 underwater_city = Option.new(category: "Lieu", name: "Cité sous la mer")
-underwater_city.picture.attach(io: File.open("app/assets/images/underwatercity_picture.png"), filename: "UnderwaterCity.png ", content_type: "image/png")
-underwater_city.description = "placeholder"
+underwater_city.picture.attach(io: File.open("app/assets/images/underwatercity_picture.jpg"), filename: "UnderwaterCity.jpg ", content_type: "image/jpg")
+underwater_city.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d une petite cité sous marine posée sur le sable, aux maisons et aux palais faits de coquillages, dont les habitants sont de petits poissons colorés."
 underwater_city.save!
 
-puts "generate 4 items"
+castle = Option.new(category: "Lieu", name: "Château")
+castle.picture.attach(io: File.open("app/assets/images/castle_picture.jpg"), filename: "castle.jpg ", content_type: "image/jpg")
+castle.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d un chateau fantastique, monumental et mysterieux, avec de nombreuses tours à créneaux, en pierre blanche et entouré par des champs à perte de vue."
+castle.save!
+
+mountain = Option.new(category: "Lieu", name: "Montagne")
+mountain.picture.attach(io: File.open("app/assets/images/mountain_picture.jpg"), filename: "mountain.jpg ", content_type: "image/jpg")
+mountain.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d une chaine de montagnes enneigées sous un ciel gris, avec des chemins, des grottes et de petits villages disséminés."
+mountain.save!
+
+boat = Option.new(category: "Lieu", name: "Bateau")
+boat.picture.attach(io: File.open("app/assets/images/boat_picture.jpg"), filename: "boat.jpg ", content_type: "image/jpg")
+boat.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d un navire à voile penché sur l eau par le vent, se déplaçant rapidement sur un ocean vert aux vagues formées. Une île aux hautes falaises est à peine visible dans la brume alors que le soleil se couche."
+boat.save!
+
+moon = Option.new(category: "Lieu", name: "Lune")
+moon.picture.attach(io: File.open("app/assets/images/moon_picture.jpg"), filename: "moon.jpg ", content_type: "image/jpg")
+moon.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité de la surface d une lune aménagée et peuplée de créatures diverses, étranges et amusantes dans leur habitat naturel."
+moon.save!
+
+puts "generate 6 items"
 
 hat = Option.new(category: "Objet", name: "Chapeau")
-hat.picture.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
-hat.description = "placeholder"
+hat.picture.attach(io: File.open("app/assets/images/hat_picture.jpg"), filename: "hat.jpg", content_type: "image/jpg")
+hat.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d un grand et haut chapeau en feutre vert un peu mou, avec un bandeau en cuir, une clochette et des plumes rouges vif. Le chapeau est magique et a des pouvoirs mystérieux."
 hat.save!
 
-bubble_gun = Option.new(category: "Objet", name: "Pistomousse")
-bubble_gun.picture.attach(io: File.open("app/assets/images/bubblegun_picture.png"), filename: "BubbleGun.png", content_type: "image/png")
-bubble_gun.description = "placeholder"
+bubble_gun = Option.new(category: "Objet", name: "Pistobulle")
+bubble_gun.picture.attach(io: File.open("app/assets/images/bubblegun_picture.jpg"), filename: "BubbleGun.jpg", content_type: "image/jpg")
+bubble_gun.description = "Dessin au pastel dans un style de conte pour enfant de grande qualité d un pistolet à bulles pour enfant, on voit des bulles multicolores et irisées autour de l objet."
 bubble_gun.save!
 
-dress = Option.new(category: "Objet", name: "Robe")
-dress.picture.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "Dress.png", content_type: "image/png")
-dress.description = "placeholder"
-dress.save!
+shirt = Option.new(category: "Objet", name: "Chemise")
+shirt.picture.attach(io: File.open("app/assets/images/shirt_picture.jpg"), filename: "Shirt.jpg", content_type: "image/jpg")
+shirt.description = "Un dessin au pastel dans un style de conte pour enfant de grande qualité d une chemise unisexe pour enfant, avec des motifs multiples et bigarrés, flottant en l air au milieu d autres vetements magiques."
+shirt.save!
 
 sword = Option.new(category: "Objet", name: "Epée de feu")
-sword.picture.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
-sword.description = "placeholder"
+sword.picture.attach(io: File.open("app/assets/images/sword_picture.jpg"), filename: "sword.jpg", content_type: "image/jpg")
+sword.description = "Un dessin au pastel dans un style de conte pour enfant de grande qualité d une epee-jouet animée et entourée de flammes bleues, dans une cave sombre recelant beaucoup d autres trésors étincelants."
 sword.save!
 
-puts "generate 1 voice"
+crystal_ball = Option.new(category: "Objet", name: "Boule de cristal")
+crystal_ball.picture.attach(io: File.open("app/assets/images/crystal_ball_picture.jpg"), filename: "crystalBall.jpg", content_type: "image/jpg")
+crystal_ball.description = "dessin au pastel dans un style de conte pour enfant de grande qualité d une boule de cristal brillante montrant un monde lointain, posée sur une table dans une pièce sombre chauffée par une grande cheminée."
+crystal_ball.save!
+
+stick = Option.new(category: "Objet", name: "Bâton magique")
+stick.picture.attach(io: File.open("app/assets/images/stick_picture.png"), filename: "stick.png", content_type: "image/png")
+stick.description = "Un dessin au pastel dans un style de conte pour enfant de grande qualité d un baton de marche droit, noueux et sec, surmonté d une poignée en corne. Il est posé sur une table basse dans une taverne enfumée. Le baton peut marcher et seul et guider son propriétaire."
+stick.save!
+
+puts "generate 2 voices"
 
 # Emily's voice from Eleven Labs
 voice = Voice.new(name: "Emily",
@@ -110,19 +120,27 @@ voice.user = john
 voice.audio.attach(io: File.open("app/assets/audio/emily_sample.mp3"), filename: "emily_sample.mp3", content_type: "audio")
 voice.save!
 
+# Thomas's voice from Eleven Labs
+voice = Voice.new(name: "Thomas",
+                  token: "GBv7mTt0atIp3Br8iCZE")
+voice.user = john
+voice.audio.attach(io: File.open("app/assets/audio/thomas_sample.mp3"), filename: "thomas_sample.mp3", content_type: "audio")
+voice.save!
+
 puts "generate 1 story"
 
-story = Story.new(title: "Blanche-Neige",
-                  text: "Une reine était assise à sa fenêtre encadrée de bois d'ébène et cousait. Tout en tirant l'aiguille, elle regardait voler les blancs flocons. Elle se piqua au doigt et trois gouttes de sang tombèrent sur la neige. Ce rouge sur ce blanc faisait si bel effet qu'elle se dit : « Si seulement j'avais un enfant aussi blanc que la neige, aussi rose que le sang, aussi noir que le bois de ma fenêtre ! » Peu de temps après, une fille lui naquit ; elle était blanche comme neige, rose comme sang et ses cheveux étaient noirs comme de l'ébène. On l'appela Blanche-Neige.",
+story = Story.new(title: "La Princesse et l'Epée de Feu",
+                  text: "Il était une fois une jeune Princesse courageuse vivant dans une petite cabane en lisière de la Forêt. Armée de son épée de feu magique, elle parcourait les sombres bois à la recherche d'aventures. Un jour, un dragon féroce bloqua son chemin, crachant des flammes menaçantes. La Princesse, sans hésitation, brandit son épée de feu qui brillait d'une lueur étincelante. Le dragon, ébloui par la lumière, s'enfuit à jamais. Reconnaissante, une licorne apparut et offrit son amitié à la Princesse. Ensemble, elles explorèrent la Forêt, découvrant ses secrets anciens et vivant mille et une aventures extraordinaires.",
                   options: [princesse, forest, sword],
-                  prompts: "['beginning', 'danger', 'victory']",
+                  prompts: "[\"Princesse courageuse affronte dragon féroce\", \"Epée de feu brille victorieusement\", \"Forêt mystérieuse cache secrets anciens\", \"Amitié avec licorne protectrice douce\"]",
                   playcount: 0,
                   is_favorite: false)
 story.voice = voice
 story.child = emma
 
-story.pictures.attach(io: File.open("app/assets/images/sword_picture.png"), filename: "sword.png", content_type: "image/png")
-story.pictures.attach(io: File.open("app/assets/images/dress_picture.png"), filename: "dress.png", content_type: "image/png")
-story.pictures.attach(io: File.open("app/assets/images/hat_picture.png"), filename: "hat.png", content_type: "image/png")
+story.pictures.attach(io: File.open("app/assets/images/princess_dragon.jpg"), filename: "dragon.jpg", content_type: "image/jpg")
+story.pictures.attach(io: File.open("app/assets/images/princess_sword.jpg"), filename: "sword.jpg", content_type: "image/jpg")
+story.pictures.attach(io: File.open("app/assets/images/princess_forest.jpg"), filename: "forest.jpg", content_type: "image/jpg")
+story.pictures.attach(io: File.open("app/assets/images/princess_unicorn.jpg"), filename: "unicorn.jpg", content_type: "image/jpg")
 story.audio.attach(io: File.open("app/assets/audio/story_sample.mp3"), filename: "blancheneige.mp3", content_type: "audio")
 story.save!

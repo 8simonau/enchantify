@@ -10,9 +10,51 @@
     ) do |b| %>
       <%= b.label {
         b.radio_button +
-        "<h2>#{b.object.name}</h2>".html_safe +
-        "<span>Créée le #{b.object.created_at.strftime("%A %-d %B %Y")}</span>".html_safe +
-        "<span>Utilisée par #{b.object.stories.count} histoires</span>".html_safe
+        "
+
+          <div>
+            <div class='d-flex'>
+
+              <div data-controller='audio-player'>
+                <div class='media-controls'>
+
+                  <div class='media-buttons'>
+
+                    <button
+                      type='button'
+                      class='light-play-button media-button'
+                      data-action='click->audio-player#play'
+                      data-audio-player-target='playButton'>
+                      <i class='fa-solid fa-play'></i>
+                    </button>
+
+                    <button
+                      type='button'
+                      class='light-pause-button media-button'
+                      hidden
+                      data-action='click->audio-player#pause'
+                      data-audio-player-target='pauseButton'>
+                      <i class='fas fa-pause'></i>
+                    </button>
+
+                  </div>
+
+                </div>
+                <audio
+                  hidden
+                  secure='true'
+                  controls='controls'
+                  data-audio-player-target='audio'
+                  src=#{url_for(b.object.audio)}>
+                </audio>
+              </div>
+              <h2 class='ms-2'>#{b.object.name}</h2>
+            </div>
+            <span>Créée le #{b.object.created_at.strftime("%d/%m/%y")}<br></span>
+            <span>Utilisée par #{b.object.stories.count} histoires</span>
+
+
+        </div>".html_safe
       } %>
     <% end %>
     <div class="bottom-buttons-wrapper">

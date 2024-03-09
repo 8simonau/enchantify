@@ -1,5 +1,11 @@
-.audio-player {
-  margin-top: 40px;
+.story-control {
+  position: fixed;
+  bottom: 90px;
+  left: 45px;
+  background: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+  padding: 16px;
+  width: 300px;
 }
 
 .media-controls {

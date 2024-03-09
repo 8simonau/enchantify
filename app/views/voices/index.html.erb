@@ -1,14 +1,62 @@
 <div class="voices-wrapper">
 <% @voices.each do |voice| %>
   <div class="voice-card">
-    <h2><%= voice.name %></h2>
-    <% if voice.audio.valid? %>
-      <%= audio_tag(url_for(voice.audio), controls: true) %>
-    <% end %>
-    <%= link_to "Supprimer",
-      voice_path(voice),
-      data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}
-    %>
+    <div class="d-flex justify-content-between align-items-center">
+
+      <div>
+
+        <h2><%= voice.name %></h2>
+        <p class="mb-2">Créée le <%= voice.created_at.strftime("%d/%m/%y") %></p>
+
+
+        <%= link_to "Supprimer",
+          voice_path(voice),
+          data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}
+        %>
+
+      </div>
+
+
+      <% if voice.audio.valid? %>
+
+        <div data-controller="audio-player">
+          <div class="media-controls">
+
+
+            <div class="media-buttons">
+
+              <button
+                class="play-button media-button"
+                data-action="click->audio-player#play"
+                data-audio-player-target="playButton"
+                data-story-status-target="playButton">
+                <i class="fa-solid fa-play"></i>
+              </button>
+
+              <button
+                class="pause-button media-button"
+                hidden
+                data-action="click->audio-player#pause"
+                data-audio-player-target="pauseButton"
+                data-story-status-target="pauseButton">
+                <i class="fas fa-pause"></i>
+              </button>
+
+            </div>
+
+          </div>
+        <audio
+          hidden
+          secure="true"
+          controls="controls"
+          data-audio-player-target="audio"
+          src=<%= url_for(voice.audio) %>>
+        </audio>
+        </div>
+
+      <% end %>
+    </div>
+
   </div>
 <% end %>
 </div>

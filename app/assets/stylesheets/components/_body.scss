@@ -6,25 +6,25 @@ body  {
  }
 
 .main-container {
-  padding: 30px 20px;
+  padding: 86px 20px 104px 20px;
   background-size: cover;
   background-position: center;
+  min-height: 844px;
+}
 
-
-  .bottom-buttons-wrapper {
-    height: 10vh;
-    position: fixed;
-    bottom: 0px;
-    display: flex;
-    width: 100vw;
-    align-items: center;
-    justify-content: space-between;
-    background-color: rgba(255, 255, 255, 0.9);
-    margin-left: -20px;
-    margin-right: -20px;
-    padding: 20px;
-    max-width: 450px;
-  }
+.bottom-buttons-wrapper {
+  height: 10vh;
+  position: fixed;
+  bottom: 0px;
+  display: flex;
+  width: 100vw;
+  align-items: center;
+  justify-content: space-between;
+  background-color: rgb(255, 255, 255);
+  margin-left: -20px;
+  margin-right: -20px;
+  padding: 20px;
+  max-width: 450px;
 }
 
 #planet-background {
@@ -37,10 +37,8 @@ body  {
   background-attachment: fixed;
 }
 
-#grotto-background {
-  background-image: url(asset-path('grotto_picture'));
-  // max-width: 150%;
-  display: block;
+#forest_children-background {
+  background-image: url(asset-path('forest_children_picture'));
   background-attachment: fixed;
 }
 
@@ -52,8 +50,10 @@ body  {
 #loading-background{
   background-image: url(asset-path('storytime'));
   background-attachment: fixed;
+}
 
-
-
-
+#children-running-background {
+  background-image: url(asset-path('children_running_picture'));
+  display: block;
+  background-attachment: fixed;
 }

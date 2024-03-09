@@ -1,7 +1,7 @@
 .voices-wrapper {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 25px;
 }
 
 .voice-card {
@@ -11,6 +11,7 @@
   padding: 16px;
   border: 1px solid $light-gray;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+  background-color: rgba(255, 255, 255, 0.96);
 }
 
 .voices-selection-wrapper {

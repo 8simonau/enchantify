@@ -32,15 +32,16 @@
   </div>
 
   <div class="story-end" data-story-status-target="ended" hidden>
-    <h1 class="mb-3">Fin...</h1>
     <div class="picture-with-repeat-wrapper">
       <% if @story.pictures.attached? %>
-        <%= cl_image_tag(@story.pictures.first.key,
+        <%= cl_image_tag(@story.pictures.last.key,
           secure: true,
-          width: 290,
-          height: 290,
-          class: "story-picture",
-          opacity: 60) %>
+          class: "story-picture-final",
+          transformation: [
+            {height: "400", width: "400", crop: "fill"},
+            {:quality=>"auto", :fetch_format=>:auto}
+            ],
+          opacity: 70) %>
         <% end %>
       <button
         class="centered-repeat-button media-button",
@@ -49,9 +50,9 @@
       </button>
     </div>
     <span class="mt-3 text-center"><strong><%= @story.title %></strong></span>
-    <p>Créée le <%= @story.created_at.strftime("%A %-d %B %Y") %></p>
+    <p>Créée le <%= @story.created_at.strftime("%d/%m/%y") %></p>
 
-    <h3 class="mt-5">Histoires récentes</h3>
+    <h3 class="mt-2">Histoires récentes</h3>
     <div class="story-end-horizontal-list">
       <% @recent_stories.each do |story| %>
         <div class="small-story-card">
@@ -59,8 +60,10 @@
             <% if story.pictures.attached? %>
               <%= cl_image_tag(story.pictures.first.key,
                 secure: true,
-                width: 60,
-                height: 60,
+                transformation: [
+                  {width: "60", height: "60", crop: "fill"},
+                  {quality: "auto", fetch_format: "auto"}
+                  ],
                 class: "option-picture") %>
             <% end %>
           <div>
