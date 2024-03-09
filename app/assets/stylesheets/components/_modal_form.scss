@@ -1,11 +1,8 @@
 .create-child {
-  position: absolute;
-  top: 200px;
-  bottom: 0;
-  left: 45px;
-  right: 0;
   color: $purple;
-  height: 450px;
   width: 300px;
-  padding: 8px
+  padding: 12px;
+  border-radius: 12px;
+  background-color: rgba(255, 255, 255, 0.95);
+  margin: 180px auto;
 }

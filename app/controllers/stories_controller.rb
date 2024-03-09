@@ -31,6 +31,7 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @voices = Voice.all
     @title = "Nouvelle histoire"
+    @background = "builders"
   end
 
   def update
