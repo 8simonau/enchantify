@@ -1,0 +1,5 @@
+ meta_product_name: "Enchantify"
+ meta_title: "Enchantify - des histoires magiques avec l'IA"
+ meta_description: "Enchantify crée, illustre et raconte des histoires à vos enfants."
+ meta_image: "app/assets/images/hor_castle.png" # should exist in `app/assets/images/`
+ twitter_account: "@ebommelaer" # required for Twitter Cards

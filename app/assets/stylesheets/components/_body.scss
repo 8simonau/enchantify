@@ -30,30 +30,36 @@ body  {
 #planet-background {
   background-image: url(asset-path('planet_picture'));
   background-attachment: fixed;
+  max-height: 654px;
 }
 
 #castle-background {
   background-image: url(asset-path('mountain_picture'));
   background-attachment: fixed;
+  max-height: 654px;
 }
 
 #forest_children-background {
   background-image: url(asset-path('forest_children_picture'));
   background-attachment: fixed;
+  max-height: 654px;
 }
 
 #builders-background {
   background-image: url(asset-path('builders_picture'));
   background-attachment: fixed;
-}
-
-#loading-background{
-  background-image: url(asset-path('storytime'));
-  background-attachment: fixed;
+  max-height: 654px;
 }
 
 #children-running-background {
   background-image: url(asset-path('children_running_picture'));
 
   background-attachment: fixed;
+  max-height: 654px;
+}
+
+#child-creation-background {
+  background-image: url(asset-path('child_creation_picture'));
+  background-attachment: fixed;
+  max-height: 654px;
 }

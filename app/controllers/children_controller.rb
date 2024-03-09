@@ -8,6 +8,8 @@ class ChildrenController < ApplicationController
 
   def new
     @child = Child.new
+    @title = "Créer un profil"
+    @background = "child-creation"
   end
 
   def create
