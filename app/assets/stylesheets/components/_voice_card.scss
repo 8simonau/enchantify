@@ -21,14 +21,17 @@
   margin-bottom: 32px;
 }
 
-.voice-selection-card label {
+.voice-selection-card {
+  background-color: rgba(255, 255, 255, 0.97);
+  border-radius: 12px;
+
+  label {
   position: relative;
   display: flex;
   flex-direction: column;
-  border-radius: 16px;
   padding: 28px 12px 12px 12px;
-  border: 1px solid $light-gray;
   box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
+  }
 
   img {
     border-radius: 16px;
