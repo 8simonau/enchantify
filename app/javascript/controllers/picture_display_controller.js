@@ -8,7 +8,6 @@ export default class extends Controller {
   }
 
   connect() {
-    console.log(this.pictureContainerTarget.firstElementChild.classList);
     this.pictureContainerTarget.firstElementChild.classList.remove("story-picture-hidden");
   }
 
@@ -30,7 +29,6 @@ export default class extends Controller {
       if (this.playingValue == false || this.pictureIndex + 1 == this.pictureTargets.length) {
         return
       }
-      // this.pictureTargets[this.pictureIndex].classList.add("story-picture-hidden");
       this.pictureTargets[this.pictureIndex + 1].classList.remove("story-picture-hidden")
       this.pictureIndex += 1
       },

@@ -58,14 +58,18 @@
   width: 100%;
   padding: 0px;
   position: fixed;
+  align-items: center;
+  justify-content: center;
 }
 
 .story-picture {
   position: fixed;
+  left: -46px;
   height: 100%;
   margin: auto;
   opacity: 1;
   transition: opacity 3s;
+  max-height: 100%;
 }
 
 .story-picture-hidden {
@@ -76,15 +80,11 @@
 
 .story-picture-final {
   border-radius: 12px;
-  width: 100%;
+  overflow: hidden;
 }
 
 .story-title {
   font-weight: bold;
   color: $primary;
-  z-index: 1;
-  margin: 20px auto;
-  padding: 12px;
-  background-color: rgba(255, 255, 255, 0.96);
-  border-radius: 12px;
+  font-size: 20px;
 }
