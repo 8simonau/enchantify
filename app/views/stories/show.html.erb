@@ -13,12 +13,12 @@
     <h1 class="mb-3">Fin...</h1>
     <div class="picture-with-repeat-wrapper">
       <% if @story.pictures.attached? %>
-        <%= cl_image_tag(@story.pictures.first.key,
+        <%= cl_image_tag(@story.pictures.last.key,
           secure: true,
-          width: 290,
-          height: 290,
           class: "story-picture-final",
-          opacity: 60) %>
+          height: 290,
+          crop: "fill",
+          opacity: 70) %>
         <% end %>
       <button
         class="centered-repeat-button media-button",
