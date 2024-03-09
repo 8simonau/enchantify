@@ -1,33 +1,30 @@
 <div class="story-status" data-controller="story-status" data-story-status-storyid-value="<%= @story.id %>">
-<div class="story-card-show">
-  <div class="story-preparation"  data-story-status-target="preparation">
-      <i class="fas fa-spinner fa-spin loading-icon"></i>
 
+  <div class="story-preparation"  data-story-status-target="preparation">
+    <div class="loader-wrapper">
+      <i class="fas fa-spinner fa-spin loading-icon"></i>
+      <div>
         <h1>Invention en cours...</h1>
-     <br>
-      <h2>En attendant vous pouvez: </h2>
-      <br>
+        <p>En attendant vous pouvez: </p>
+      </div>
+      <div class="link-to-others">
+        <%= link_to stories_path, class: "icon-link-show" do %>
+          <i class="fa-solid fa-list-ul"></i>
+        <% end %>
+
+        <%= link_to new_child_path, class: "icon-link-show" do %>
+          <i class="fa-solid fa-people-roof"></i>
+        <% end %>
+
+        <%= link_to new_voice_path, class: "icon-link-show" do %>
+          <i class="fa-solid fa-microphone"></i>
+        <% end %>
 
       </div>
-
-    <div class="link-to-others">
-      <%= link_to stories_path, class: "icon-link-show" do %>
-      <i class="fa-solid fa-list-ul"></i>
-      <% end %>
-
-      <%= link_to new_child_path, class: "icon-link-show" do %>
-      <i class="fa-solid fa-people-roof"></i>
-      <% end %>
-      
-      <%= link_to new_voice_path, class: "icon-link-show" do %>
-      <i class="fa-solid fa-microphone"></i>
-      <% end %>
-
     </div>
-</div>
-</div>
+  </div>
 
-  <div data-story-status-target="available" hidden>
+  <div class="story-show" data-story-status-target="available" hidden>
     <%# here stimulus inserts the _display_story partial when it is available %>
   </div>
 
@@ -36,7 +33,6 @@
       <% if @story.pictures.attached? %>
         <%= cl_image_tag(@story.pictures.last.key,
           secure: true,
-          class: "story-picture-final",
           transformation: [
             {height: "400", width: "400", crop: "fill"},
             {:quality=>"auto", :fetch_format=>:auto}
@@ -84,3 +80,4 @@
     </div>
 
   </div>
+</div>
