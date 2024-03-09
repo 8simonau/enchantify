@@ -5,7 +5,7 @@ class GenerateImageJob < ApplicationJob
     # Do something later
     preprompt = <<-STRING.squish
     Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
-    crayon des illustrations. Celles-ci doivent être colorées et belles, et
+    pastel des illustrations de grande qualité. Celles-ci doivent être colorées et belles, et
     stimuler l'imagination des enfants. Les images sont en format portrait.
     STRING
 
