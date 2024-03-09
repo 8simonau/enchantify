@@ -110,6 +110,13 @@ voice.user = john
 voice.audio.attach(io: File.open("app/assets/audio/emily_sample.mp3"), filename: "emily_sample.mp3", content_type: "audio")
 voice.save!
 
+# Thomas's voice from Eleven Labs
+voice = Voice.new(name: "Thomas",
+  token: "GBv7mTt0atIp3Br8iCZE")
+voice.user = john
+voice.audio.attach(io: File.open("app/assets/audio/thomas_sample.mp3"), filename: "thomas_sample.mp3", content_type: "audio")
+voice.save!
+
 puts "generate 1 story"
 
 story = Story.new(title: "La Princesse et l'Epée de Feu",
