@@ -1,5 +1,5 @@
 <div class="story-status" data-controller="story-status" data-story-status-storyid-value="<%= @story.id %>">
-<div class="story-card-show">
+     <div class="story-card-show">
   <div class="story-preparation"  data-story-status-target="preparation">
       <i class="fas fa-spinner fa-spin loading-icon"></i>
 
@@ -18,7 +18,7 @@
       <%= link_to new_child_path, class: "icon-link-show" do %>
       <i class="fa-solid fa-people-roof"></i>
       <% end %>
-      
+
       <%= link_to new_voice_path, class: "icon-link-show" do %>
       <i class="fa-solid fa-microphone"></i>
       <% end %>
