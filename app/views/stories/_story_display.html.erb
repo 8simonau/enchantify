@@ -18,7 +18,10 @@
     <div class="audio-player" data-controller="audio-player">
       <div class="media-controls">
         <div class="media-progress">
-          <div class="progress-bar-wrapper progress" data-audio-player-target="progressBar">
+          <div
+            class="progress-bar-wrapper progress"
+            data-audio-player-target="progressBar"
+            data-action="click->audio-player#setPlayTime">
             <div class="progress-bar" data-audio-player-target="progress">
             </div>
           </div>
