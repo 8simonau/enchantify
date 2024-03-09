@@ -1,4 +1,5 @@
 body  {
+  height: 100hv;
   width: 100vw;
   max-width: 450px;
   margin: auto;
@@ -43,6 +44,11 @@ body  {
 
 #builders-background {
   background-image: url(asset-path('builders_picture'));
+  background-attachment: fixed;
+}
+
+#loading-background{
+  background-image: url(asset-path('storytime'));
   background-attachment: fixed;
 }
 
