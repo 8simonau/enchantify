@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   def index
-    @stories = Story.all.order(created_at: :desc)
+    @stories = Story.where(child: current_user.active_child).order('is_favorite desc, created_at desc')
     @title = "Mes histoires"
     @background = "planet"
   end
@@ -16,6 +16,7 @@ class StoriesController < ApplicationController
   def new
     @story = Story.new
     @story.playcount = 0
+    @story.is_favorite = false
     @story.child = current_user.active_child
     @story.voice = Voice.last
     @story.title = "En cours d'invention..."
