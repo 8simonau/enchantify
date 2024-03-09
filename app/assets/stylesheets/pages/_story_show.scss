@@ -5,6 +5,7 @@
   flex-direction: column;
   justify-content: space-between;
 }
+
 .story-preparation {
   padding: 0px 10px 30px 10px;
   height: calc(100vh - 106px);
@@ -13,15 +14,24 @@
   flex-direction: column;
   justify-content: center;
 }
-
-.story-preparation i {
+.story-status{
+  height: 100vh
+}
+.loading-icon {
   font-size: 72px;
   margin-bottom: 30px;
-  background-image: url(asset-path('storytime'));
+}
+.link-to-others{
+  border: 1px;
+  height: 55px;
+
+  display: flex;
+  justify-content:space-evenly ;
+
+
 }
 
-.story-end {
-}
+
 
 .story-end-horizontal-list {
   display: grid;
@@ -46,4 +56,5 @@
     width: 55px;
     height: 55px;
   }
+
 }

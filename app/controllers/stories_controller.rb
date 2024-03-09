@@ -6,6 +6,7 @@ class StoriesController < ApplicationController
   end
 
   def show
+    @background = "loading"
     @story = Story.find(params[:id])
     @story.update(playcount: @story.playcount + 1)
     @recent_stories = Story.last(2)
