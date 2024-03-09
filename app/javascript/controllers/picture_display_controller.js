@@ -8,7 +8,7 @@ export default class extends Controller {
   }
 
   connect() {
-    this.pictureContainerTarget.firstElementChild.classList.remove("story-picture-hidden");
+    this.pictureContainerTarget.firstElementChild.hidden = false;
   }
 
   initialize() {
@@ -29,7 +29,8 @@ export default class extends Controller {
       if (this.playingValue == false || this.pictureIndex + 1 == this.pictureTargets.length) {
         return
       }
-      this.pictureTargets[this.pictureIndex + 1].classList.remove("story-picture-hidden")
+      this.pictureTargets[this.pictureIndex].hidden = true
+      this.pictureTargets[this.pictureIndex + 1].hidden = false
       this.pictureIndex += 1
       },
       ((this.audioTarget.duration * 1000) / 4) + 1

@@ -13,35 +13,12 @@
   box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
   opacity: 0.85;
   background-color: white;
-
-  p {
-    margin-bottom: 6px;
-  }
 }
 
 .story-card-bottom {
   display: flex;
   justify-content: space-between;
   height: 75px;
-}
-.story-card-show {
-  display: flex;
-  flex-direction: column;
-  border-radius: 10px;
-  padding: 13px;
-  border: 1px solid $light-gray;
-  box-shadow: 4px 4px 16px rgba(0,0,0,0.1);
-  opacity: 0.85;
-  background-color: white;
-  height: 380px;
-  width: 300px;
-  position: absolute;
-  top: 45%; /* Move down from the top to the middle */
-  left: 51%; /* Move from the left to the middle */
-  transform: translate(-50%, -50%);
-
-
-
 }
 
 .small-story-card {

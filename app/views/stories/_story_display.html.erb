@@ -1,18 +1,21 @@
-<div class="story-show" data-controller="picture-display" data-picture-display-playing-value="false">
-  <div data-picture-display-target="pictureContainer" class="story-picture-container">
-    <% @story.pictures.each do |p| %>
-      <%= cl_image_tag(p.key,
-        secure: true,
-        class: "story-picture story-picture-hidden",
-        id: "audio-player",
-        data: { picture_display_target: "picture"},
-        transformation: [
-            {height: "700", width: "400", crop: "fill"},
-            {:quality=>"auto", :fetch_format=>:auto}
-          ])
-      %>
-    <% end %>
-  </div>
+<div class="story-picture-container"
+  data-controller="picture-display"
+  data-picture-display-playing-value="false"
+  data-picture-display-target="pictureContainer">
+  <% @story.pictures.each do |p| %>
+    <%= cl_image_tag(p.key,
+      secure: true,
+      class: "story-picture",
+      hidden: true,
+      id: "audio-player",
+      data: { picture_display_target: "picture"},
+      transformation: [
+          {height: "700", width: "400", crop: "fill"},
+          {:quality=>"auto", :fetch_format=>:auto}
+        ])
+    %>
+  <% end %>
+
   <div class="story-control">
     <h1 class="story-title"><%= @story.title %></h1>
     <div class="audio-player" data-controller="audio-player">
