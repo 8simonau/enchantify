@@ -107,7 +107,7 @@ crystal_ball.description = "dessin au pastel dans un style de conte pour enfant 
 crystal_ball.save!
 
 stick = Option.new(category: "Objet", name: "Bâton magique")
-stick.picture.attach(io: File.open("app/assets/images/stick_picture.png"), filename: "stick.png", content_type: "image/png")
+stick.picture.attach(io: File.open("app/assets/images/stick_picture.jpg"), filename: "stick.jpg", content_type: "image/jpg")
 stick.description = "Un dessin au pastel dans un style de conte pour enfant de grande qualité d un baton de marche droit, noueux et sec, surmonté d une poignée en corne. Il est posé sur une table basse dans une taverne enfumée. Le baton peut marcher et seul et guider son propriétaire."
 stick.save!
 
