@@ -3,24 +3,21 @@
   <div class="story-preparation" data-story-status-target="preparation">
       <i class="fas fa-spinner fa-spin"></i>
       <h1>Invention en cours...</h1>
-
-      <br>
+     <br>
       <h2>En attendant vous pouvez: </h2>
 
-  <div class="icons">
-       <%= link_to stories_path, class: "icon-link" do %>
-    <i class="fa-solid fa-list-ul"></i>
+    <div class="icons">
+      <%= link_to stories_path, class: "icon-link" do %>
+  <i class="fa-solid fa-list-ul"></i>
   <% end %>
 
   <%= link_to new_voice_path, class: "icon-link" do %>
-    <i class="fa-solid fa-microphone"></i>
+  <i class="fa-solid fa-microphone"></i>
   <% end %>
 
   <%= link_to new_child_path, class: "icon-link" do %>
   <i class="fa-solid fa-children"></i>
   <% end %>
-
-  </div>
 
   <div data-story-status-target="available" hidden>
     <%# here stimulus inserts the _display_story partial when it is available %>
