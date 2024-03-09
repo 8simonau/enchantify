@@ -1,31 +1,46 @@
 class GenerateTextJob < ApplicationJob
   queue_as :default
 
-  ADDITIONAL_PARAMETERS = [
-    "joyeuse",
-    "qui fait un peu peur",
-    "qui parle du pouvoir de l'amitié",
-    "qui parle des relations parents-enfants",
-    "qui parle d'apprentissage",
-    "qui parle de grandir",
-    "d'aventure",
-    "qui fait découvrir des pays lointains",
-    "qui fait rire",
-    "un peu triste",
-    "avec un personnage secondaire : un livre qui parle",
-    "avec un personnage secondaire : un chat volant",
-    "avec un personnage secondaire : un grand cheval",
-    "avec un personnage secondaire : deux assiettes qui roulent",
-    "avec des personnages secondaires : des jumeaux espiègles"
-  ]
+  ADDITIONAL_PARAMETERS = {
+    theme: [
+      "joyeuse",
+      "qui fait un peu peur",
+      "qui parle du pouvoir de l'amitié",
+      "qui parle des relations parents-enfants",
+      "qui parle d'apprentissage",
+      "qui parle de grandir",
+      "d'aventure",
+      "qui fait découvrir des pays lointains",
+      "qui fait rire",
+      "un peu triste"
+    ],
 
-  def perform(story, token_count = 500, prompt_count = 4)
+    character: [
+      "un livre qui parle",
+      "un chat volant",
+      "un grand cheval",
+      "deux assiettes qui roulent",
+      "des jumeaux espiègles",
+      "un croissant délicieux",
+      "une magicienne puissante"
+    ],
+
+    quality: [
+      "courage",
+      "ouverture à l'inconnu",
+      "humour",
+      "force de conviction",
+      "réflexion"
+    ]
+  }
+
+  def perform(story, token_count = 600, prompt_count = 4)
     # variables
-    puts "get story options"
     options = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
-    additional_parameter = ADDITIONAL_PARAMETERS.sample
-    puts additional_parameter
+    theme = ADDITIONAL_PARAMETERS[:theme].sample
+    secondary_character = ADDITIONAL_PARAMETERS[:character].sample
+    quality = ADDITIONAL_PARAMETERS[:quality].sample
 
     preprompt = <<-STRING.squish
     Vous êtes un narrateur francophone expérimenté qui invente des histoires
@@ -33,24 +48,30 @@ class GenerateTextJob < ApplicationJob
     devez utiliser des mots et des concepts simples pour que l'histoire soit
     bien comprise par les enfants. Vos histoires mettent en scène un personnage
     principal, un environnement et un objet qui vous seront donnés en paramètres.
-    Les histoires doivent commencer par une brève description du personnage
-    principal. Le personnage est confronté à un défi et le surmonte grâce à ses
-    qualités et à son objet unique. C'est une histoire #{additional_parameter}.
-    La conclusion doit être courte. Votre réponse est un objet .json fonctionnel
-    avec 3 clés : un titre (\"title\"), une liste de #{prompt_count} prompts
-    (\"prompts\") qui décrivent en 5 mots chacun les principales séquences de
-    l'histoire (ces chaînes seront utilisées pour prompter DALLE 3 et illustrer
-    l'histoire) et le texte (\"text\").
+    Votre réponse est un objet .json fonctionnel avec 3 clés :
+    un titre (\"title\"),
+    une liste de #{prompt_count} prompts (\"prompts\") qui décrivent en 5 mots
+    chacun les principales séquences de l'histoire (ces chaînes seront utilisées
+    pour prompter DALLE 3 et illustrer l'histoire)
+    et le texte (\"text\").
+    L'histoire doit commencer par une brève description du personnage
+    principal. Le personnage est confronté à un défi et le surmonte.
     STRING
 
     parameters = <<-STRING.squish
     Ecris une histoire :
-    - le personnage principal est : #{options["Personnage"]}. Il ou elle est
+    C'est une histoire #{theme}.
+    Elle comprend un ou des personnages secondaires : #{secondary_character}.
+    Elle montre l'importance de cette qualité : #{quality}.
+    Le personnage principal est : #{options["Personnage"]}. Il ou elle est
     jeune et un enfant peut s'y identifier.
-    - l'aventure prend place ici : #{options["Lieu"]}.
-    - #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
+    L'aventure prend place ici : #{options["Lieu"]}, mais l'action peut s'en éloigner.
+    #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
     accomplir ses objectifs.
     STRING
+
+    puts preprompt
+    puts parameters
 
     # build request body
     body = {
