@@ -11,7 +11,7 @@
 .stories-wrapper {
   display: flex;
   flex-direction: column;
-  row-gap: 20px;
+  row-gap: 25px;
 }
 
 .story-card {
@@ -31,7 +31,7 @@
 .story-card-bottom {
   display: flex;
   justify-content: space-between;
-  height: 75px;
+  height: 60px;
 }
 
 .small-story-card {

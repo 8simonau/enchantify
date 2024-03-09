@@ -1,6 +1,6 @@
 class StoriesController < ApplicationController
   def index
-    @stories = Story.all
+    @stories = Story.all.order(created_at: :desc)
     @title = "Mes histoires"
     @background = "planet"
   end
