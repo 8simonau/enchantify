@@ -7,8 +7,8 @@
         id: "audio-player",
         data: { picture_display_target: "picture"},
         transformation: [
-          {:crop=>"crop"},
-          {:quality=>"auto", :fetch_format=>:auto}
+            {height: "700", width: "400", crop: "fill"},
+            {:quality=>"auto", :fetch_format=>:auto}
           ])
       %>
     <% end %>

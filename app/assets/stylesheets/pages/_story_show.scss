@@ -29,15 +29,16 @@
   grid-template-columns: 1fr 1fr;
   justify-content: space-between;
   column-gap: 20px;
-  margin-top: 20px;
+  margin-top: 12px;
 }
 
 .picture-with-repeat-wrapper {
   position: relative;
-  height: 290px;
+  height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
+  margin: -20px -20px 20px -20px;
 
   .centered-repeat-button {
     position: absolute;
