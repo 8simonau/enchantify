@@ -30,7 +30,7 @@ class StoriesController < ApplicationController
   def edit
     @story = Story.find(params[:id])
     @voices = Voice.all
-    @title = "Nouvelle histoire"
+    @title = "Voix"
     @background = "builders"
   end
 

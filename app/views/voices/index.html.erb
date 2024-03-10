@@ -9,10 +9,11 @@
         <p class="mb-2">Créée le <%= voice.created_at.strftime("%d/%m/%y") %></p>
 
 
-        <%= link_to "Supprimer",
-          voice_path(voice),
-          data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}
-        %>
+        <%= link_to voice_path(voice),
+          class: "story-index-button",
+          data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"} do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
 
       </div>
 

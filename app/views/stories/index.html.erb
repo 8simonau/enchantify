@@ -1,4 +1,11 @@
 <div class="stories-wrapper">
+
+  <% if @stories.empty? %>
+    <div class="story-card text-center pt-4 mt-4">
+      <h4>Pas encore d'histoire dans ta bibliothèque</h4>
+    </div>
+  <% end %>
+
   <% @stories.each do |story| %>
   <div class="story-card">
 
