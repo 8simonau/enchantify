@@ -40,6 +40,19 @@
       story_path(story),
       data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}
     %>
+
+    <%= button_to toggle_favorite_path(story),
+      method: :put,
+      data: { controller: "favorite-story", action: "click->favorite-story#toggleFavorite"},
+      class: "media-button" do %>
+      <% if story.is_favorite %>
+        <i class="fa-solid fa-heart text-danger" data-favorite-story-target="favorite"></i>
+        <i class="fa-regular fa-heart" hidden data-favorite-story-target="unfavorite"></i>
+      <% else %>
+        <i class="fa-solid fa-heart text-danger" hidden data-favorite-story-target="favorite"></i>
+        <i class="fa-regular fa-heart" data-favorite-story-target="unfavorite"></i>
+      <% end %>
+    <% end %>
   </div>
   <% end %>
 </div>
