@@ -15,11 +15,20 @@
             class: "option-picture") %>
         <% end %>
       </div>
-        <%= link_to story_path(story), class: "play-link" do %>
-        <div class="play-button-small">
-          <i class="fa-solid fa-circle-play"></i>
-        </div>
+        <% if story.audio.attached? %>
+          <%= link_to story_path(story), class: "play-link" do %>
+            <div class="play-button-small">
+              <i class="fa-solid fa-circle-play"></i>
+            </div>
+          <% end %>
+        <% elsif %>
+          <%= link_to story_path(story), class: "play-link" do %>
+            <div class="play-button-small">
+              <i class="fa-solid fa-circle-play"></i>
+            </div>
+          <% end %>
         <% end %>
+
     </div>
   </div>
   <% end %>
