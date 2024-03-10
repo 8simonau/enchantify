@@ -17,7 +17,7 @@
 
       <div class="d-flex">
 
-        <%= button_to story_path(story),
+        <%= link_to story_path(story),
           class: "story-index-button",
           data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"} do %>
           <i class="fa-solid fa-trash"></i>
