@@ -15,13 +15,19 @@
             class: "option-picture") %>
         <% end %>
       </div>
-        <% if story.audio.attached? %>
-          <%= link_to story_path(story), class: "play-link" do %>
+        <% if story.options.size < 3 %>
+          <%= link_to new_story_story_option_path(story), class: "play-link" do %>
             <div class="play-button-small">
-              <i class="fa-solid fa-circle-play"></i>
+              <i class="fa-solid fa-circle-plus"></i>
             </div>
           <% end %>
-        <% elsif %>
+        <% elsif story.voice.nil? || story.audio.attached? == false %>
+          <%= link_to edit_story_path(story), class: "play-link" do %>
+            <div class="play-button-small">
+              <i class="fa-solid fa-circle-plus"></i>
+            </div>
+          <% end %>
+        <% elsif story.audio.attached? %>
           <%= link_to story_path(story), class: "play-link" do %>
             <div class="play-button-small">
               <i class="fa-solid fa-circle-play"></i>
