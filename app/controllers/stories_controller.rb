@@ -66,4 +66,11 @@ class StoriesController < ApplicationController
     @story = Story.find(params[:id])
     @story.update(is_favorite: !@story.is_favorite)
   end
+
+  def destroy
+    @story = Story.find(params[:id])
+    @story.destroy
+    flash[:notice] = "Histoire supprimée"
+    redirect_to stories_path, status: :see_other
+  end
 end

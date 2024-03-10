@@ -36,6 +36,10 @@
         <% end %>
 
     </div>
+    <%= link_to "Supprimer",
+      story_path(story),
+      data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"}
+    %>
   </div>
   <% end %>
 </div>
