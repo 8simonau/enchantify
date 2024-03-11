@@ -39,6 +39,7 @@
   </head>
 
   <body>
+    <%= render "shared/flashes" %>
     <% if controller_name == "pages" %>
       <%= yield %>
     <% elsif @title == "Mon histoire" %>
@@ -47,7 +48,6 @@
     <% else %>
       <%= render "shared/navbar" %>
       <div class="main-container" id=<%= "#{@background}-background" %>>
-        <%= render "shared/flashes" %>
         <%= yield %>
       </div>
     <% end %>

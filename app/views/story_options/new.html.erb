@@ -1,7 +1,3 @@
-<div class="mb-3">
-  <h1>Choisis ton <%= @options.first.category.downcase %></h1>
-</div>
-
 <%= simple_form_for [@story, @story_option] do |f| %>
   <%= f.collection_radio_buttons(:option, @options,
     :id,

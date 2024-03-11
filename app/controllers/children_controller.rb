@@ -19,10 +19,10 @@ class ChildrenController < ApplicationController
       @child.avatar.attach(io: File.open("app/assets/images/avatar.jpg"), filename: "avatar.jpg", content_type: "image/jpg")
     end
     if @child.save
-      flash[:success] = "Child profile created"
+      flash[:notice] = "Child profile created"
       redirect_to children_path
     else
-      flash[:error] = "Something went wrong"
+      flash[:alert] = "Something went wrong"
       render "children/index", status: :unprocessable_entity
     end
   end

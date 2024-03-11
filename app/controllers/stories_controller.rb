@@ -18,7 +18,6 @@ class StoriesController < ApplicationController
     @story.playcount = 0
     @story.is_favorite = false
     @story.child = current_user.active_child
-    @story.voice = Voice.last
     @story.title = "En cours d'invention..."
     @story.text = "Une aventure magique va bientôt apparaître."
     @story.save!
@@ -31,7 +30,7 @@ class StoriesController < ApplicationController
   def edit
     @story = Story.find(params[:id])
     @voices = Voice.all
-    @title = "Nouvelle histoire"
+    @title = "Voix"
     @background = "builders"
   end
 
@@ -40,7 +39,7 @@ class StoriesController < ApplicationController
     if @story.update(voice_id: params[:story][:voice_id])
       redirect_to story_path(@story)
       # if no audio, then we call ElevenLabs
-      unless @story.audio.valid?
+      unless @story.audio.attached?
         sleep 1 while @story.reload.text == "Une aventure magique va bientôt apparaître."
         GenerateAudioJob.perform_later(@story)
       end
@@ -66,5 +65,12 @@ class StoriesController < ApplicationController
   def toggle_favorite
     @story = Story.find(params[:id])
     @story.update(is_favorite: !@story.is_favorite)
+  end
+
+  def destroy
+    @story = Story.find(params[:id])
+    @story.destroy
+    flash[:notice] = "Histoire supprimée"
+    redirect_to stories_path, status: :see_other
   end
 end
