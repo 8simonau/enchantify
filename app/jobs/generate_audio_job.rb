@@ -6,9 +6,13 @@ class GenerateAudioJob < ApplicationJob
     url = "https://api.elevenlabs.io/v1/text-to-speech/#{story.voice.token}"
     body = {
       text: story.text,
-      model_id: "eleven_multilingual_v2"
+      model_id: "eleven_multilingual_v1",
+      voice_settings: {
+        stability: 1,
+        similarity_boost: 0
+      }
     }
-    puts 'sending text to TTS'
+    puts 'Sending text to TTS'
     response = Faraday.post(url) do |req|
       req.headers['accept'] = 'audio/mpeg'
       req.headers['Content-Type'] = 'application/json'
