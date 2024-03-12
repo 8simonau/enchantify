@@ -1,24 +1,27 @@
 {
- "name": "Enchantify",
- "display": "fullscreen",
- "description": "Enchantify crée, illustre et raconte des histoires à vos enfants.",
- "background_color": "white",
- "screenshots": [{
-    "src": "narrow_screenshot.png",
-    "sizes": "1170x2532",
-    "type": "image/png",
-    "form_factor": "narrow",
-    "label": "Homescreen of Enchantify"
-  }],
- "icons": [
-  <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
-  <% files.each_with_index do |file, index| %>
-    <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
-    {
-      "src": "<%= image_path "icons/#{file}" %>",
-      "sizes": "<%= match && match[:size] %>",
-      "type": "image/png"
-    }<%= "," unless (files.size - 1) == index %>
-  <% end %>
-  ]
+    "name": "Enchantify",
+    "display": "fullscreen",
+    "description": "Enchantify crée, illustre et raconte des histoires à vos enfants.",
+    "background_color": "white",
+    "start_url": "https://www.enchantify.xyz",
+    "screenshots": [
+        {
+            "src": "config/narrow_screenshot.png",
+            "sizes": "1170x2532",
+            "type": "image/png",
+            "form_factor": "narrow",
+            "label": "Homescreen of Enchantify"
+        }
+    ],
+    "icons": [
+	    <% files = Dir.entries(Rails.root.join("app/assets/images/icons/")).select {|f| !File.directory? f} %>
+	    <% files.each_with_index do |file, index| %>
+	      <% match = file.match(/.+-(?<size>\d{2,3}x\d{2,3}).png/) %>
+	      {
+	        "src": "<%= image_path "icons/#{file}" %>",
+	        "sizes": "<%= match && match[:size] %>",
+	        "type": "image/png"
+	      }<%= "," unless (files.size - 1) == index %>
+	    <% end %>
+	]
 }
