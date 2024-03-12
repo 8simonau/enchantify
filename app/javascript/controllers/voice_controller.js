@@ -3,17 +3,18 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="voice"
 export default class extends Controller {
   static targets = ["startRecording", "stopRecording", "recordedAudio", "audioBlob", 'timeElapsed'];
-  // static targets = ["startRecording", "stopRecording", 'resumeRecording', 'pauseRecording', "recordedAudio", "audioBlob", 'timeElapsed'];
 
   connect() {
     this.timerInterval = null;
     this.secondsElapsed = 0;
+    this.userMediaStream = null; // Initialize variable to store the stream
   }
 
   startRecording(event) {
     event.preventDefault()
     if (navigator.mediaDevices && navigator.mediaDevices.getUserMedia) {
       navigator.mediaDevices.getUserMedia({ audio: true }).then(stream => {
+        this.userMediaStream = stream; // Store the stream
         this.recorder = RecordRTC(stream, {
           type: 'audio',
           getBlob: function () {
@@ -26,32 +27,12 @@ export default class extends Controller {
         this.startRecorder(event);
       }).catch((error) => {
         console.log("The following error occurred: " + error);
-        alert("Please grant permission for microphone access")
+        alert("Veuillez donner accès au microphone")
       });
     } else {
-      alert("Your browser does not support audio recording, please use a different browser or update your current browser")
+      alert("Votre navigateur ne supporte pas l'enregistrement audio")
     }
   }
-
-  // pauseRecording (event) {
-  //   event.preventDefault();
-  //   this.recorder.pauseRecording()
-  //   this.startRecordingTarget.disabled = true
-  //   this.stopRecordingTarget.disabled = false
-  //   // this.pauseRecordingTarget.disabled = true;
-  //   // this.resumeRecordingTarget.disabled = false;
-  //   this.stopTimer();
-  // }
-
-  // resumeRecording (event) {
-  //   event.preventDefault();
-  //   this.recorder.resumeRecording()
-  //   this.startRecordingTarget.disabled = true
-  //   this.stopRecordingTarget.disabled = false
-  //   this.pauseRecordingTarget.disabled = false;
-  //   this.resumeRecordingTarget.disabled = true;
-  //   this.startTimer();
-  // }
 
   startRecorder (event) {
     var vm = this;
@@ -59,43 +40,28 @@ export default class extends Controller {
     this.recorder.startRecording();
     this.startRecordingTarget.disabled = true
     this.stopRecordingTarget.disabled = false
-    // this.pauseRecordingTarget.disabled = false;
     this.startTimer();
   }
 
   stopRecording(event) {
     event.preventDefault()
     this.recorder.stopRecording(blob => {
-
-      console.log(this.audioBlobTarget)
       const file = new File([this.recorder.getBlob()], "audio.webm", { lastModified: new Date().getTime(), type: blob.type })
       const container = new DataTransfer();
       container.items.add(file);
       this.audioBlobTarget.files = container.files;
     });
+
+    if (this.userMediaStream) {
+      this.userMediaStream.getTracks().forEach(track => track.stop()); // Stop the tracks associated with the stream
+      this.userMediaStream = null; // Clear the stored stream
+
+    }
     this.startRecordingTarget.disabled = false
     this.stopRecordingTarget.disabled = true
-    // this.pauseRecordingTarget.disabled = true;
-    // this.resumeRecordingTarget.disabled = true;
     this.stopTimer();
     this.secondsElapsed = 0;
   }
-
-
-  // blobToFile(theBlob, fileName){
-  //     return new File([theBlob], fileName, { lastModified: new Date().getTime(), type: theBlob.type })
-  // }
-
-  // appendFormData (formData) {
-  //   if (!this.recorder) return formData;
-  //   var fieldName = this.audioBlobTarget.name;
-  //   console.log('fieldName:', fieldName);
-
-  //   if (this.recorder.getBlob())
-  //     formData.append(fieldName, this.recorder.getBlob(), (new Date()).getTime() + ".webm");
-
-  //   return formData;
-  // }
 
   openRecorder () {
     return (this.stopRecordingTarget.disabled == false);
