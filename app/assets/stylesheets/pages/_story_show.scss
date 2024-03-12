@@ -15,7 +15,9 @@
   flex-direction: column;
   justify-content: center;
   background-image: url(asset-path('storytime'));
-  background-attachment: fixed;
+  background-position: center;
+  background-size: cover;
+
 }
 .loader-wrapper {
   display: flex;
