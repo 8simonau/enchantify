@@ -101,6 +101,8 @@ class GenerateTextJob < ApplicationJob
       req.body = body.to_json
     end
 
+    puts response.body
+
     # parse response
     puts "parse response"
     choice = JSON.parse(response.body)["choices"][0]
