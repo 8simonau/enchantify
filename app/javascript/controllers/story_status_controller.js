@@ -8,7 +8,7 @@ export default class extends Controller {
 
   connect() {
     this.createAudio();
-    setInterval(() => this.createAudio(), 1000);
+    this.intervalId = setInterval(() => this.createAudio(), 1000);
   }
 
   createAudio() {
@@ -24,13 +24,13 @@ export default class extends Controller {
           }
         })
         .then(html => {
+          console.log("audio present")
           const fragment = document.createRange().createContextualFragment(html);
           this.availableTarget.appendChild(fragment);
-          this.availableTarget.hidden = false;
-          this.preparationTarget.hidden = true
+          clearInterval(this.intervalId);
         })
         .catch(error => {
-          console.error("Error fetching audio:", error);
+          console.error("Audio not present yet");
         });
     }
   }
@@ -41,8 +41,10 @@ export default class extends Controller {
   }
 
   displayAvailableScreen() {
+    console.log("loadedmetadata")
     this.playButtonTarget.hidden = false;
     this.pauseButtonTarget.hidden = true;
+    this.preparationTarget.hidden = true;
     this.availableTarget.hidden = false;
     this.endedTarget.hidden = true;
   }

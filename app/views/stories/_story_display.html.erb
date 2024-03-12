@@ -80,6 +80,7 @@
         data-action="
           play->picture-display#play pause->picture-display#pause
           loadedmetadata->audio-player#getDuration
+          loadedmetadata->story-status#displayAvailableScreen
           timeupdate->audio-player#timeUpdate
           ended->story-status#displayEndScreen"
         data-audio-player-target="audio"
