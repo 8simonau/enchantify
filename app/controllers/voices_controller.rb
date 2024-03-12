@@ -26,9 +26,9 @@ class VoicesController < ApplicationController
     if Story.where(voice: @voice).empty?
       @voice.destroy
       DeleteVoiceInElevenlabsJob.perform_now(@voice)
-      flash[:notice] = "Successfully deleted"
+      flash[:notice] = "Voix supprimée"
     else
-      flash[:alert] = "Impossible, used in stories"
+      flash[:alert] = "Utilisée pour une histoire"
     end
     redirect_to voices_path, status: :see_other
   end

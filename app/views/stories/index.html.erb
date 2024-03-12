@@ -1,8 +1,46 @@
 <div class="stories-wrapper">
+
+  <% if @stories.empty? %>
+    <div class="story-card text-center pt-4 mt-4">
+      <h4>Pas encore d'histoire dans ta bibliothèque</h4>
+    </div>
+  <% end %>
+
   <% @stories.each do |story| %>
   <div class="story-card">
-    <h4><%= story.title %></h4>
-    <p class="mb-3">Créée le <%= story.created_at.strftime("%d/%m/%y") %> | Ecoutée <%= story.playcount %> fois</p>
+
+    <div class="d-flex justify-content-between">
+      <div>
+        <h4><%= story.title %></h4>
+        <p class="mb-3">Créée le <%= story.created_at.strftime("%d/%m/%y") %> | Ecoutée <%= story.playcount %> fois</p>
+      </div>
+
+      <div class="d-flex">
+
+        <%= link_to story_path(story),
+          class: "story-index-button",
+          data: {turbo_method: :delete, turbo_confirm: "Confirmer la suppression ?"} do %>
+          <i class="fa-solid fa-trash"></i>
+        <% end %>
+
+        <%= button_to toggle_favorite_path(story),
+          method: :put,
+          data: { controller: "favorite-story", action: "click->favorite-story#toggleFavorite"},
+          class: "story-index-button" do %>
+          <% if story.is_favorite %>
+            <i class="fa-solid fa-heart text-danger" data-favorite-story-target="favorite"></i>
+            <i class="fa-regular fa-heart" hidden data-favorite-story-target="unfavorite"></i>
+          <% else %>
+            <i class="fa-solid fa-heart text-danger" hidden data-favorite-story-target="favorite"></i>
+            <i class="fa-regular fa-heart" data-favorite-story-target="unfavorite"></i>
+          <% end %>
+        <% end %>
+
+      </div>
+
+    </div>
+
+
     <div class="story-card-bottom">
       <div class="option-pictures-row">
         <% story.options.each do |option| %>
@@ -15,12 +53,28 @@
             class: "option-picture") %>
         <% end %>
       </div>
-        <%= link_to story_path(story), class: "play-link" do %>
-        <div class="play-button-small">
-          <i class="fa-solid fa-circle-play"></i>
-        </div>
+        <% if story.options.size < 3 %>
+          <%= link_to new_story_story_option_path(story), class: "play-link" do %>
+            <div class="play-button-small">
+              <i class="fa-solid fa-circle-plus"></i>
+            </div>
+          <% end %>
+        <% elsif story.voice.nil? || story.audio.attached? == false %>
+          <%= link_to edit_story_path(story), class: "play-link" do %>
+            <div class="play-button-small">
+              <i class="fa-solid fa-circle-plus"></i>
+            </div>
+          <% end %>
+        <% elsif story.audio.attached? %>
+          <%= link_to story_path(story), class: "play-link" do %>
+            <div class="play-button-small">
+              <i class="fa-solid fa-circle-play"></i>
+            </div>
+          <% end %>
         <% end %>
+
     </div>
+
   </div>
   <% end %>
 </div>

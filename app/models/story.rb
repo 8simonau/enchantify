@@ -1,6 +1,6 @@
 class Story < ApplicationRecord
   belongs_to :child
-  belongs_to :voice
+  belongs_to :voice, optional: true
 
   has_many :story_options, dependent: :destroy
   has_many :options, through: :story_options

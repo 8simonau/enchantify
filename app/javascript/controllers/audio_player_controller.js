@@ -39,16 +39,6 @@ export default class extends Controller {
     return new Date(null, null, null, null, null, timeInSeconds).toTimeString().match(/\d{2}:(\d{2}:\d{2})/)[1]
   }
 
-  toggleFavorite() {
-    if (this.favoriteTarget.hidden) {
-      this.favoriteTarget.hidden = false
-      this.unfavoriteTarget.hidden = true
-    } else {
-      this.favoriteTarget.hidden = true
-      this.unfavoriteTarget.hidden = false
-    }
-  }
-
   setPlayTime(e) {
   let posX = e.pageX - this.progressBarTarget.getBoundingClientRect().left;
   const totalWidth = this.progressBarTarget.offsetWidth

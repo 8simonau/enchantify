@@ -39,7 +39,7 @@
         <div class="media-buttons">
 
           <%= button_to stories_path, method: "get", class: "media-button" do %>
-            <i class="fa-solid fa-book"></i>
+            <i class="fa-solid fa-list-ul"></i>
           <% end %>
 
           <button
@@ -61,14 +61,14 @@
 
           <%= button_to toggle_favorite_path(@story),
             method: :put,
-            data: { action: "click->audio-player#toggleFavorite"},
+            data: { controller: "favorite-story", action: "click->favorite-story#toggleFavorite"},
             class: "media-button" do %>
             <% if @story.is_favorite %>
-              <i class="fa-solid fa-heart text-danger" data-audio-player-target="favorite"></i>
-              <i class="fa-regular fa-heart" hidden data-audio-player-target="unfavorite"></i>
+              <i class="fa-solid fa-heart text-danger" data-favorite-story-target="favorite"></i>
+              <i class="fa-regular fa-heart" hidden data-favorite-story-target="unfavorite"></i>
             <% else %>
-              <i class="fa-solid fa-heart text-danger" hidden data-audio-player-target="favorite"></i>
-              <i class="fa-regular fa-heart" data-audio-player-target="unfavorite"></i>
+              <i class="fa-solid fa-heart text-danger" hidden data-favorite-story-target="favorite"></i>
+              <i class="fa-regular fa-heart" data-favorite-story-target="unfavorite"></i>
             <% end %>
           <% end %>
         </div>
