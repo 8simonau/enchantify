@@ -31,7 +31,7 @@
   <div class="story-end" data-story-status-target="ended" hidden>
     <div class="story-end-picture-container">
       <% if @story.pictures.attached? %>
-        <%= cl_image_tag(@story.pictures.last.key,
+        <%= cl_image_tag(@story.pictures.first.key,
           secure: true,
           class: "story-picture",
           transformation: [
