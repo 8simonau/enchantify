@@ -6,9 +6,9 @@ class GenerateImageJob < ApplicationJob
     preprompt = <<-STRING.squish
     USE ONLY THE FOLLOWING SENTENCES AS A PROMPT AND DO NOT REWRITE IT. CREATE A
     VERTICAL IMAGE.
-    Dans le style d'une histoire pour enfant de BD franco belge publiée sur TikTok, un dessin au
-    pastel en format portrait vertical de grande qualité, coloré et stimulant
-    l'imagination. Format portrait vertical.
+    Style : une illustration pleine page d'histoire pour enfant de Kazuo Iwamura
+    dessinée avec des crayons de couleurs, traits fins, image de grande qualite,
+    colorée et stimulante pour les yeux des enfants. Format portrait vertical.
     STRING
     # Voici l'histoire qui sert de thème : #{story.text}
 

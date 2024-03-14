@@ -49,7 +49,7 @@ class GenerateTextJob < ApplicationJob
     principal, un environnement et un objet qui vous seront donnés en paramètres.
     Votre réponse est un objet .json fonctionnel avec 3 clés :
     un titre (\"title\"),
-    une liste de #{prompt_count} prompts (\"prompts\") qui décrivent un paragraphe précis et détaillé les principales séquences de l'histoire (ces paragraphes seront utilisées pour prompter DALLE 3 et illustrer l'histoire),
+    une liste de #{prompt_count} prompts (\"prompts\") qui décrivent chacun en deux phrases précises et comprenant des descriptions visuelles les principales séquences de l'histoire (ces phrases seront utilisées pour prompter DALLE 3 et illustrer l'histoire),
     et le texte de l'histoire (\"text\").
     L'histoire doit commencer par une brève description du personnage
     principal. Le personnage est confronté à un défi et le surmonte.
@@ -60,10 +60,10 @@ class GenerateTextJob < ApplicationJob
     C'est une histoire #{theme}.
     Elle comprend un ou des personnages secondaires : #{secondary_character}.
     Elle montre l'importance de cette qualité : #{quality}.
-    Le personnage principal est : #{options["Personnage"]}. Il ou elle est
+    Le personnage principal est : #{options["Personnage"]}. Il/elle est
     jeune et un enfant peut s'y identifier. Donnez-lui un prénom francophone simple.
     L'aventure prend place ici : #{options["Lieu"]}.
-    #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
+    Le/la #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
     accomplir ses objectifs.
     STRING
 
@@ -95,7 +95,8 @@ class GenerateTextJob < ApplicationJob
       req.body = body.to_json
     end
 
-    puts response.body
+    # puts response
+    # puts response.body
 
     # parse response
     puts "parse response"
