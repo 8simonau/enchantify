@@ -18,11 +18,10 @@ class GenerateTextJob < ApplicationJob
     character: [
       "un livre qui parle",
       "un chat volant",
-      "un grand cheval",
-      "deux assiettes qui roulent",
-      "des jumeaux espiègles",
-      "un croissant délicieux",
-      "une magicienne puissante"
+      "un cheval qui chuchote",
+      "un croissant croustillant",
+      "une petite magicienne",
+      "un chapeau qui chante"
     ],
 
     quality: [
@@ -34,7 +33,7 @@ class GenerateTextJob < ApplicationJob
     ]
   }
 
-  def perform(story, token_count = 600, prompt_count = 4)
+  def perform(story, token_count = 800, prompt_count = 3)
     # variables
     options = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
@@ -50,10 +49,8 @@ class GenerateTextJob < ApplicationJob
     principal, un environnement et un objet qui vous seront donnés en paramètres.
     Votre réponse est un objet .json fonctionnel avec 3 clés :
     un titre (\"title\"),
-    une liste de #{prompt_count} prompts (\"prompts\") qui décrivent en 5 mots
-    chacun les principales séquences de l'histoire (ces chaînes seront utilisées
-    pour prompter DALLE 3 et illustrer l'histoire)
-    et le texte (\"text\").
+    une liste de #{prompt_count} prompts (\"prompts\") qui décrivent un paragraphe précis et détaillé les principales séquences de l'histoire (ces paragraphes seront utilisées pour prompter DALLE 3 et illustrer l'histoire),
+    et le texte de l'histoire (\"text\").
     L'histoire doit commencer par une brève description du personnage
     principal. Le personnage est confronté à un défi et le surmonte.
     STRING
@@ -64,8 +61,8 @@ class GenerateTextJob < ApplicationJob
     Elle comprend un ou des personnages secondaires : #{secondary_character}.
     Elle montre l'importance de cette qualité : #{quality}.
     Le personnage principal est : #{options["Personnage"]}. Il ou elle est
-    jeune et un enfant peut s'y identifier.
-    L'aventure prend place ici : #{options["Lieu"]}, mais l'action peut s'en éloigner.
+    jeune et un enfant peut s'y identifier. Donnez-lui un prénom francophone simple.
+    L'aventure prend place ici : #{options["Lieu"]}.
     #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
     accomplir ses objectifs.
     STRING
@@ -89,9 +86,6 @@ class GenerateTextJob < ApplicationJob
         }
       ]
     }
-
-    puts preprompt
-    puts parameters
 
     # get OAI response
     puts "send request"
