@@ -4,17 +4,18 @@ class GenerateImageJob < ApplicationJob
   def perform(story, prompt)
     # Do something later
     preprompt = <<-STRING.squish
-    Vous êtes un talentueux illustrateur de contes pour enfants qui dessine au
-    pastel dans un style moderne et coloré des illustrations de grande qualité.
-    Celles-ci doivent être colorées et belles, et stimuler l'imagination des
-    enfants. Les images sont toujours au format portrait vertical.
-    Voici l'histoire : #{story.text}
+    USE ONLY THE FOLLOWING SENTENCES AS A PROMPT AND DO NOT REWRITE IT. CREATE A
+    VERTICAL IMAGE.
+    Dans le style d'une histoire pour enfant de BD franco belge publiée sur TikTok, un dessin au
+    pastel en format portrait vertical de grande qualité, coloré et stimulant
+    l'imagination. Format portrait vertical.
     STRING
+    # Voici l'histoire qui sert de thème : #{story.text}
 
     picture_description = " Voici à quoi ressemble le personnage principal : " + story.character_description
 
-    story.options_hash.reject { |k ,v| k == "Personnage" }.each do |k, v|
-      picture_description << " L'illustration contient un #{k} : #{v}."
+    story.options_hash.reject{ |k ,v| k == "Personnage" }.each do |k, v|
+      picture_description << " On peut voir un #{k} : #{v}."
     end
 
     full_prompt = preprompt + picture_description + " Voici l'action à illustrer : " + prompt
@@ -25,7 +26,8 @@ class GenerateImageJob < ApplicationJob
     body = {
       "model": "dall-e-3",
       "prompt": full_prompt,
-      "size": "1024x1792"
+      # "quality": "hd",
+      "size": "1024x1792",
     }
 
     response = Faraday.post(url) do |req|
