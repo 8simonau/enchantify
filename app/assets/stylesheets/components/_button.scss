@@ -1,5 +1,5 @@
 .btn:first-child:active {
-    opacity: 0.95;
+    opacity: 0.9;
     background-color: $white;
     color: $blue;
 }
@@ -15,10 +15,10 @@
   box-shadow: 2px 2px 1px lightgray;
   text-align: center;
   align-items: center;
-  opacity: 1;
+  opacity: 0.95;
   transition: opacity 0.3s ease;
   &:hover, :active, :first-child:active {
-      opacity: 0.95;
+      opacity: 0.9;
       background-color: $white;
       color: $blue;
   }
