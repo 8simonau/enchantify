@@ -9,7 +9,7 @@ class StoriesController < ApplicationController
     @background = "loading"
     @story = Story.find(params[:id])
     @story.update(playcount: @story.playcount + 1)
-    @recent_stories = Story.all.order(created_at: :desc)[1..2]
+    @recent_stories = Story.where(child: current_user.active_child).order(created_at: :desc)[1..2]
     @title = "Mon histoire"
   end
 
@@ -29,7 +29,7 @@ class StoriesController < ApplicationController
 
   def edit
     @story = Story.find(params[:id])
-    @voices = Voice.all
+    @voices = Voice.where(user: current_user)
     @title = "Voix"
     @background = "builders"
   end
@@ -55,11 +55,6 @@ class StoriesController < ApplicationController
     else
       head :no_content
     end
-  end
-
-  def mark_favorite
-    @story = Story.find(params[:id])
-    @story.update(is_favorite: true)
   end
 
   def toggle_favorite
