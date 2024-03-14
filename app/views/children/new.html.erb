@@ -3,6 +3,6 @@
     <%= f.input :first_name, wrapper_html: {class:"mb-4"}, label: "Prénom" %>
     <%= f.input :birth_date, wrapper_html: {class:"mb-4"}, label: "Date de naissance", start_year: Time.now.year - 18 %>
     <%= f.input :avatar, wrapper_html: {class:"mb-4"}, as: :file, label: "Photo" %>
-    <%= f.button :submit, "Créer", class: "btn btn-standard btn-large mt-3" %>
+    <%= f.button :submit, "Créer", class: "btn btn-standard btn-large bg-primary text-white mt-3" %>
   <% end %>
 </div>

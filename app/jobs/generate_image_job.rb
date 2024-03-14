@@ -7,8 +7,8 @@ class GenerateImageJob < ApplicationJob
     USE ONLY THE FOLLOWING SENTENCES AS A PROMPT AND DO NOT REWRITE IT. CREATE A
     VERTICAL IMAGE.
     Style : une illustration pleine page d'histoire pour enfant de Kazuo Iwamura
-    dessinée avec des crayons de couleurs, traits fins, image de grande qualité,
-    colorée et stimulante pour les yeux des enfants.
+    dessinée avec des crayons de couleurs, traits fins, image de grande qualite,
+    colorée et stimulante pour les yeux des enfants. Format portrait vertical.
     STRING
     # Voici l'histoire qui sert de thème : #{story.text}
 
