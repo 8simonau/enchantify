@@ -3,22 +3,29 @@ class GenerateImageJob < ApplicationJob
 
   def perform(story, prompt)
     # Do something later
+    params = story.options_hash
     preprompt = <<-STRING.squish
     USE ONLY THE FOLLOWING SENTENCES AS A PROMPT AND DO NOT REWRITE IT. CREATE A
     VERTICAL IMAGE.
-    Style : une illustration pleine page d'histoire pour enfant de Kazuo Iwamura
-    dessinée avec des crayons de couleurs, traits fins, image de grande qualite,
-    colorée et stimulante pour les yeux des enfants. Format portrait vertical.
+    Imagine : 
     STRING
-    # Voici l'histoire qui sert de thème : #{story.text}
+    # Voici l'histoire qui sert de theme : #{story.text}
 
-    picture_description = " Voici à quoi ressemble le personnage principal : " + story.character_description
+    char_desc = " Le personnage principal est #{params["Personnage"][0]}, #{params["Personnage"][1]}"
+    item_desc = " Le personnage principal tient ou porte #{params["Objet"][0]}, #{params["Objet"][1]}"
+    place_desc = " L'action se passe ici : #{params["Lieu"][0]}, #{params["Lieu"][1]}."
 
-    story.options_hash.reject{ |k ,v| k == "Personnage" }.each do |k, v|
-      picture_description << " On peut voir un #{k} : #{v}."
-    end
+    postprompt = <<-STRING.squish
+    Pour cette image, utilizez un style de gravure sur bois typique
+    des illustrations de livres pour enfants, où chaque element est rendu par des
+    lignes franches et claires et des formes simplifiees. L utilisation de contrastes
+    entre les textures sombres, semblables a de l encre, de la gravure sur bois et
+    les zones plus claires apportera de la profondeur et de la dimension a la scene,
+    L'effet global devrait etre d une beaute captivante et coloree, invitant les
+    spectateurs a penetrer dans un monde unique."
+    STRING
 
-    full_prompt = preprompt + picture_description + " Voici l'action à illustrer : " + prompt
+    full_prompt = preprompt + prompt + char_desc + item_desc + place_desc + postprompt
 
     puts full_prompt
 

@@ -12,11 +12,6 @@ class Story < ApplicationRecord
 
   # helper to get options
   def options_hash
-    return Hash[options.collect { |o| [o.category, o.name] }]
-  end
-
-  # helper to retrieve or get the story's char desc
-  def character_description
-    options.find_by_category("Personnage")["description"]
+    return Hash[options.collect { |o| [o.category, [o.name, o.description]] }]
   end
 end
