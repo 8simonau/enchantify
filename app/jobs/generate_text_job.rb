@@ -32,7 +32,7 @@ class GenerateTextJob < ApplicationJob
     ]
   }
 
-  def perform(story, token_count = 600, prompt_count = 4)
+  def perform(story, token_count = 700, prompt_count = 4)
     # variables
     params = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
@@ -126,6 +126,7 @@ class GenerateTextJob < ApplicationJob
     # else, send another request with previous text as input
     else
       puts "finishing story..."
+
       body[:messages] << { "role": "assistant", "content": text }
       response = Faraday.post(url) do |req|
         req.headers['Authorization'] = 'Bearer ' + ENV.fetch("OPENAI_KEY")
