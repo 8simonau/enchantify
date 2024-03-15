@@ -4,7 +4,6 @@ class GenerateTextJob < ApplicationJob
   ADDITIONAL_PARAMETERS = {
     theme: [
       "joyeuse",
-      "qui fait un peu peur",
       "qui parle du pouvoir de l'amitié",
       "qui parle des relations parents-enfants",
       "qui parle d'apprentissage",
@@ -12,16 +11,15 @@ class GenerateTextJob < ApplicationJob
       "d'aventure",
       "qui fait découvrir des pays lointains",
       "qui fait rire",
-      "un peu triste"
     ],
 
     character: [
       "un livre qui parle",
       "un chat volant",
       "un cheval qui chuchote",
-      "un croissant croustillant",
       "une petite magicienne",
-      "un chapeau qui chante"
+      "un chapeau qui chante",
+      "un écureuil discret"
     ],
 
     quality: [
@@ -29,11 +27,12 @@ class GenerateTextJob < ApplicationJob
       "ouverture à l'inconnu",
       "humour",
       "force de conviction",
-      "réflexion"
+      "réflexion",
+      "patience"
     ]
   }
 
-  def perform(story, token_count = 800, prompt_count = 3)
+  def perform(story, token_count = 900, prompt_count = 4)
     # variables
     options = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
