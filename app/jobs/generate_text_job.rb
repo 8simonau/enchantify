@@ -4,66 +4,68 @@ class GenerateTextJob < ApplicationJob
   ADDITIONAL_PARAMETERS = {
     theme: [
       "joyeuse",
-      "qui fait un peu peur",
-      "qui parle du pouvoir de l'amitié",
+      "qui parle du pouvoir de l amitie",
       "qui parle des relations parents-enfants",
-      "qui parle d'apprentissage",
+      "qui parle d apprentissage",
       "qui parle de grandir",
-      "d'aventure",
-      "qui fait découvrir des pays lointains",
+      "d aventure",
+      "qui fait decouvrir des pays lointains",
       "qui fait rire",
-      "un peu triste"
     ],
 
     character: [
       "un livre qui parle",
       "un chat volant",
       "un cheval qui chuchote",
-      "un croissant croustillant",
       "une petite magicienne",
-      "un chapeau qui chante"
+      "un chapeau qui chante",
+      "un ecureuil discret"
     ],
 
     quality: [
-      "courage",
-      "ouverture à l'inconnu",
-      "humour",
-      "force de conviction",
-      "réflexion"
+      "le courage",
+      "l ouverture a l inconnu",
+      "l humour",
+      "la force de conviction",
+      "la reflexion",
+      "la patience"
     ]
   }
 
-  def perform(story, token_count = 800, prompt_count = 3)
+  def perform(story, token_count = 700, prompt_count = 4)
     # variables
-    options = story.options_hash
+    params = story.options_hash
     url = "https://api.openai.com/v1/chat/completions"
     theme = ADDITIONAL_PARAMETERS[:theme].sample
     secondary_character = ADDITIONAL_PARAMETERS[:character].sample
     quality = ADDITIONAL_PARAMETERS[:quality].sample
 
     preprompt = <<-STRING.squish
-    Vous êtes un narrateur francophone expérimenté qui invente des histoires
-    originales, positives et stimulantes pour les enfants de 3 à 8 ans. Vous
-    devez utiliser des mots et des concepts simples pour que l'histoire soit
-    bien comprise par les enfants. Vos histoires mettent en scène un personnage
-    principal, un environnement et un objet qui vous seront donnés en paramètres.
-    Votre réponse est un objet .json fonctionnel avec 3 clés :
-    un titre (\"title\"),
-    une liste de #{prompt_count} prompts (\"prompts\") qui décrivent chacun en deux phrases précises et comprenant des descriptions visuelles les principales séquences de l'histoire (ces phrases seront utilisées pour prompter DALLE 3 et illustrer l'histoire),
-    et le texte de l'histoire (\"text\").
-    L'histoire doit commencer par une brève description du personnage
-    principal. Le personnage est confronté à un défi et le surmonte.
+    Vous êtes un narrateur francophone experimente qui invente des histoires
+    originales, positives et stimulantes pour les enfants de 3 a 8 ans. Vous
+    devez utiliser des mots et des concepts simples pour que l histoire soit
+    bien comprise par les enfants. Vos histoires mettent en scene un personnage
+    principal, un environnement et un objet qui vous seront donnes en parametres.
+    Votre reponse est un objet .json fonctionnel avec 3 cles :
+    1. un titre (title),
+    2. une liste de #{prompt_count} prompts (prompts) qui decrivent chacun en
+    un court paragraphe une des scenes principales de l histoire. Ces paragraphes
+    seront utilisees pour prompter DALLE 3 et illustrer l histoire, il faut donc
+    qu'ils comprennent des descriptions visuelles précises,
+    3. le texte de l histoire (text).
+    L histoire doit commencer par une breve description du personnage
+    principal. Le personnage est confronte a un defi et le surmonte.
     STRING
 
     parameters = <<-STRING.squish
-    Ecris une histoire :
-    C'est une histoire #{theme}.
-    Elle comprend un ou des personnages secondaires : #{secondary_character}.
-    Elle montre l'importance de cette qualité : #{quality}.
-    Le personnage principal est : #{options["Personnage"]}. Il/elle est
-    jeune et un enfant peut s'y identifier. Donnez-lui un prénom francophone simple.
-    L'aventure prend place ici : #{options["Lieu"]}.
-    Le/la #{options["Personnage"]} a un objet : #{options["Objet"]}, qui l'aide à
+    Ecrivez une histoire :
+    C est une histoire #{theme}.
+    Elle comprend un personnage secondaire : #{secondary_character}.
+    Elle montre l importance de cette qualite : #{quality}.
+    Le personnage principal est : #{params["Personnage"][0]}, #{params["Personnage"][1]} Il ou elle est
+    jeune et un enfant peut s y identifier. Donnez lui un prenom francophone simple.
+    L aventure prend place ici : #{params["Lieu"][0]}, #{params["Lieu"][1]}
+    #{params["Personnage"][0]} a un objet : #{params["Objet"][0]}, #{params["Objet"][1]}. Cet objet l aide a
     accomplir ses objectifs.
     STRING
 
@@ -93,10 +95,11 @@ class GenerateTextJob < ApplicationJob
       req.headers['Authorization'] = 'Bearer ' + ENV.fetch("OPENAI_KEY")
       req.headers['Content-Type'] = 'application/json'
       req.body = body.to_json
+      puts req.body
     end
 
     # puts response
-    # puts response.body
+    puts response.body
 
     # parse response
     puts "parse response"
@@ -123,6 +126,7 @@ class GenerateTextJob < ApplicationJob
     # else, send another request with previous text as input
     else
       puts "finishing story..."
+
       body[:messages] << { "role": "assistant", "content": text }
       response = Faraday.post(url) do |req|
         req.headers['Authorization'] = 'Bearer ' + ENV.fetch("OPENAI_KEY")
