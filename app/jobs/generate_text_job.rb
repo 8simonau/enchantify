@@ -18,7 +18,6 @@ class GenerateTextJob < ApplicationJob
       "un chat volant",
       "un cheval qui chuchote",
       "une petite magicienne",
-      "un chapeau qui chante",
       "un ecureuil discret"
     ],
 
