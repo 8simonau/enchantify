@@ -7,7 +7,7 @@ class GenerateImageJob < ApplicationJob
     preprompt = <<-STRING.squish
     USE ONLY THE FOLLOWING SENTENCES AS A PROMPT AND DO NOT REWRITE IT. CREATE A
     VERTICAL IMAGE.
-    Imagine : 
+    Imagine :
     STRING
     # Voici l'histoire qui sert de theme : #{story.text}
 
@@ -47,7 +47,7 @@ class GenerateImageJob < ApplicationJob
     puts response.body
 
     file = URI.open(JSON.parse(response.body)["data"][0]["url"])
-    x = story.pictures.attach(io: file, filename: "#{prompt}.png", content_type: "image/png")
+    x = story.pictures.attach(io: file, filename: "image.png", content_type: "image/png")
     story.save!
     puts "attached picture based on #{prompt}"
   end
