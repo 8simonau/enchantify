@@ -4,12 +4,12 @@ class GenerateTextJob < ApplicationJob
   ADDITIONAL_PARAMETERS = {
     theme: [
       "joyeuse",
-      "qui parle du pouvoir de l amitie",
-      "qui parle des relations parents-enfants",
+      "qui parle du pouvoir de l amitié",
+      "qui parle des relations parents enfants",
       "qui parle d apprentissage",
       "qui parle de grandir",
       "d aventure",
-      "qui fait decouvrir des pays lointains",
+      "qui fait découvrir des pays lointains",
       "qui fait rire",
     ],
 
@@ -18,15 +18,15 @@ class GenerateTextJob < ApplicationJob
       "un chat volant",
       "un cheval qui chuchote",
       "une petite magicienne",
-      "un ecureuil discret"
+      "un écureuil discret"
     ],
 
     quality: [
       "le courage",
-      "l ouverture a l inconnu",
+      "l ouverture à l inconnu",
       "l humour",
       "la force de conviction",
-      "la reflexion",
+      "la réflexion",
       "la patience"
     ]
   }
@@ -40,31 +40,31 @@ class GenerateTextJob < ApplicationJob
     quality = ADDITIONAL_PARAMETERS[:quality].sample
 
     preprompt = <<-STRING.squish
-    Vous êtes un narrateur francophone experimente qui invente des histoires
-    originales, positives et stimulantes pour les enfants de 3 a 8 ans. Vous
+    Vous êtes un narrateur francophone expérimenté qui invente des histoires
+    originales, positives et stimulantes pour les enfants de 3 à 8 ans. Vous
     devez utiliser des mots et des concepts simples pour que l histoire soit
     bien comprise par les enfants. Vos histoires mettent en scene un personnage
-    principal, un environnement et un objet qui vous seront donnes en parametres.
-    Votre reponse est un objet .json fonctionnel avec 3 cles :
+    principal, un environnement et un objet qui vous seront donnés en paramètres.
+    Votre réponse est un objet .json fonctionnel avec 3 clés :
     1. un titre (title),
-    2. une liste de #{prompt_count} prompts (prompts) qui decrivent chacun en
-    un court paragraphe une des scenes principales de l histoire. Ces paragraphes
-    seront utilisees pour prompter DALLE 3 et illustrer l histoire, il faut donc
-    qu'ils comprennent des descriptions visuelles précises,
+    2. une liste de #{prompt_count} prompts (prompts) qui décrivent chacun en
+    un court paragraphe une des scènes principales de l histoire. Ces paragraphes
+    seront utilisés pour prompter DALLE 3 et illustrer l histoire, il faut donc
+    qu ils comprennent des descriptions visuelles précises,
     3. le texte de l histoire (text).
-    L histoire doit commencer par une breve description du personnage
-    principal. Le personnage est confronte a un defi et le surmonte.
+    L histoire doit commencer par une brève description du personnage
+    principal. Le personnage est confronté à un défi et le surmonte.
     STRING
 
     parameters = <<-STRING.squish
     Ecrivez une histoire :
     C est une histoire #{theme}.
     Elle comprend un personnage secondaire : #{secondary_character}.
-    Elle montre l importance de cette qualite : #{quality}.
+    Elle montre l importance de cette qualité : #{quality}.
     Le personnage principal est : #{params["Personnage"][0]}, #{params["Personnage"][1]} Il ou elle est
-    jeune et un enfant peut s y identifier. Donnez lui un prenom francophone simple.
+    jeune et un enfant peut s y identifier. Donnez lui un prénom francophone simple.
     L aventure prend place ici : #{params["Lieu"][0]}, #{params["Lieu"][1]}
-    #{params["Personnage"][0]} a un objet : #{params["Objet"][0]}, #{params["Objet"][1]}. Cet objet l aide a
+    #{params["Personnage"][0]} a un objet : #{params["Objet"][0]}, #{params["Objet"][1]}. Cet objet l aide à
     accomplir ses objectifs.
     STRING
 
